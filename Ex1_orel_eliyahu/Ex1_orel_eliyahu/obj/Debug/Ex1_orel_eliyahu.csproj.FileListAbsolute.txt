@@ -1,0 +1,9 @@
+Z:\code value\Ex1_orel_eliyahu\Ex1_orel_eliyahu\bin\Debug\Ex1_orel_eliyahu.exe.config
+Z:\code value\Ex1_orel_eliyahu\Ex1_orel_eliyahu\bin\Debug\Ex1_orel_eliyahu.exe
+Z:\code value\Ex1_orel_eliyahu\Ex1_orel_eliyahu\bin\Debug\Ex1_orel_eliyahu.pdb
+Z:\code value\Ex1_orel_eliyahu\Ex1_orel_eliyahu\obj\Debug\Ex1_orel_eliyahu.csprojResolveAssemblyReference.cache
+Z:\code value\Ex1_orel_eliyahu\Ex1_orel_eliyahu\obj\Debug\Ex1_orel_eliyahu.exe
+Z:\code value\Ex1_orel_eliyahu\Ex1_orel_eliyahu\obj\Debug\Ex1_orel_eliyahu.pdb
+C:\Users\test\Desktop\code value\code value\Ex1_orel_eliyahu\Ex1_orel_eliyahu\bin\Debug\Ex1_orel_eliyahu.exe.config
+C:\Users\test\Desktop\code value\code value\Ex1_orel_eliyahu\Ex1_orel_eliyahu\obj\Debug\Ex1_orel_eliyahu.exe
+C:\Users\test\Desktop\code value\code value\Ex1_orel_eliyahu\Ex1_orel_eliyahu\obj\Debug\Ex1_orel_eliyahu.pdb
