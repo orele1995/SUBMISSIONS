@@ -1,0 +1,6 @@
+C:\Users\test\Desktop\code value\שיעורי בית\SUBMISSIONS\Ex8_orel_eliyahu\8.1\CustomersApp\CustomersApp\bin\Debug\CustomersApp.exe.config
+C:\Users\test\Desktop\code value\שיעורי בית\SUBMISSIONS\Ex8_orel_eliyahu\8.1\CustomersApp\CustomersApp\bin\Debug\CustomersApp.exe
+C:\Users\test\Desktop\code value\שיעורי בית\SUBMISSIONS\Ex8_orel_eliyahu\8.1\CustomersApp\CustomersApp\bin\Debug\CustomersApp.pdb
+C:\Users\test\Desktop\code value\שיעורי בית\SUBMISSIONS\Ex8_orel_eliyahu\8.1\CustomersApp\CustomersApp\obj\Debug\CustomersApp.csprojResolveAssemblyReference.cache
+C:\Users\test\Desktop\code value\שיעורי בית\SUBMISSIONS\Ex8_orel_eliyahu\8.1\CustomersApp\CustomersApp\obj\Debug\CustomersApp.exe
+C:\Users\test\Desktop\code value\שיעורי בית\SUBMISSIONS\Ex8_orel_eliyahu\8.1\CustomersApp\CustomersApp\obj\Debug\CustomersApp.pdb

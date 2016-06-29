@@ -10,6 +10,8 @@ namespace CustomersApp
     {
         public int Compare(Customer x, Customer y)
         {
+            if (x == null || y==null)
+            { throw new ArgumentNullException(); }
             return x.ID.CompareTo(y.ID);
         }
     }

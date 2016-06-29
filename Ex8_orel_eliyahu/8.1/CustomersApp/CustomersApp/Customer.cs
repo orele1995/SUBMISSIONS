@@ -10,9 +10,9 @@ namespace CustomersApp
 
     public class Customer :IComparable<Customer>, IEquatable<Customer>
     {
-        public string Name { get; set; }
-        public int ID { get; set; }
-        public string Address { get; set; }
+        public string Name { get; private set; }
+        public int ID { get; private set; }
+        public string Address { get; private set; }
 
         public Customer (string name, int id, string address)
         {
@@ -22,20 +22,34 @@ namespace CustomersApp
         }
         public int CompareTo(Customer other)
         {
+            if (other == null)
+            {
+                throw new ArgumentNullException();
+            }
             return String.Compare(Name, other.Name, true);
         }
 
         public bool Equals(Customer other)
         {
-            if (this.CompareTo(other)==0 && other.ID==ID)
-            {
-                return true;
-            }
+            if (other == null) { return false; }
+            if (this.CompareTo(other)==0 && other.ID==ID) { return true; }
             return false;
         }
         public override string ToString()
         {
-            return Name+" "+ID+" "+Address;
+            return string.Format(" Name: {0} ID: {1} Address: {2}",Name,ID,Address);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null) { return false; }
+            string toCompare = obj as string;
+            if (toCompare == null) { return false; }
+            return this.Equals(toCompare); 
+        }
+        public override int GetHashCode()
+        {
+            return Name.ToUpper().GetHashCode();
         }
     }
 }

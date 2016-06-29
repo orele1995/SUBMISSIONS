@@ -19,36 +19,7 @@ namespace CustomersApp
             customers[1] = new Customer(names[1], 40, addresses[1]);
             customers[2] = new Customer(names[2], 89, addresses[2]);
             customers[3] = new Customer(names[3], 777, addresses[3]);
-
-
-
-            // ----------------------- ex 7 -----------------------
-            Console.WriteLine(customers[0]);
-            Console.WriteLine(customers[2]);
-            Console.WriteLine(customers[0].CompareTo(customers[2]));
-
-            foreach (Customer item in customers)
-            {
-                Console.WriteLine(item);
-            }
-
-            Console.WriteLine("by name:");
-            Array.Sort(customers);
-
-            foreach (Customer item in customers)
-            {
-                Console.WriteLine(item);
-            }
-
-            AnotherCustomerComparer comp = new AnotherCustomerComparer();
-            Array.Sort(customers, comp);
-
-            Console.WriteLine("other compare: by id");
-            foreach (Customer item in customers)
-            {
-                Console.WriteLine(item);
-            }
-
+            
             // ----------------------- ex 8 -----------------------
 
             CustomerFilter filter = StartWithAK;
