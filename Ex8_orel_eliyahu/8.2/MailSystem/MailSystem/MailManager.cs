@@ -18,7 +18,7 @@ namespace MailSystem
 
         public void SimulateMailArrived()
         {
-            OnMailArrived("a", "aa");
+            OnMailArrived("title", "body");
         }
 
     }

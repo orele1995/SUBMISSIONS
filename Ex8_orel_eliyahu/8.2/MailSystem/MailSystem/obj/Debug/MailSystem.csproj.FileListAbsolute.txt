@@ -1,0 +1,6 @@
+C:\Users\test\Desktop\code value\שיעורי בית\SUBMISSIONS\Ex8_orel_eliyahu\8.2\MailSystem\MailSystem\bin\Debug\MailSystem.exe.config
+C:\Users\test\Desktop\code value\שיעורי בית\SUBMISSIONS\Ex8_orel_eliyahu\8.2\MailSystem\MailSystem\bin\Debug\MailSystem.exe
+C:\Users\test\Desktop\code value\שיעורי בית\SUBMISSIONS\Ex8_orel_eliyahu\8.2\MailSystem\MailSystem\bin\Debug\MailSystem.pdb
+C:\Users\test\Desktop\code value\שיעורי בית\SUBMISSIONS\Ex8_orel_eliyahu\8.2\MailSystem\MailSystem\obj\Debug\MailSystem.csprojResolveAssemblyReference.cache
+C:\Users\test\Desktop\code value\שיעורי בית\SUBMISSIONS\Ex8_orel_eliyahu\8.2\MailSystem\MailSystem\obj\Debug\MailSystem.exe
+C:\Users\test\Desktop\code value\שיעורי בית\SUBMISSIONS\Ex8_orel_eliyahu\8.2\MailSystem\MailSystem\obj\Debug\MailSystem.pdb
