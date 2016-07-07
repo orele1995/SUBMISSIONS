@@ -1,0 +1,4 @@
+
+1. works because Fusion knows to search the dll file inside sub-folders that with names like the dll file.
+2. doesnt work because Fusion searched the dll file or exe file in sub-folders and in the folder itself and didnt found it there. also- it didnt have any other path to search in.
+3. works bercause we added another path to search in "Bin" and it was there.
