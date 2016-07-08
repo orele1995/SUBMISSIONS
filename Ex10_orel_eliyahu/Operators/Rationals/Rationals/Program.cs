@@ -148,11 +148,11 @@ namespace Rationals
             return Div (first, second);
         }
 
-        public static explicit operator double(Rational r)
+        public static implicit operator double(Rational r)
         {
             return r.Number;
         }
-        public static explicit operator Rational(int i)
+        public static implicit operator Rational(int i)
         {
             return new Rational(i);
         }
@@ -175,9 +175,9 @@ namespace Rationals
             Console.WriteLine($"{r1} * {r2} = {r3}");
             r3 = r1 / r2;
             Console.WriteLine($"{r1} / {r2} = {r3}");
-            r3 = (Rational)(6);
+            r3 = 6;
             Console.WriteLine($"6 = {r3}");
-            double toDouble = (double)r1;
+            double toDouble = r1;
             Console.WriteLine($"{r1} = {toDouble}");
 
 
