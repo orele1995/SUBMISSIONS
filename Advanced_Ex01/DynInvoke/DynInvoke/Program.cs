@@ -24,7 +24,7 @@ namespace DynInvoke
             {
                 Console.WriteLine("you cant send null to the method");
             }
-            catch (MissingMethodException ex)
+            catch (MissingMethodException ex)//fff
             {
                 Console.WriteLine("couln't find hello method");
             }
