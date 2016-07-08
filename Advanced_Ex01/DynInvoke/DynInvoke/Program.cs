@@ -29,6 +29,7 @@ namespace DynInvoke
                 Console.WriteLine("couln't find hello method");
             }
 
+
         }
 
         public static string InvokeHello(object ob, string s)
