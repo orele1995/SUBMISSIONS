@@ -15,7 +15,7 @@ namespace XLinq
         static void Main(string[] args)
         {
             var types = Assembly.LoadFile(@"C:\Windows\Microsoft.NET\Framework\v2.0.50727\mscorlib.dll").GetTypes();
-            var tXml = new XElement("MscorlibClasses", from t in types
+            var tXml = new XElement("MscorlibClasses", from t in types 
                                                        where t.IsClass && t.IsPublic
                                                        select new XElement("Type", new XAttribute("Name", t.FullName)
                                                                                  , new XElement("Properties", from p in t.GetProperties()
