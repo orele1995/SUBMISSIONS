@@ -28,12 +28,38 @@ namespace BL
         {
             while (! gameOver)
             {
+                int val1 = firstCube.GetCubeValue();
+                int val2 = secondCube.GetCubeValue();
+                bool doubleTurn = val1 == val2 ? true : false;
                 if (player1Turn)
                 {
-
+                    Player1.MakeMove(val1);
+                    Player1.MakeMove(val2);
+                    if (doubleTurn)
+                    {
+                        Player1.MakeMove(val1);
+                        Player1.MakeMove(val2);
+                    }
+                    checkForGameOver();
                 }
+                else
+                {
+                    Player2.MakeMove(val1);
+                    Player2.MakeMove(val2);
+                    if (doubleTurn)
+                    {
+                        Player2.MakeMove(val1);
+                        Player2.MakeMove(val2);
+                    }
+                    checkForGameOver();
+                }
+
             }
         }
 
+        private void checkForGameOver()
+        {
+
+        }
     }
 }

@@ -9,8 +9,8 @@ namespace BL
     public class GameBoard
     {
         List<GameLine> Lines { get; set; }
-        public int BlackOut { get; set; }
-        public int WhiteOut { get; set; }
+        public int BlackOut { get; private set; }
+        public int WhiteOut { get; private set; }
         public GameBoard ()
         {
             Lines = new List<GameLine>();
@@ -56,6 +56,15 @@ namespace BL
                 }
             }
             return count;
+        }
+
+        public void takeOut (LineColor color, int lineNumber)
+        {
+            if(Lines[lineNumber].LineColor == color)
+            {
+
+            }
+                
         }
     }
 }

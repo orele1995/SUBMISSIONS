@@ -20,6 +20,24 @@ namespace BL
             LineColor = color;
             PiecesNumber = piesesNumber;
         }
+        public static GameLine operator ++ (GameLine toAdd)
+        {
+            toAdd.PiecesNumber += 1;
+            return toAdd;
+        }
+        public static GameLine operator -- (GameLine toDec)
+        {
+            if (toDec.PiecesNumber!=0)
+            {
+                toDec.PiecesNumber -= 1;
+                if (toDec.PiecesNumber == 0)
+                {
+                    toDec.LineColor = LineColor.None;
+                }
+            }
+            
+            return toDec;
+        }
 
     }
 }
