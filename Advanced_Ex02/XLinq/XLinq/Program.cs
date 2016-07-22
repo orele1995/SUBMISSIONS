@@ -14,6 +14,7 @@ namespace XLinq
         
         static void Main(string[] args)
         {
+            // ******************* 2 *********************
             var types =typeof(String).Assembly.GetTypes();
             var tXml = new XElement("MscorlibClasses", from t in types 
                                                        where t.IsClass && t.IsPublic
@@ -38,6 +39,7 @@ namespace XLinq
 
             tXml.Save("Types.xml");
 
+            //******************** 3.a ***************************
             var noProperty = from t in tXml.Descendants("Type")
                              where t.Element("Properties").IsEmpty
                              orderby (string)t.Attribute("Name")
@@ -46,12 +48,15 @@ namespace XLinq
             {
                 Console.WriteLine($"The type {item} has no properties");
             }
+
             Console.WriteLine($"There are {noProperty.Count()} type without properties");
 
+            //******************** 3.b ***************************
             var allMethods = from t in tXml.Descendants("Method")
                              select (string)t.Attribute("Name");
             Console.WriteLine($"There are {allMethods.Count()} methods");
 
+            //******************** 3.c ***************************
             var allProperties = from p in tXml.Descendants("Property")
                                 select (string)p.Attribute("Name");
             Console.WriteLine($"There are {allProperties.Count()} properties");
@@ -73,35 +78,35 @@ namespace XLinq
                 }
             }
 
-
+            //******************** 3.d ***************************
             var typeInfoXML =new XElement("Types", from t in tXml.Descendants("Type")
-                                                   let count = t.Descendants("Method").Count()
-                                                   orderby count
+                                                   let countM = t.Descendants("Method").Count()
+                                                   orderby countM
                                                    select new XElement("Type", new XAttribute("TypeName", (string)t.Attribute("Name")),
-                                                          new XAttribute("Methods", count),
-                                                          new XAttribute("Properties", t.Descendants("Property").Count());
+                                                          new XAttribute("Methods", countM),
+                                                          new XAttribute("Properties", t.Descendants("Property").Count())));
             typeInfoXML.Save("Types2.xml");
 
 
-            var typeInfo = from t in tXml.Descendants("Type")
-                              let count = t.Descendants("Method").Count()
-                              orderby count
-                              select new
-                              {
-                                  TypeName = t.Attribute("Name"),
-                                  Methods = count,
-                                  Properties = t.Descendants("Property").Count()
-                              };
-            var grouping = from t in typeInfo
-                           orderby t.TypeName ascending
-                           group t by t.Methods into g
-                           orderby g.Key descending
-                           select new
-                           {
-                               MethodsCount = g.Key,
-                               Group = g
-                           };
-                           
+            //******************** 3.e ***************************
+            var grouping = from t in tXml.Descendants("Type")
+                            let countM = t.Descendants("Method").Count()
+                            orderby t.Attribute("Name").ToString() ascending
+                            group t by countM into g
+                            orderby g.Key descending
+                            select new
+                            {
+                                MethodsCount = g.Key,
+                                Group = g
+                            };
+            foreach (var group in grouping)
+            {
+                Console.WriteLine(group.MethodsCount +" methods:");
+                foreach (var type in group.Group)
+                {
+                    Console.WriteLine(type.Attribute("Name"));
+                }
+            }                
 
                            
         }
