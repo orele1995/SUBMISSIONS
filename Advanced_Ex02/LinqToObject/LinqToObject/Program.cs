@@ -18,9 +18,9 @@ namespace LinqToObject
             // ***************** a *******************
             Console.WriteLine("============= Interfaces ===============");
 
-            var types = Assembly.LoadFile(@"C:\Windows\Microsoft.NET\Framework\v2.0.50727\mscorlib.dll").GetTypes();
+            var types = typeof(string).Assembly.GetTypes();
             var query = from type in types
-                        where type.IsInterface == true
+                        where type.IsInterface == true && type.IsPublic
                         orderby type.Name
                         select new
                         {
