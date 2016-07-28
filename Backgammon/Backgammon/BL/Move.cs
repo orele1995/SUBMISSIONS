@@ -10,5 +10,19 @@ namespace BL
     {
         public int From { get; set; }
         public int To { get; set; }
+
+        public Move (int from, int to)
+        {
+            From = from;
+            To = to;
+        }
+        public override bool Equals(object obj)
+        {
+            Move other = obj as Move;
+            if (other == null) return false;
+            return other.From == From && other.To == To;
+        }
+
     }
+
 }

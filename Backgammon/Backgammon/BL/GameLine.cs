@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace BL
 {
-    class GameLine
+    public class GameLine
     {
         public LineColor LineColor { get; private set; } 
-        public int PiecesNumber { get; private set; }
+        public int PiecesNumber { get;  set; }
         public GameLine()
         {
             LineColor = LineColor.None;
@@ -20,11 +20,13 @@ namespace BL
             LineColor = color;
             PiecesNumber = piesesNumber;
         }
-        public static GameLine operator ++ (GameLine toAdd)
+        public void addOne(LineColor color)
         {
-            toAdd.PiecesNumber += 1;
-            return toAdd;
+            if (LineColor == LineColor.None)
+                LineColor = color;
+            PiecesNumber += 1;
         }
+
         public static GameLine operator -- (GameLine toDec)
         {
             if (toDec.PiecesNumber!=0)
@@ -38,6 +40,7 @@ namespace BL
             
             return toDec;
         }
+
 
     }
 }
