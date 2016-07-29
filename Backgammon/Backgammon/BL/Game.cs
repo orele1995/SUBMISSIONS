@@ -8,8 +8,10 @@ namespace BL
 {
     public class Game
     {
-        public EventHandler<TurnStartEventArgs> turnStart;
+        public EventHandler<EndMoveEventArgs> endMove;
         public EventHandler<DicesThrownEventArgs> dicesThrown;
+        public EventHandler<StartGameEventArgs> startGame;
+        public EventHandler <NoMovesEventArgs> noMoves;
 
         GameBoard board = new GameBoard();
         Cube firstCube = new Cube();
@@ -30,6 +32,7 @@ namespace BL
 
         public void Play()
         {
+            startGame?.Invoke(this, new StartGameEventArgs(board));
             while (!gameOver)
             {
                 int val1 = firstCube.GetCubeValue();
@@ -38,16 +41,15 @@ namespace BL
                 int numOfMoves = val1 == val2 ? 4 : 2;
                 if (player1Turn)
                 {
-                    turnStart?.Invoke(this, new TurnStartEventArgs(board,Player1.playerColor));
                     MakeTurn(Player1, numOfMoves, val1, val2);
                     CheckForGameOver();
                 }
                 else
                 {
-                    turnStart?.Invoke(this, new TurnStartEventArgs(board, Player2.playerColor));
                     MakeTurn(Player2, numOfMoves, val1, val2);
                     CheckForGameOver();
                 }
+                player1Turn = !player1Turn;
             }
         }
 
@@ -72,16 +74,43 @@ namespace BL
         {
             if (numOfMoves == 4)
             {
-                player.MakeMove(GetPossibalMoves(player.playerColor, val1),  board);
-                player.MakeMove(GetPossibalMoves(player.playerColor, val2),  board);
-                player.MakeMove(GetPossibalMoves(player.playerColor, val1),  board);
-                player.MakeMove(GetPossibalMoves(player.playerColor, val2),  board);
+                TryMove(player, GetPossibalMoves(player.playerColor, val1));
+                TryMove(player, GetPossibalMoves(player.playerColor, val2));
+                TryMove(player, GetPossibalMoves(player.playerColor, val1));
+                TryMove(player, GetPossibalMoves(player.playerColor, val2));
             }
             else
             {
-                player.MakeMove(GetPossibalMoves(player.playerColor, val1),  board);
-                player.MakeMove(GetPossibalMoves(player.playerColor, val2),  board);
+                List<Move> allMoves = GetPossibalMoves(player.playerColor, val1);
+                allMoves.AddRange(GetPossibalMoves(player.playerColor, val2));
+
+                Move move = TryMove(player, allMoves);
+                if (move == null)
+                {
+                    endMove?.Invoke(this, new EndMoveEventArgs(board, player.playerColor));
+                    return;
+                }
+
+                var val = Math.Abs(move.From - move.To);
+
+                if (val == val1)
+
+                    TryMove(player, GetPossibalMoves(player.playerColor, val2));
+                else
+                    TryMove(player, GetPossibalMoves(player.playerColor, val1));
             }
+        }
+
+        private Move TryMove (IPlayer player, List<Move> moves)
+        {
+            if (moves.Count == 0)
+            {
+                noMoves?.Invoke(this, new NoMovesEventArgs(player.playerColor));
+                return null;
+            }
+            var move = player.MakeMove(moves, board);
+            endMove?.Invoke(this, new EndMoveEventArgs(board, player.playerColor));
+            return move;
         }
 
         private List<Move> GetPossibalMoves(PlayerColor color, int val)
@@ -103,7 +132,7 @@ namespace BL
         {
             List<Move> possibalMoves = new List<Move>();
 
-            for (int i = 24; i < val; i--)
+            for (int i = 24; i > val; i--)
                 if (board[i].LineColor == LineColor.Black)
                 {
                     var toLine = board[i - val];
@@ -126,7 +155,7 @@ namespace BL
         {
             List<Move> possibalMoves = new List<Move>();
 
-            for (int i = 0; i < board.Lines.Count - val; i++)
+            for (int i = 0; i < 24 - val; i++)
                 if (board[i].LineColor == LineColor.White)
                 {
                     var toLine = board[i + val];

@@ -13,9 +13,10 @@ namespace PrimesCalculator
 {
     public partial class Form1 : Form
     {
-        static AutoResetEvent autoEvent = new AutoResetEvent(false);
         CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         CancellationToken cancellationToken;
+        PrimeGenerator primeGenerator = new PrimeGenerator();
+
         public Form1()
         {
             InitializeComponent();
@@ -29,35 +30,31 @@ namespace PrimesCalculator
         private void calculatButton_Click(object sender, EventArgs e)
         {
             var synchronizationContext = SynchronizationContext.Current;
-           
+            int from, to;
+
+            if (int.TryParse(fromTextBox.Text, out from) == false)
+            {
+                MessageBox.Show("Value in 'from' must be a number");
+                return;
+            }
+            if (int.TryParse(toTextBox.Text, out to) == false)
+            {
+                MessageBox.Show("Value in 'to' must be a number");
+                return;
+            }
+            if (to < from)
+            {
+                MessageBox.Show("Value in 'from' must be smaller then value in 'to' ");
+                return;
+            }
+
             Task.Run(() =>
            {
-               Thread.Sleep(2000);
+               var result = primeGenerator.CulcPrime(from, to);
+
                synchronizationContext.Send(_ =>
                {
-                   var primeGenerator = new PrimeGenerator();
-                   int from, to;
-                   if (int.TryParse(fromTextBox.Text, out from) == false)
-                   {
-                       MessageBox.Show("Value in 'from' must be a number");
-                       return;
-                   }
-                   if (int.TryParse(toTextBox.Text, out to) == false)
-                   {
-                       MessageBox.Show("Value in 'to' must be a number");
-                       return;
-                   }
-                   if (to < from)
-                   {
-                       MessageBox.Show("Value in 'from' must be smaller then value in 'to' ");
-                       return;
-                   }
-                   if (autoEvent.WaitOne(0))
-                   {
-
-                       MessageBox.Show("Cancelled - autoEvent.WaitOne(0)");
-                       return;
-                   }
+                   numbersListBox.DataSource = result;
                    if (cancellationToken.IsCancellationRequested)
                    {
                        cancellationTokenSource = new CancellationTokenSource();
@@ -65,14 +62,15 @@ namespace PrimesCalculator
                        MessageBox.Show("Cancelled - cancellationToken");
                        return;
                    }
-                   numbersListBox.DataSource = primeGenerator.CulcPrime(from, to);
                }, null);
            }, cancellationToken);
+
+
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            autoEvent.Set();
+            primeGenerator.AutoEvent.Set();
         }
 
         private void cancelButton2_Click(object sender, EventArgs e)

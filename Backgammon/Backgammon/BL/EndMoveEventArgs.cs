@@ -1,10 +1,10 @@
 ﻿namespace BL
 {
-    public class TurnStartEventArgs
+    public class EndMoveEventArgs
     {
         public GameBoard Board { get; set; }
         public PlayerColor PlayerTurn { set; get; }
-        public TurnStartEventArgs (GameBoard board, PlayerColor playerTurn)
+        public EndMoveEventArgs (GameBoard board, PlayerColor playerTurn)
         {
             Board = board;
             PlayerTurn = playerTurn;

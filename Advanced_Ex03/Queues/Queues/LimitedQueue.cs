@@ -9,7 +9,8 @@ namespace Queues
 {
     class LimitedQueue<T>
     {
-        static Semaphore s; 
+        Semaphore s;
+        ReaderWriterLockSlim _lock = new ReaderWriterLockSlim();
         Queue<T> queue = new Queue<T>();
         public LimitedQueue (int number)
         {
@@ -17,15 +18,39 @@ namespace Queues
         }
         public void Enque(T value)
         {
-            s.WaitOne();
-            queue.Enqueue(value);
+            try
+            {
+                _lock.EnterWriteLock();
+                s.WaitOne();
+                Console.WriteLine(Thread.CurrentThread.Name + ": " + Count());
+                queue.Enqueue(value);
+            }
+            finally
+            {
+                _lock.ExitWriteLock();
+            }
         }
         public T Dequeue()
         {
+            try
+            {
+                _lock.EnterReadLock();
+                T val = queue.Dequeue();
+                Console.WriteLine(Thread.CurrentThread.Name + ": " + Count());
+                s.Release();
+                return val;
 
-            T val =  queue.Dequeue();
-            s.Release();
-            return val;
+            }
+            finally
+            {
+                _lock.ExitReadLock(); 
+            }
+
+           
+        }
+        public int Count ()
+        {
+            return queue.Count;
         }
     }
 }

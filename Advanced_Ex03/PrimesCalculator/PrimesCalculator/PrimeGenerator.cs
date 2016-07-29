@@ -3,20 +3,31 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace PrimesCalculator
 {
     class PrimeGenerator
     {
+        public ManualResetEvent AutoEvent { get; set; }
+        public PrimeGenerator ()  { AutoEvent = new ManualResetEvent(false); }
         public IEnumerable<int> CulcPrime(int start, int end)
         {
             if (start < 2) { start = 2; } // 2 is the first prime number
             var prime_numbers = new List<int>();
             for (int i = start; i <= end; i++)
             {
+                Thread.Sleep(10);
+
+                if (AutoEvent.WaitOne(0))
+                {
+                    AutoEvent.Reset();
+                    return prime_numbers;
+                }
                 if (isPrime(i))
                 {
+
                     prime_numbers.Add(i);
                 }
             }

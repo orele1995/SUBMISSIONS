@@ -16,28 +16,38 @@ namespace Queues
             {
                 int action = new Random().Next(0, 2);
                 if (action == 0)
-                    new Thread((j) =>
-                    {
-                        try
-                        {
-                            Console.WriteLine($"{j}: Dequeued {queue.Dequeue()}");
-                        }
-                        catch (InvalidOperationException ex)
-                        {
-                            Console.WriteLine($"{j}: queue is empty");
-                        }
+                {
+                    var trd = new Thread((j) =>
+                     {
+                         try
+                         {
+                             Console.WriteLine($"{j}: Dequeued {queue.Dequeue()}");
+                             Console.WriteLine($"{j}: {queue.Count()} ");
+                         }
+                         catch (InvalidOperationException ex)
+                         {
+                             Console.WriteLine($"{j}: queue is empty");
+                         }
 
-                    }
-                        ).Start(i);
+                     }
+                        );
+                    trd.Name = i.ToString();
+                    trd.Start(i);
+                }
                 else
                 {
                     int value = new Random().Next(0, 200);
-                    new Thread((j) => {
+                    var trd = new Thread((j) =>
+                    {
                         Console.WriteLine($"{j}: Try to enqueue {value}");
                         queue.Enque(value);
                         Console.WriteLine($"{j}: Enqueued {value}");
+                        Console.WriteLine($"{j}: {queue.Count()} ");
 
-                    }).Start(i);
+
+                    });
+                    trd.Name = i.ToString();
+                    trd.Start(i);
 
                 }
 

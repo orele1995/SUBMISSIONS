@@ -9,7 +9,7 @@ namespace BL
 {
     class Cube
     {
-        Random rnd = new Random();
+        static Random rnd = new Random();
 
         public int GetCubeValue ()
         {

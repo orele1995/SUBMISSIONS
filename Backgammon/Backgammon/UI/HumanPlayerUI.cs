@@ -10,43 +10,18 @@ namespace UI
 {
     class HumanPlayerUI
     {
-        public void DrawBoard(GameBoard board, PlayerColor palyerTurn)
+        
+        public void PrintTurn(GameBoard board, PlayerColor thisTurnPalyer)
         {
-            Console.WriteLine("----------------------------------------------------------------------------------------------------------------");
-           
-            Console.WriteLine();
-                for (int i = 13; i <= 24; i++)
-            {
-                var gameLine = board[i];
-                if (gameLine.LineColor == LineColor.None)
-                
-                    Console.Write($"|{i}: {gameLine.LineColor}|");             
-                else
-                    Console.Write($"|{i}: {gameLine.PiecesNumber} {gameLine.LineColor}|");
-            }
-            Console.WriteLine();
-            Console.WriteLine("----------------------------------------------------------------------------------------------------------------");
-            for (int i = 12; i > 0; i--)
-            {
-                var gameLine = board[i];
-                if (gameLine.LineColor == LineColor.None)
+            DrawBoard(board);
+            Console.WriteLine($"Red out: {board.WhiteOut} Black out: {board.BlackOut}");
+            Console.WriteLine($"Red jail: {board.WhiteJail} Black jail: {board.BlackJail}");
 
-                    Console.Write($"|{i}: {gameLine.LineColor}|");
-                else
-                    Console.Write($"|{i}: {gameLine.PiecesNumber} {gameLine.LineColor}|");
-            }
-            Console.WriteLine();
-            
-            Console.WriteLine("----------------------------------------------------------------------------------------------------------------");
-            Console.WriteLine($"White out: {board.WhiteOut} Black out: {board.BlackOut}");
-            Console.WriteLine($"White jail: {board.WhiteJail} Black jail: {board.BlackJail}");
-
-            if (palyerTurn == PlayerColor.Black)
-                Console.WriteLine("Its balck turn!");
+            if (thisTurnPalyer == PlayerColor.Black)
+                Console.WriteLine("Its Red turn!");
             else
-                Console.WriteLine("Its White turn!");
+                Console.WriteLine("Its Black turn!");
         }
-
         public Move DecideMove(DecideMoveState state)
         {
             int from, to;
@@ -71,7 +46,6 @@ namespace UI
             return new Move(from, to);
 
         }
-
         public void printDice ( int val1, int val2)
         {
             Console.WriteLine("Roling the dice...");
@@ -80,8 +54,70 @@ namespace UI
             if (val1 == val2)
                 Console.WriteLine("DOUBLE!!!");
         }
+        public void NoMoves (PlayerColor thisTurnPlayer)
+        {
+            Console.WriteLine($"{thisTurnPlayer} has no moves!");
 
-       
+            if (thisTurnPlayer == PlayerColor.Black)
+            Console.WriteLine($"{PlayerColor.White} turn!");
+            else
+                Console.WriteLine($"{PlayerColor.Black} turn!");
+        }
+        public void StartGame ( GameBoard board)
+        {
+            DrawBoard(board);
+            Console.WriteLine("Red starts!");
+        }
+        private void PrintLine(GameLine gameLine)
+        {
+            switch (gameLine.LineColor)
+            {
+                case LineColor.None:
+                    {
+                        Console.Write(string.Format("{0,6}", "| 0 |"));
+                        break;
+                    }
+                case LineColor.White:
+                    {
+                        Console.Write("| ");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write(string.Format("{0,2}", gameLine.PiecesNumber));
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write(" |");
+                        break;
+                    }
+                case LineColor.Black:
+                    {
+                        Console.Write("| ");
+                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                        Console.Write(string.Format("{0,2}", gameLine.PiecesNumber));
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write(" |");
+                        break;
+                    }
+            }
+        }
+        private void DrawBoard(GameBoard board)
+        {
+            Console.WriteLine("------------------------------------------------------------------------");
+            for (int i = 13; i <= 24; i++)
+                Console.Write(string.Format("{0,6}", $"| {i} |"));
+            Console.WriteLine();
+            for (int i = 13; i <= 24; i++)
+                PrintLine(board[i]);
+            Console.WriteLine();
+            Console.WriteLine("------------------------------------------------------------------------");
+            for (int i = 12; i > 0; i--)
+                PrintLine(board[i]);
+            Console.WriteLine();
+            for (int i = 12; i > 0; i--)
+                Console.Write(string.Format("{0,6}", $"| {i} |"));
+            Console.WriteLine();
+            Console.WriteLine("------------------------------------------------------------------------");
+
+
+        }
+        
 
     }
 }
