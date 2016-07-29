@@ -13,9 +13,9 @@ namespace SyncDemo
         static void Main(string[] args)
         {
             Mutex SyncFileMutex = new Mutex(false);
-            Console.WriteLine("befor");
             SyncFileMutex.WaitOne();
             {
+                Directory.CreateDirectory(@"C:\temp");
                 string path = @"C:\temp\data.txt";
                 StreamWriter writer = new StreamWriter(path,true);
                 Console.WriteLine(System.Diagnostics.Process.GetCurrentProcess().Id);
