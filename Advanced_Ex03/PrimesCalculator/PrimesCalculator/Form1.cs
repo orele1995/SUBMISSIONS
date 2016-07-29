@@ -13,18 +13,13 @@ namespace PrimesCalculator
 {
     public partial class Form1 : Form
     {
-        CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        CancellationToken cancellationToken;
+       
         PrimeGenerator primeGenerator = new PrimeGenerator();
 
         public Form1()
         {
             InitializeComponent();
-            cancellationToken = cancellationTokenSource.Token;
-            cancellationToken.Register(() =>
-            {
-                
-            });
+            
         }
 
         private void calculatButton_Click(object sender, EventArgs e)
@@ -55,15 +50,9 @@ namespace PrimesCalculator
                synchronizationContext.Send(_ =>
                {
                    numbersListBox.DataSource = result;
-                   if (cancellationToken.IsCancellationRequested)
-                   {
-                       cancellationTokenSource = new CancellationTokenSource();
-                       cancellationToken = cancellationTokenSource.Token;
-                       MessageBox.Show("Cancelled - cancellationToken");
-                       return;
-                   }
+                   
                }, null);
-           }, cancellationToken);
+           });
 
 
         }
@@ -75,7 +64,7 @@ namespace PrimesCalculator
 
         private void cancelButton2_Click(object sender, EventArgs e)
         {
-            cancellationTokenSource.Cancel();
+            primeGenerator.cancellationTokenSource.Cancel();
         }
     }
 }

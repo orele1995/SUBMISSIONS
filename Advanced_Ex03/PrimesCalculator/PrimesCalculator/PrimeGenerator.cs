@@ -10,8 +10,15 @@ namespace PrimesCalculator
 {
     class PrimeGenerator
     {
-        public ManualResetEvent AutoEvent { get; set; }
-        public PrimeGenerator ()  { AutoEvent = new ManualResetEvent(false); }
+        private CancellationToken cancellationToken;
+
+        public ManualResetEvent AutoEvent { get; private set; }
+        public CancellationTokenSource cancellationTokenSource { get; private set; }
+
+        public PrimeGenerator ()  { AutoEvent = new ManualResetEvent(false);
+            cancellationTokenSource = new CancellationTokenSource();
+            cancellationToken = cancellationTokenSource.Token;
+        }
         public IEnumerable<int> CulcPrime(int start, int end)
         {
             if (start < 2) { start = 2; } // 2 is the first prime number
@@ -23,6 +30,12 @@ namespace PrimesCalculator
                 if (AutoEvent.WaitOne(0))
                 {
                     AutoEvent.Reset();
+                    return prime_numbers;
+                }
+                if (cancellationToken.IsCancellationRequested)
+                {
+                    cancellationTokenSource = new CancellationTokenSource();
+                    cancellationToken = cancellationTokenSource.Token;
                     return prime_numbers;
                 }
                 if (isPrime(i))
