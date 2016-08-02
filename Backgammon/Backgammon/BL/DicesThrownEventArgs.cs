@@ -1,6 +1,8 @@
-﻿namespace BL
+﻿using System;
+
+namespace BL
 {
-    public class DicesThrownEventArgs
+    public class DicesThrownEventArgs: EventArgs
     {
         public int Val1 { get; set; }
         public int Val2 { get; set; }

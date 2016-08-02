@@ -1,6 +1,9 @@
-﻿namespace BL
+﻿using System;
+
+namespace BL
 {
-    public class NoMovesEventArgs
+    public class NoMovesEventArgs: EventArgs
+
     {
         public PlayerColor Player { get;  set; }
         public NoMovesEventArgs (PlayerColor player)

@@ -12,16 +12,13 @@ namespace UI
         static void Main(string[] args)
         {
             HumanPlayerUI humanPlayerUI = new HumanPlayerUI();
-            HumanPlayer player1 = new HumanPlayer(humanPlayerUI.DecideMove);
-            HumanPlayer player2 = new HumanPlayer(humanPlayerUI.DecideMove);
+            // HumanPlayer player1 = new HumanPlayer(humanPlayerUI.DecideMove);
+            // HumanPlayer player2 = new HumanPlayer(humanPlayerUI.DecideMove);
+            ComputerPlayer player1 = new ComputerPlayer();
+            ComputerPlayer player2 = new ComputerPlayer();
 
-            Game game = new Game(player1, player2);
-            game.startGame += (obj, eventArgs) => humanPlayerUI.StartGame(eventArgs.Board);
-            game.endMove += (obj, eventArgs) => humanPlayerUI.PrintTurn(eventArgs.Board, eventArgs.PlayerTurn);
-            game.dicesThrown += (obj, eventArgs) => humanPlayerUI.printDice(eventArgs.Val1, eventArgs.Val2);
-            game.noMoves += (obj, eventArgs) => humanPlayerUI.NoMoves(eventArgs.Player);
-            game.Play();
-            Console.WriteLine($"The winner is {game.winner}!!!");
+            GameUI gameUI = new GameUI(player1, player2);
+            gameUI.TheGame.Play();
 
         }
     }

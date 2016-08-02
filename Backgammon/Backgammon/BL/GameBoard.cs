@@ -59,7 +59,7 @@ namespace BL
 
         private void InitializeBoard()
         {
-            Lines.Add(new GameLine(LineColor.Black, 0)); // black out - 0
+            Lines.Add(new GameLine(LineColor.Black, 0, false)); // black out - 0
             Lines.Add(new GameLine(LineColor.White, 2)); // 1
             Lines.Add(new GameLine(LineColor.None, 0)); // 2
             Lines.Add(new GameLine(LineColor.None, 0)); // 3
@@ -84,25 +84,10 @@ namespace BL
             Lines.Add(new GameLine(LineColor.None, 0)); // 22
             Lines.Add(new GameLine(LineColor.None, 0)); // 23
             Lines.Add(new GameLine(LineColor.Black, 2)); // 24
-            Lines.Add(new GameLine(LineColor.White, 0)); // white out - 25
-            Lines.Add(new GameLine(LineColor.Black, 0)); // black jail - 26
-            Lines.Add(new GameLine(LineColor.White, 0)); // white jail - 27
+            Lines.Add(new GameLine(LineColor.White, 0, false)); // white out - 25
+            Lines.Add(new GameLine(LineColor.Black, 0, false)); // black jail - 26
+            Lines.Add(new GameLine(LineColor.White, 0, false)); // white jail - 27
         }
-
-        // check
-        private int CountPieces(LineColor color)
-        {
-            int count = 0;
-            foreach (var line in Lines)
-            {
-                if (line.LineColor == color)
-                {
-                    count += line.PiecesNumber;
-                }
-            }
-            return count;
-        }
-
         public bool MovePice(Move move)
         {
             if (Lines[move.From].LineColor == LineColor.None)// move from an emptey line
@@ -113,18 +98,18 @@ namespace BL
                     return false;
                 else // move to a line that has only one pice on it. eat it.
                 {
-                    Lines[move.From]--;
                     Jail(Lines[move.To]);
                     Lines[move.To].addOne(Lines[move.From].LineColor);
+                    Lines[move.From]--;
                     return true;
                 }
             }
 
-            Lines[move.From]--;
             Lines[move.To].addOne(Lines[move.From].LineColor);
+            Lines[move.From]--;
+
             return true;
         }
-
         private void Jail(GameLine gameLine)
         {
             if (gameLine.LineColor == LineColor.Black)
@@ -133,7 +118,70 @@ namespace BL
                 WhiteJail++;
             gameLine--;
         }
+        public Move TryJailOut(LineColor color, int val)
+        {
+            int jailOutPlace;
+            if (color == LineColor.Black)
+            {
+                jailOutPlace = 24 + 1 - val;
+                if (Lines[jailOutPlace].LineColor == LineColor.Black ||
+                    Lines[jailOutPlace].LineColor == LineColor.None ||
+                   (Lines[jailOutPlace].LineColor == LineColor.White && Lines[jailOutPlace].PiecesNumber == 1))
+                {
+                    return new Move(26, jailOutPlace);
+                }
+            }
+            if (color == LineColor.White)
+            {
+                jailOutPlace = val;
+                if (Lines[jailOutPlace].LineColor == LineColor.White ||
+                    Lines[jailOutPlace].LineColor == LineColor.None ||
+                    (Lines[jailOutPlace].LineColor == LineColor.Black && Lines[jailOutPlace].PiecesNumber == 1))
+                {
+                    return new Move(27, jailOutPlace);
+                }
+            }
+            return null;
+        }
+        public GameLine this[int index]
+        {
+            get
+            {
+                return Lines[index];
+            }
 
+        }
+        public bool IsJailed(PlayerColor color)
+        {
+            if (color == PlayerColor.Black)
+                return BlackJail != 0;
+            else
+                return WhiteJail != 0;
+        }
+        public bool CanTakeOut (PlayerColor color)
+        {
+            if (color == PlayerColor.Black)
+            {
+                for (int i = 7; i <= 25; i++)
+                {
+                    if (Lines[i].LineColor == LineColor.Black)
+                        return false;
+                }
+                return true;
+            }
+            else
+            {
+                for (int i = 1; i <= 18; i++)
+                {
+                    if (Lines[i].LineColor == LineColor.White)
+                        return false;
+                }
+                return true;
+            }
+        }
+
+
+        // unused
         public void TakeOut(LineColor color, int lineNumber)
         {
             if (color == LineColor.None)
@@ -168,62 +216,18 @@ namespace BL
                 }
             }
         }
-        public Move TryJailOut(LineColor color, int val)
+        private int CountPieces(LineColor color)
         {
-            if (color == LineColor.Black)
+            int count = 0;
+            foreach (var line in Lines)
             {
-                if (Lines[23 - val].LineColor == LineColor.Black || Lines[23 - val].LineColor == LineColor.None)
+                if (line.LineColor == color)
                 {
-                    return new Move(24, 23 - val);
+                    count += line.PiecesNumber;
                 }
             }
-            if (color == LineColor.White)
-            {
-                if (Lines[val - 1].LineColor == LineColor.White || Lines[val - 1].LineColor == LineColor.None)
-                {
-                    return new Move(25, val - 1);
-                }
-            }
-            return null;
+            return count;
         }
 
-
-        public GameLine this[int index]
-        {
-            get
-            {
-                return Lines[index];
-            }
-
-        }
-        public bool IsJailed(PlayerColor color)
-        {
-            if (color == PlayerColor.Black)
-                return BlackJail != 0;
-            else
-                return WhiteJail != 0;
-        }
-        public bool CanTakeOut (PlayerColor color)
-        {
-            if (color == PlayerColor.Black)
-            {
-                for (int i = 7; i < 25; i++)
-                {
-                    if (Lines[i].LineColor == LineColor.Black)
-                        return false;
-                }
-                return true;
-            }
-            else
-            {
-                for (int i = 1; i < 18; i++)
-                {
-                    if (Lines[i].LineColor == LineColor.White)
-                        return false;
-                }
-                return true;
-            }
-        }
-        
     }
 }

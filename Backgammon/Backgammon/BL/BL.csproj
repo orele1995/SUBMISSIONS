@@ -44,6 +44,8 @@
     <Compile Include="Cube.cs" />
     <Compile Include="DecideMoveState.cs" />
     <Compile Include="DicesThrownEventArgs.cs" />
+    <Compile Include="EndGameEventArgs.cs" />
+    <Compile Include="EndTurnEventArgs.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameBoard.cs" />
     <Compile Include="GameColor.cs" />

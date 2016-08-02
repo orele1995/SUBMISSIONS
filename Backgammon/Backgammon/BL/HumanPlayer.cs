@@ -8,7 +8,7 @@ namespace BL
 {
     public class HumanPlayer : IPlayer
     {
-        public Func<DecideMoveState, Move> DecideMove { get; set; }
+        public Func<DecideMoveState, Move> DecideMove { get; private set; }
         public PlayerColor playerColor { get; set; }
 
         public Move MakeMove( List<Move> possibalMoves, GameBoard board)

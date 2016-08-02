@@ -12,7 +12,7 @@ namespace Primes
         static void Main(string[] args)
         {
            var watch = Stopwatch.StartNew();
-            Console.WriteLine(CalcPrimes(1, 500, 1).Count);
+           
             Console.WriteLine(watch.Elapsed);
             watch.Restart();
             Console.WriteLine(CalcPrimes(1, 500, 2).Count);
@@ -26,12 +26,12 @@ namespace Primes
             watch.Restart();
         }
 
-        static List<int> CalcPrimes (int start, int end, int parallelism)
+        static List<int> CalcPrimes (int start, int end)
         {
             // int slice = (end - start) / parallelism; // check 
           
             PrimeGenerator pg = new PrimeGenerator();
-           return pg.CulcPrime(start, end, parallelism);
+           return pg.CulcPrime(start, end);
         }
 
     }

@@ -8,15 +8,13 @@ namespace Primes
 {
     class PrimeGenerator
     {
-        public List<int> CulcPrime(int start, int end, int parallelism)
+        public List<int> CulcPrime(int start, int end)
         {
-            var options = new ParallelOptions();
-            options.MaxDegreeOfParallelism = parallelism;
-
+            
             if (start < 2) { start = 2; } // 2 is the first prime number
             List<int> prime_numbers = new List<int>();
 
-            Parallel.For(start, end, options, i =>
+            Parallel.For(start, end, i =>
             {
                 if (isPrime(i))
                     prime_numbers.Add(i);
