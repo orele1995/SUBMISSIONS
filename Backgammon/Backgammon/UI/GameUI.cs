@@ -93,7 +93,7 @@ namespace UI
             {
                 case LineColor.None:
                     {
-                        Console.Write(string.Format("{0,6}", "| 0 |"));
+                        Console.Write(string.Format("{0,6}", "|    |"));
                         break;
                     }
                 case LineColor.White:
@@ -120,7 +120,12 @@ namespace UI
         {
             Console.WriteLine("------------------------------------------------------------------------------");
             for (int i = 13; i <= 25; i++)
-                Console.Write(string.Format("{0,6}", $"| {i} |"));
+            {
+                Console.Write("| ");
+                Console.Write(string.Format("{0,2}", i));
+                Console.Write(" |");
+
+            }
             Console.WriteLine();
             for (int i = 13; i <= 24; i++)
                 PrintLine(board[i]);
@@ -132,7 +137,11 @@ namespace UI
             PrintLine(board[0], true);
             Console.WriteLine();
             for (int i = 12; i >= 0; i--)
-                Console.Write(string.Format("{0,6}", $"| {i} |"));
+            {
+                Console.Write("| ");
+                Console.Write(string.Format("{0,2}", i));
+                Console.Write(" |");
+            }
             Console.WriteLine();
             Console.WriteLine("------------------------------------------------------------------------------");
 

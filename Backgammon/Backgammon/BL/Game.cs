@@ -75,56 +75,64 @@ namespace BL
         private void MakeTurn(IPlayer player, int val1, int val2)
         {
             if (val1 == val2)
+
+                MakeTurnDouble(player, val1, val2);
+
+
+            else
+                MakeTurnNormal(player, val1, val2);
+        }
+
+        private void MakeTurnNormal(IPlayer player, int val1, int val2)
+        {
+            List<Move> allMoves = GetPossibalMoves(player.playerColor, val1);
+            allMoves.AddRange(GetPossibalMoves(player.playerColor, val2));
+
+            Move move = TryMove(player, allMoves);
+            if (move == null)
+                return;
+
+
+            if (gameOver)
             {
-                Move move;
-                for (int i = 0; i < 3; i++)
-                {
-                    if (gameOver) return;
-                    move = TryMove(player, GetPossibalMoves(player.playerColor, val1));
-                    if (move == null)
-                        return;
-                    int[] nextMoves = new int[3 - i];
-                    for (int j = 0; j < nextMoves.Length; j++)
-                        nextMoves[j] = val1;
-                    endMove?.Invoke(this, new EndMoveEventArgs(board, player.playerColor, false,nextMoves));
-                }
+                endMove?.Invoke(this, new EndMoveEventArgs(board, player.playerColor, false, null));
+                return;
+            }
+
+            var currrentMove = GetValByMove(move, val1, val2);
+
+            if (currrentMove == val1)
+            {
+                endMove?.Invoke(this, new EndMoveEventArgs(board, player.playerColor, false, new int[] { val2 }));
+                TryMove(player, GetPossibalMoves(player.playerColor, val2));
+            }
+            else
+            {
+                endMove?.Invoke(this, new EndMoveEventArgs(board, player.playerColor, false, new int[] { val1 }));
+                TryMove(player, GetPossibalMoves(player.playerColor, val1));
+            }
+            endMove?.Invoke(this, new EndMoveEventArgs(board, player.playerColor, true, null));
+        }
+
+        private void MakeTurnDouble(IPlayer player, int val1, int val2)
+        {
+            Move move;
+            for (int i = 0; i < 3; i++)
+            {
                 if (gameOver) return;
                 move = TryMove(player, GetPossibalMoves(player.playerColor, val1));
                 if (move == null)
                     return;
-                endMove?.Invoke(this, new EndMoveEventArgs(board, player.playerColor, true, null));
+                int[] nextMoves = new int[3 - i];
+                for (int j = 0; j < nextMoves.Length; j++)
+                    nextMoves[j] = val1;
+                endMove?.Invoke(this, new EndMoveEventArgs(board, player.playerColor, false, nextMoves));
             }
-            else
-            {
-                List<Move> allMoves = GetPossibalMoves(player.playerColor, val1);
-                allMoves.AddRange(GetPossibalMoves(player.playerColor, val2));
-
-                Move move = TryMove(player, allMoves);
-                if (move == null)
-                    return;
-
-
-                if (gameOver)
-                {
-                    endMove?.Invoke(this, new EndMoveEventArgs(board, player.playerColor, false,null ));
-                    return;
-                }
-
-                var currrentMove = GetValByMove(move, val1, val2);
-
-                if (currrentMove == val1)
-                {
-                    endMove?.Invoke(this, new EndMoveEventArgs(board, player.playerColor, false, new int[] { val2 }));
-                    TryMove(player, GetPossibalMoves(player.playerColor, val2));
-                }
-                else
-                {
-                    endMove?.Invoke(this, new EndMoveEventArgs(board, player.playerColor, false, new int[] { val1 }));
-                    TryMove(player, GetPossibalMoves(player.playerColor, val1));
-                    }
-                endMove?.Invoke(this, new EndMoveEventArgs(board, player.playerColor, true, null));
-
-            }
+            if (gameOver) return;
+            move = TryMove(player, GetPossibalMoves(player.playerColor, val1));
+            if (move == null)
+                return;
+            endMove?.Invoke(this, new EndMoveEventArgs(board, player.playerColor, true, null));
         }
 
         private Move TryMove(IPlayer player, List<Move> moves)
@@ -215,4 +223,3 @@ namespace BL
 
     }
 }
-
