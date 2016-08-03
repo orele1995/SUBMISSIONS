@@ -83,7 +83,7 @@ namespace BL
                     move = TryMove(player, GetPossibalMoves(player.playerColor, val1));
                     if (move == null)
                         return;
-                    int[] nextMoves = new int[4 - i];
+                    int[] nextMoves = new int[3 - i];
                     for (int j = 0; j < nextMoves.Length; j++)
                         nextMoves[j] = val1;
                     endMove?.Invoke(this, new EndMoveEventArgs(board, player.playerColor, false,nextMoves));
@@ -110,14 +110,18 @@ namespace BL
                     return;
                 }
 
-                var nextVal = GetValByMove(move, val1, val2);
-                endMove?.Invoke(this, new EndMoveEventArgs(board, player.playerColor, false,new int[] { nextVal } ));
+                var currrentMove = GetValByMove(move, val1, val2);
 
-                if (nextVal == val1)
-
+                if (currrentMove == val1)
+                {
+                    endMove?.Invoke(this, new EndMoveEventArgs(board, player.playerColor, false, new int[] { val2 }));
                     TryMove(player, GetPossibalMoves(player.playerColor, val2));
+                }
                 else
+                {
+                    endMove?.Invoke(this, new EndMoveEventArgs(board, player.playerColor, false, new int[] { val1 }));
                     TryMove(player, GetPossibalMoves(player.playerColor, val1));
+                    }
                 endMove?.Invoke(this, new EndMoveEventArgs(board, player.playerColor, true, null));
 
             }

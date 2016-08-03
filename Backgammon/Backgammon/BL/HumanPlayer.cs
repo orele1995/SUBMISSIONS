@@ -11,6 +11,11 @@ namespace BL
         public Func<DecideMoveState, Move> DecideMove { get; private set; }
         public PlayerColor playerColor { get; set; }
 
+        public HumanPlayer(Func<DecideMoveState, Move> decideMove)
+        {
+            DecideMove = decideMove;
+        }
+
         public Move MakeMove( List<Move> possibalMoves, GameBoard board)
         {
             Move move = DecideMove(DecideMoveState.READY_FOR_CHOICE);
@@ -27,10 +32,6 @@ namespace BL
                     return true;
             }
             return false;
-        }
-        public HumanPlayer(Func<DecideMoveState, Move> decideMove)
-        {
-            DecideMove = decideMove;
         }
     }
 }

@@ -53,8 +53,7 @@ namespace UI
         public void OnEndMove(GameBoard board, PlayerColor thisTurnPalyer, bool isLastMove , int [] moves)
         {
             DrawBoard(board);
-            Console.WriteLine($"Red out: {board.WhiteOut} Black out: {board.BlackOut}");
-            Console.WriteLine($"Red jail: {board.WhiteJail} Black jail: {board.BlackJail}");
+            Console.WriteLine($"[26] Black jail: {board.BlackJail}. [27] Red jail: {board.WhiteJail}");
             if (!isLastMove)
             {
                 if (thisTurnPalyer == PlayerColor.Black)
@@ -79,8 +78,17 @@ namespace UI
                 Console.WriteLine("The winner is Black!!!");
         }
 
-        private void PrintLine(GameLine gameLine)
+        private void PrintLine(GameLine gameLine, bool isOut = false)
         {
+            if (isOut)
+            {
+                Console.Write("| ");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write(string.Format("{0,2}", gameLine.PiecesNumber));
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write(" |");
+                return;
+            }
             switch (gameLine.LineColor)
             {
                 case LineColor.None:
@@ -110,21 +118,23 @@ namespace UI
         }
         private void DrawBoard(GameBoard board)
         {
-            Console.WriteLine("------------------------------------------------------------------------");
-            for (int i = 13; i <= 24; i++)
+            Console.WriteLine("------------------------------------------------------------------------------");
+            for (int i = 13; i <= 25; i++)
                 Console.Write(string.Format("{0,6}", $"| {i} |"));
             Console.WriteLine();
             for (int i = 13; i <= 24; i++)
                 PrintLine(board[i]);
+            PrintLine(board[25],true);
             Console.WriteLine();
-            Console.WriteLine("------------------------------------------------------------------------");
+            Console.WriteLine("------------------------------------------------------------------------------");
             for (int i = 12; i > 0; i--)
                 PrintLine(board[i]);
+            PrintLine(board[0], true);
             Console.WriteLine();
-            for (int i = 12; i > 0; i--)
+            for (int i = 12; i >= 0; i--)
                 Console.Write(string.Format("{0,6}", $"| {i} |"));
             Console.WriteLine();
-            Console.WriteLine("------------------------------------------------------------------------");
+            Console.WriteLine("------------------------------------------------------------------------------");
 
 
         }

@@ -14,6 +14,7 @@ namespace BL
         public Move MakeMove(List<Move> possibalMoves, GameBoard board)
         {
             var chosenMove = DecideMove(possibalMoves, board);
+            board.MovePice(chosenMove);
             return chosenMove;
         }
         private Move DecideMove(List<Move> possibalMoves, GameBoard board)
