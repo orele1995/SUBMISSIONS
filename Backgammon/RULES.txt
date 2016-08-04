@@ -1,0 +1,21 @@
+RULES
+Red player stars. 
+players must, if possible, move their checkers according to the number shown on each die.
+For example, if the player rolls a 6 and a 3 (notated as "6-3"), the player must move one checker six points forward, and another or the same checker three
+points forward. The same checker may be moved twice, as long as the two moves can be made separately and legally: six and then three, or three and then six.
+If a player rolls two of the same number, called doubles, that player must play each die twice. 
+For example, a roll of 5-5 allows the player to make up to four moves of five spaces each. On any roll, 
+a player must move according to the numbers on both dice if it is at all possible to do so.
+In the course of a move, a checker may land on any point that is unoccupied or is occupied by one or more of the player's own checkers. 
+It may also land on a point occupied by exactly one opposing checker, or "blot". In this case, the blot has been "hit", and is placed in the middle of the board
+on the bar that divides the two sides of the playing surface. A checker may never land on a point occupied by two or more opposing checkers;
+thus, no point is ever occupied by checkers from both players simultaneously.There is no limit to the number of checkers that can occupy a point at any given time. 
+In the course of a move, a checker may land on any point that is unoccupied or is occupied by one or more of the player's own checkers. 
+It may also land on a point occupied by exactly one opposing checker, or "blot". In this case, the blot has been "hit", 
+and is placed in the middle of the board on the bar that divides the two sides of the playing surface. 
+A checker may never land on a point occupied by two or more opposing checkers; thus, no point is ever occupied by checkers from both players simultaneously.
+There is no limit to the number of checkers that can occupy a point at any given time.
+When all of a player's checkers are in that player's home board, that player may start removing them; 
+this is called "bearing off". A roll of 1 may be used to bear off a checker from the 1-point, a 2 from the 2-point, and so on. However, a roll of 5 can be used to bear
+off a checker from the 5,4,3,2,1-point.
+The winner is the first player that has borne off all of their checkers.
