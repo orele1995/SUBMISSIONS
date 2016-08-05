@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -67,7 +68,7 @@ namespace PrimesCalculator
             primeGenerator.cancellationTokenSource.Cancel();
         }
 
-        private void calcAndWritebutton_Click(object sender, EventArgs e)
+        private async void calcAndWritebutton_Click(object sender, EventArgs e)
         {
             int from, to;
 
@@ -86,7 +87,31 @@ namespace PrimesCalculator
                 MessageBox.Show("Value in 'from' must be smaller then value in 'to' ");
                 return;
             }
+            var num = await primeGenerator.CountPrimesAsync(from, to);
+            numOfPrimesLabel.Text = num.ToString();
+            string path = pathTextBox.Text;
+            if (path == "" || path == null)
+            {
+                MessageBox.Show("Enter a path");
+                return;
+            }
 
+              StreamWriter  writer = new StreamWriter(path, true);
+                writer.WriteLine("Num Of Primes: " + num);
+                writer.Close();
+        }
+
+        private void cancel2button_Click(object sender, EventArgs e)
+        {
+            primeGenerator.cancellationTokenSource.Cancel();
+
+        }
+
+        private void openButton_Click(object sender, EventArgs e)
+        {
+             var result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+                pathTextBox.Text = openFileDialog1.FileName;
         }
     }
 }

@@ -40,7 +40,6 @@ namespace PrimesCalculator
                 }
                 if (isPrime(i))
                 {
-
                     prime_numbers.Add(i);
                 }
             }
@@ -48,9 +47,10 @@ namespace PrimesCalculator
             return prime_numbers;
         }
 
-        public  async Task<int> CountPrimesAsync(int start, int end)
+        public async Task<int> CountPrimesAsync(int start, int end)
         {
-
+          
+         return ( await Task.Run(() => CulcPrime(start, end))).Count();
         }
 
         private bool isPrime(int num)

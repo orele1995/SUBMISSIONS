@@ -44,6 +44,10 @@
             this.calcAndWritebutton = new System.Windows.Forms.Button();
             this.cancel2button = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.numOfPrimesLabel = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // numbersListBox
@@ -152,12 +156,13 @@
             // 
             this.pathTextBox.Location = new System.Drawing.Point(33, 303);
             this.pathTextBox.Name = "pathTextBox";
+            this.pathTextBox.ReadOnly = true;
             this.pathTextBox.Size = new System.Drawing.Size(227, 20);
             this.pathTextBox.TabIndex = 1;
             // 
             // calcAndWritebutton
             // 
-            this.calcAndWritebutton.Location = new System.Drawing.Point(36, 329);
+            this.calcAndWritebutton.Location = new System.Drawing.Point(33, 329);
             this.calcAndWritebutton.Name = "calcAndWritebutton";
             this.calcAndWritebutton.Size = new System.Drawing.Size(116, 23);
             this.calcAndWritebutton.TabIndex = 3;
@@ -173,6 +178,7 @@
             this.cancel2button.TabIndex = 5;
             this.cancel2button.Text = "Cancel ";
             this.cancel2button.UseVisualStyleBackColor = true;
+            this.cancel2button.Click += new System.EventHandler(this.cancel2button_Click);
             // 
             // label5
             // 
@@ -183,15 +189,46 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "File Path";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(33, 364);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(80, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Num of primes: ";
+            // 
+            // numOfPrimesLabel
+            // 
+            this.numOfPrimesLabel.AutoSize = true;
+            this.numOfPrimesLabel.Location = new System.Drawing.Point(120, 364);
+            this.numOfPrimesLabel.Name = "numOfPrimesLabel";
+            this.numOfPrimesLabel.Size = new System.Drawing.Size(13, 13);
+            this.numOfPrimesLabel.TabIndex = 6;
+            this.numOfPrimesLabel.Text = "0";
+            // 
+            // openButton
+            // 
+            this.openButton.Location = new System.Drawing.Point(267, 303);
+            this.openButton.Name = "openButton";
+            this.openButton.Size = new System.Drawing.Size(75, 23);
+            this.openButton.TabIndex = 7;
+            this.openButton.Text = "open";
+            this.openButton.UseVisualStyleBackColor = true;
+            this.openButton.Click += new System.EventHandler(this.openButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(290, 360);
+            this.ClientSize = new System.Drawing.Size(345, 395);
+            this.Controls.Add(this.openButton);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.numOfPrimesLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cancel2button);
             this.Controls.Add(this.cancelButton2);
@@ -229,6 +266,10 @@
         private System.Windows.Forms.Button calcAndWritebutton;
         private System.Windows.Forms.Button cancel2button;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label numOfPrimesLabel;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button openButton;
     }
 }
 
