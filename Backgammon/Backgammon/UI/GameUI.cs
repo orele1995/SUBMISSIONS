@@ -11,7 +11,7 @@ namespace UI
     class GameUI
     {
         public Game TheGame { get; private set; }
-       public GameUI(IPlayer player1, IPlayer player2)
+        public GameUI(IPlayer player1, IPlayer player2)
         {
             TheGame = new Game(player1, player2);
             TheGame.startGame += (obj, eventArgs) => OnGameStart(eventArgs.Board);
@@ -50,7 +50,7 @@ namespace UI
             DrawBoard(board);
             Console.WriteLine("Red starts!");
         }
-        public void OnEndMove(GameBoard board, PlayerColor thisTurnPalyer, bool isLastMove , int [] moves)
+        public void OnEndMove(GameBoard board, PlayerColor thisTurnPalyer, bool isLastMove, int[] moves)
         {
             DrawBoard(board);
             Console.WriteLine($"[26] Black jail: {board.BlackJail}. [27] Red jail: {board.WhiteJail}");
@@ -64,16 +64,16 @@ namespace UI
                 if (moves == null) return;
                 foreach (var item in moves)
                 {
-                    Console.Write($" {item} " );
+                    Console.Write($" {item} ");
                 }
                 Console.WriteLine();
             }
         }
-        public void OnEndGame (IPlayer winner)
+        public void OnEndGame(IPlayer winner)
         {
             Console.WriteLine("=============== GAME OVER!! ===============");
             if (winner.playerColor == PlayerColor.White)
-            Console.WriteLine("The winner is Red!!!");
+                Console.WriteLine("The winner is Red!!!");
             else
                 Console.WriteLine("The winner is Black!!!");
         }
@@ -129,7 +129,7 @@ namespace UI
             Console.WriteLine();
             for (int i = 13; i <= 24; i++)
                 PrintLine(board[i]);
-            PrintLine(board[25],true);
+            PrintLine(board[25], true);
             Console.WriteLine();
             Console.WriteLine("------------------------------------------------------------------------------");
             for (int i = 12; i > 0; i--)
