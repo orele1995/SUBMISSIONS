@@ -20,6 +20,7 @@ namespace Lab5
             Console.ReadLine();
         }
 
+        // I know static methods aren't good but its just for the exsample... cause main cant be sync
         static async void waitTimeAsync(int milliseconds, Stopwatch watch)
         {
             await milliseconds;
