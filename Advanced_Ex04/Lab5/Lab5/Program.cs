@@ -13,16 +13,16 @@ namespace Lab5
         static void Main(string[] args)
         {
             var watch = Stopwatch.StartNew();
-           Console.WriteLine(watch.Elapsed);
-            waitTimeAsync(3000, watch);
-            watch.Restart();
-            waitTimeAsync(1000, watch);
+            
+            waitTimeAsync(3000, watch).ContinueWith(t=>waitTimeAsync(1000, watch));
+    
             Console.ReadLine();
         }
 
         // I know static methods aren't good but its just for the exsample... cause main cant be sync
-        static async void waitTimeAsync(int milliseconds, Stopwatch watch)
+        static async Task waitTimeAsync(int milliseconds, Stopwatch watch)
         {
+            Console.WriteLine(watch.Elapsed);
             await milliseconds;
             Console.WriteLine(watch.Elapsed);
         }
