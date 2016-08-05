@@ -9,7 +9,7 @@ namespace BL
     public class HumanPlayer : IPlayer
     {
         public Func<DecideMoveState, Move> DecideMove { get; private set; }
-        public PlayerColor playerColor { get; set; }
+        public PlayerColor playerColor { get; set;}
 
         public HumanPlayer(Func<DecideMoveState, Move> decideMove)
         {

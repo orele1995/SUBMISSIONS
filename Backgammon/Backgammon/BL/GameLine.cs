@@ -8,15 +8,10 @@ namespace BL
 {
     public class GameLine
     {
-        public LineColor LineColor { get; private set; }
-        public int PiecesNumber { get; set; }
-        public bool IsColorChangable {get; private set;}
-        public GameLine()
-        {
-            LineColor = LineColor.None;
-            PiecesNumber = 0;
-            IsColorChangable = true;
-        }
+        public LineColor LineColor { get; private set; } = LineColor.None;
+        public int PiecesNumber { get; set; } = 0;
+        public bool IsColorChangable { get; private set; } = true;
+        public GameLine() { }
         public GameLine(LineColor color, int piesesNumber, bool isColorChangable = true)
         {
             LineColor = color;

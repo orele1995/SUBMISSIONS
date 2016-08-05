@@ -8,7 +8,6 @@ namespace BL
 {
     public interface IPlayer
     { 
-       // Func<DecideMoveState, Move> DecideMove { get; set; }
         Move MakeMove( List<Move> possibalMoves,  GameBoard board);
         PlayerColor playerColor { get; set; } 
     }
