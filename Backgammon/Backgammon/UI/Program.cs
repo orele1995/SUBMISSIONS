@@ -33,7 +33,7 @@ namespace UI
             }
             GameUI gameUI = new GameUI(player1, player2);
             gameUI.TheGame.Play();
-
+            Console.ReadLine();
         }
     }
 }
