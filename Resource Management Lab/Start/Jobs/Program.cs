@@ -11,7 +11,7 @@ namespace Jobs
     {
         static void Main(string[] args)
         {
-            // --------  A  -------- 
+            // --------  A  --------  
             Job job = new Job("job",1);
             job.AddProcessToJob(Process.Start("notepad"));
             job.AddProcessToJob(Process.Start("calc"));
