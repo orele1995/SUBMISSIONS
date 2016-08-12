@@ -27,35 +27,42 @@ namespace Jobs
         private IntPtr _hJob;
         private List<Process> _processes;
         private bool _disposed = false;
-        private long sizeInByte = 0;
+        private long _sizeInByte = 0;
+        private string _name;
 
-        public Job(string name/*, long _sizeInByte*/)
+        public Job(string name, long sizeInByte)
         {
+           
+            _name = name;
+
             _hJob = NativeJob.CreateJobObject(IntPtr.Zero, name);
             if (_hJob == IntPtr.Zero)
                 throw new InvalidOperationException();
+            if (sizeInByte <= 0)
+                throw new ArgumentException("you can't send a size that is smaller then 1");
+            GC.AddMemoryPressure(sizeInByte);
+            _sizeInByte = sizeInByte;
             _processes = new List<Process>();
-        /*    sizeInByte = _sizeInByte;
-            GC.AddMemoryPressure(sizeInByte);*/
+            
         }
 
         public Job()
-            : this(null)
+            : this(null,1)
         {
+
         }
 
         protected void AddProcessToJob(IntPtr hProcess)
         {
             CheckIfDisposed();
-
+           
             if (!NativeJob.AssignProcessToJobObject(_hJob, hProcess))
                 throw new InvalidOperationException("Failed to add process to job");
         }
 
         private void CheckIfDisposed()
         {
-            // מה לשלוח פה בתור שם? להגיע לשם שקיבלנו בקוסנטרקטור?
-            if ( _disposed) throw new ObjectDisposedException(this.ToString());
+            if ( _disposed) throw new ObjectDisposedException(_name);
         }
 
         public void AddProcessToJob(int pid)
@@ -72,12 +79,11 @@ namespace Jobs
         
         public void Kill()
         {
-            // what is this code?
             NativeJob.TerminateJobObject(_hJob, 0);
         }
 
         public void Dispose()
-        { // from IDisposable
+        { 
             Dispose(true);
             GC.SuppressFinalize(this);
         }
@@ -89,12 +95,14 @@ namespace Jobs
             if (_disposed) return;
             if (disposing)
             {
-                // אין דיספוז לרשימה. האם צריך לעשות משהו בכלל?
+                foreach (var process in _processes)
+                {
+                    process.Dispose();
+                }
                 _processes = null;
             }
-            // ככה משחררים את האובייקט הזה?
             NativeJob.CloseHandle(_hJob);
-            GC.RemoveMemoryPressure(sizeInByte);
+            GC.RemoveMemoryPressure(_sizeInByte);
             _disposed = true;
         }
 

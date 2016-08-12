@@ -17,6 +17,6 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
-    <StartWorkingDirectory>C:\Users\Pavel\Documents\Courses\4151 - Advanced .NET with C#\Labs\Module 3 - Managing Resources\Jobs\bin\Debug\</StartWorkingDirectory>
+    <StartWorkingDirectory>C:\Users\CodeValueUser\Source\Repos\SUBMISSIONS\Resource Management Lab\Start\Jobs\bin\Debug\</StartWorkingDirectory>
   </PropertyGroup>
 </Project>

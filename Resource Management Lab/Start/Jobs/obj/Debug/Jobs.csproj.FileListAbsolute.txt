@@ -3,3 +3,8 @@ C:\Users\oren\Desktop\אוראל\Resource Management Lab\Start\Jobs\bin\Debug\Jo
 C:\Users\oren\Desktop\אוראל\Resource Management Lab\Start\Jobs\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\oren\Desktop\אוראל\Resource Management Lab\Start\Jobs\obj\Debug\Jobs.exe
 C:\Users\oren\Desktop\אוראל\Resource Management Lab\Start\Jobs\obj\Debug\Jobs.pdb
+C:\Users\CodeValueUser\Source\Repos\SUBMISSIONS\Resource Management Lab\Start\Jobs\obj\Debug\Jobs.csprojResolveAssemblyReference.cache
+C:\Users\CodeValueUser\Source\Repos\SUBMISSIONS\Resource Management Lab\Start\Jobs\obj\Debug\Jobs.exe
+C:\Users\CodeValueUser\Source\Repos\SUBMISSIONS\Resource Management Lab\Start\Jobs\bin\Debug\Jobs.exe
+C:\Users\CodeValueUser\Source\Repos\SUBMISSIONS\Resource Management Lab\Start\Jobs\bin\Debug\Jobs.pdb
+C:\Users\CodeValueUser\Source\Repos\SUBMISSIONS\Resource Management Lab\Start\Jobs\obj\Debug\Jobs.pdb
