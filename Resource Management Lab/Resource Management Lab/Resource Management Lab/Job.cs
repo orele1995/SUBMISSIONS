@@ -31,19 +31,20 @@ namespace Jobs
         private string _name; 
 
         public Job(string name, long sizeInByte)
-        {
-           
+        {          
             _name = name;
-
             _hJob = NativeJob.CreateJobObject(IntPtr.Zero, name);
+
             if (_hJob == IntPtr.Zero)
                 throw new InvalidOperationException();
+
             if (sizeInByte <= 0)
                 throw new ArgumentException("you can't send a size that is smaller then 1");
             GC.AddMemoryPressure(sizeInByte);
             _sizeInByte = sizeInByte;
+
             _processes = new List<Process>();
-            Console.WriteLine("Job created");
+            Console.WriteLine("Job {0} created", _name);
             
         }
 
@@ -89,7 +90,10 @@ namespace Jobs
             GC.SuppressFinalize(this);
         }
 
-        ~Job() { Dispose(false); }
+        ~Job() {
+            Console.WriteLine(" disposing {0}", _name);
+            Dispose(false); 
+        }
 
         protected virtual void Dispose(bool disposing)
         {
@@ -103,7 +107,8 @@ namespace Jobs
                 _processes = null;
             }
             NativeJob.CloseHandle(_hJob);
-          
+            if (_sizeInByte > 0)
+                GC.RemoveMemoryPressure(_sizeInByte);
             _disposed = true;
         }
 
