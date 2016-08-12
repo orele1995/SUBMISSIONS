@@ -28,7 +28,7 @@ namespace Jobs
         private List<Process> _processes;
         private bool _disposed = false;
         private long _sizeInByte = 0;
-        private string _name;
+        private string _name; 
 
         public Job(string name, long sizeInByte)
         {

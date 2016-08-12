@@ -15,7 +15,7 @@ namespace Jobs
             Job job = new Job("job",1);
             job.AddProcessToJob(Process.Start("notepad"));
             job.AddProcessToJob(Process.Start("calc"));
-            Console.ReadLine();
+            Console.ReadLine(); 
             job.Kill();
 
             // --------  B  --------
