@@ -13,15 +13,21 @@ namespace Jobs
 
         {
 
-            // --------  A  --------   
-            Job job = new Job("job",1);
-            job.AddProcessToJob(Process.Start("notepad"));
-            job.AddProcessToJob(Process.Start("calc"));
-            Console.ReadLine(); 
-            job.Kill();
+            // --------  A  --------  
+            try
+            {
+                Job job = new Job("job");
+                job.AddProcessToJob(Process.Start("notepad"));
+                job.AddProcessToJob(Process.Start("calc"));
+                Console.ReadLine();
+                job.Kill();
+            }
+            catch (ArgumentException ex) { Console.WriteLine(ex.Message); }
+            catch (ObjectDisposedException ex) { Console.WriteLine(ex.ObjectName + " is disposed"); }
 
             // --------  B  --------  
-            try
+           
+            try // will cause an exception
             {
                 for (int i = 0; i < 20; i++)
                 {
@@ -29,18 +35,17 @@ namespace Jobs
                 }
             }
             catch (ArgumentException ex) { Console.WriteLine(ex.Message); }
-
-            Console.WriteLine(GC.GetTotalMemory(true));
-            List<Job> jobs = new List<Job>();
-          for (int i = 0; i < 20; i++)
-           {
-              jobs.Add(new Job("work"+i, 1024*1024*100));
-              jobs[i].AddProcessToJob(Process.Start("notepad"));
-              Console.WriteLine(GC.GetTotalMemory(false)); 
            
-           }
-          Console.WriteLine(GC.GetTotalMemory(false)); 
-          Console.ReadLine(); 
+            try
+            {
+                List<Job> jobs = new List<Job>();
+                for (int i = 0; i < 20; i++)
+                {
+                    Job j = new Job("work" + i, 10 * 1024 * 1024);
+                }
+                Console.ReadLine();
+            }
+            catch (ArgumentException ex) { Console.WriteLine(ex.Message); }
 
         }
     }
