@@ -30,7 +30,7 @@ namespace Jobs
         private long _sizeInByte = 0;
         private string _name; 
 
-        public Job(string name, long sizeInByte)
+        public Job(string name, long sizeInByte =1)
         {          
             _name = name;
             _hJob = NativeJob.CreateJobObject(IntPtr.Zero, name);
