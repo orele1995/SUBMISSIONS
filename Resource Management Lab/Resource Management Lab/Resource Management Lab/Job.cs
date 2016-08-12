@@ -103,7 +103,7 @@ namespace Jobs
                 _processes = null;
             }
             NativeJob.CloseHandle(_hJob);
-            GC.RemoveMemoryPressure(_sizeInByte);
+          
             _disposed = true;
         }
 
