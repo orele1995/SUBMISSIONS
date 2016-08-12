@@ -20,6 +20,7 @@ namespace Jobs
             Console.ReadLine(); 
             job.Kill();
 
+
             // --------  B  --------  
             
            for (int i = 0; i < 20; i++)
