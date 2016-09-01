@@ -36,10 +36,14 @@ namespace DatabaseManager
                 chain_name = value;
             }
         }
-        public virtual ICollection<Store> Stores
+        public virtual ICollection<Store> Stores {get;set;}
+
+        public override bool Equals(object obj)
         {
-            get;
-            set;
+            Chain other = obj as Chain;
+            if (other == null) return false;
+            if (other.ChainID != ChainID) return false;
+            return true;
         }
     }
 }

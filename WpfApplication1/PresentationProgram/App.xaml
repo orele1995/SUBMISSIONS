@@ -1,0 +1,26 @@
+﻿<Application x:Class="PresentationProgram.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:PresentationProgram"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <DataTemplate x:Key="slidesTemplate" DataType="{x:Type local:Slide}" >
+            <Border BorderBrush="Blue"
+                    BorderThickness="2"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Background="Azure">
+                <StackPanel>
+                    <TextBlock Text="{ Binding header}" FontSize="14" FontWeight="Bold"/>
+                    <ItemsControl ItemsSource="{Binding body}">
+
+                    </ItemsControl>
+
+                </StackPanel>
+
+            </Border>
+                  
+
+        </DataTemplate>
+    </Application.Resources>
+</Application>

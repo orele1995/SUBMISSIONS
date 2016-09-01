@@ -64,5 +64,14 @@ namespace DatabaseManager
                 chain_id = value;
             }
         }
+
+
+        public override bool Equals(object obj)
+        {
+            Item other = obj as Item;
+            if (other == null) return false;
+            if (other.ItemID != ItemID) return false;
+            return true;
+        }
     }
 }

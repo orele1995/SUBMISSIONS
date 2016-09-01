@@ -1,9 +1,12 @@
-﻿using System;
+﻿using DatabaseManager;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace FilesManagement
 {
@@ -18,8 +21,27 @@ namespace FilesManagement
             {
                 var fullPath = directoryPath + "//" + filePath;
                 FileStream fileStream = new FileStream(fullPath, FileMode.Open);
-               var exstactedFile =  filesExtraction.ExtractFile(fileStream);
+                var exstactedFile =  filesExtraction.ExtractFile(fileStream);
+               
             }
+        }
+
+        private void ParseItemsFile(XmlReader file)
+        {
+            
+        }
+        private void ParseStoresFile(XmlReader file)
+        {
+
+        }
+        private void ParseChains(XmlReader file)
+        {
+            var xmlRoot = XDocument.Load(file).Root;
+            int id = int.Parse(xmlRoot.Element("ChainId").Value);
+            string name = xmlRoot.Element("ChainName").Value;
+            Chain newChain = new Chain() { ChainID = id, Chain_name = name };
+            PricesContext.TheDB.addChain(newChain);
+
         }
     }
 }

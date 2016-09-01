@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DatabaseManager
 {
-   public class Store
+    public class Store
     {
-       
+
         int store_id;
         int chain_id;
         string subchain_id;
@@ -93,6 +93,13 @@ namespace DatabaseManager
             get;
             set;
         }
+
+        public override bool Equals(object obj)
+        {
+            Store other = obj as Store;
+            if (other == null) return false;
+            if (other.StoreID != StoreID) return false;
+            return true;
+        }
     }
 }
-
