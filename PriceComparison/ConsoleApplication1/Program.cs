@@ -11,7 +11,7 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-        PricesContext pc = new PricesContext();
+            PricesContext p = new PricesContext();
         }
     }
 }

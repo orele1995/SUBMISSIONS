@@ -6,64 +6,12 @@ using System.Threading.Tasks;
 
 namespace DatabaseManager
 {
-   public class Item
+    public class Item
     {
-        int item_id;
-        int item_type;
-        string item_code;
-        int chain_id;
-
-        public int ItemID
-        {
-            get
-            {
-                return item_id;
-            }
-
-            set
-            {
-                item_id = value;
-            }
-        }
-
-        public int Item_type
-        {
-            get
-            {
-                return item_type;
-            }
-
-            set
-            {
-                item_type = value;
-            }
-        }
-
-        public string Item_code
-        {
-            get
-            {
-                return item_code;
-            }
-
-            set
-            {
-                item_code = value;
-            }
-        }
-
-        public int Chain_id
-        {
-            get
-            {
-                return chain_id;
-            }
-
-            set
-            {
-                chain_id = value;
-            }
-        }
+        public int ItemID { get; set;}
+        public string ItemName { get; set; }
+        public string ManufacturerName { get; set; }
+        public virtual ICollection<Price> Prices { get; set; }
 
 
         public override bool Equals(object obj)

@@ -22,7 +22,7 @@ namespace FilesManagement
                 var fullPath = directoryPath + "//" + filePath;
                 FileStream fileStream = new FileStream(fullPath, FileMode.Open);
                 var exstactedFile =  filesExtraction.ExtractFile(fileStream);
-               
+                
             }
         }
 
@@ -40,7 +40,12 @@ namespace FilesManagement
             int id = int.Parse(xmlRoot.Element("ChainId").Value);
             string name = xmlRoot.Element("ChainName").Value;
             Chain newChain = new Chain() { ChainID = id, Chain_name = name };
-            PricesContext.TheDB.addChain(newChain);
+            using (PricesContext context = new PricesContext())
+            {
+                context.addOrUpdateChain(newChain);
+            }
+           
+           
 
         }
     }
