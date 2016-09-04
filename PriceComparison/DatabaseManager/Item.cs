@@ -8,7 +8,7 @@ namespace DatabaseManager
 {
     public class Item
     {
-        public int ItemID { get; set;}
+        public  long ItemID { get; set;}
         public string ItemName { get; set; }
         public string ManufacturerName { get; set; }
         public virtual ICollection<Price> Prices { get; set; }
@@ -20,6 +20,10 @@ namespace DatabaseManager
             if (other == null) return false;
             if (other.ItemID != ItemID) return false;
             return true;
+        }
+        public override int GetHashCode()
+        {
+            return ItemID.GetHashCode();
         }
     }
 }

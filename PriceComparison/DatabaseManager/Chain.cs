@@ -8,7 +8,7 @@ namespace DatabaseManager
 {
     public class Chain
     {
-        public int ChainID { get; set; }
+        public long ChainID { get; set; }
 
         public string Chain_name { get; set; }
         public virtual ICollection<Store> Stores {get;set;}
@@ -19,6 +19,10 @@ namespace DatabaseManager
             if (other == null) return false;
             if (other.ChainID != ChainID) return false;
             return true;
+        }
+        public override int GetHashCode()
+        {
+            return ChainID.GetHashCode();
         }
     }
 }

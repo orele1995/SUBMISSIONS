@@ -13,7 +13,7 @@ namespace DatabaseManager.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201609011804448_PricesV01"; }
+            get { return "201609040914299_PricesV01"; }
         }
         
         string IMigrationMetadata.Source

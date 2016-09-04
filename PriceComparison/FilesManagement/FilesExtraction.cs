@@ -6,17 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace FilesManagement
 {
     public class FilesExtraction
     {
-        public XmlReader ExtractFile(FileStream originalFileStream)
+        public XDocument ExtractFile(FileStream originalFileStream)
         {
-                using (GZipStream decompressionStream = new GZipStream(originalFileStream, CompressionMode.Decompress))
-                {
-                    return XmlReader.Create(decompressionStream);
-                }
+            GZipStream decompressionStream = new GZipStream(originalFileStream, CompressionMode.Decompress);
+                
+                    return XDocument.Load(decompressionStream);
+                
         }
     }
 }

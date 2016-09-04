@@ -48,6 +48,14 @@ namespace DatabaseManager
                 Items.AddOrUpdate(item);
             SaveChanges();
         }
+        public void addOrUpdatePrice(Price price)
+        {
+            if (Items.Find(price) == null)
+                    Prices.AddOrUpdate(price);
+            SaveChanges();
+        }
+
+       
 
     }
 }

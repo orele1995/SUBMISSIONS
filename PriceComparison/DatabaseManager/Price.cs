@@ -8,8 +8,8 @@ namespace DatabaseManager
 {
     public class Price
     {
-        public int PriceID { get; set; }
-        public int ItemID { get; set; }
+        public long PriceID { get; set; }
+        public long ItemID { get; set; }
         public int StoreID { get; set; }
         public string UnitQty { get; set; }
         public string Quantity { get; set; }
@@ -24,6 +24,10 @@ namespace DatabaseManager
             if (other.ItemID != ItemID) return false;
             if (other.StoreID != StoreID) return false;
             return true;
+        }
+        public override int GetHashCode()
+        {
+            return ItemID.GetHashCode()+ StoreID.GetHashCode();
         }
     }
 }

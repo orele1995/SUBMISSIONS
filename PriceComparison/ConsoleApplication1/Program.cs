@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FilesManagement;
 
 namespace ConsoleApplication1
 {
@@ -12,6 +13,8 @@ namespace ConsoleApplication1
         static void Main(string[] args)
         {
             PricesContext p = new PricesContext();
+            FilesParser fp = new FilesParser();
+            fp.ParseAllFiles(@"C:\Prices\bin\Prices1\osherad");   
         }
     }
 }
