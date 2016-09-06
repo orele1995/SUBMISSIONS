@@ -53,9 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201609040914299_PricesV01.cs" />
-    <Compile Include="Migrations\201609040914299_PricesV01.Designer.cs">
-      <DependentUpon>201609040914299_PricesV01.cs</DependentUpon>
+    <Compile Include="DBManager.cs" />
+    <Compile Include="Migrations\201609051314114_init.cs" />
+    <Compile Include="Migrations\201609051314114_init.Designer.cs">
+      <DependentUpon>201609051314114_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Price.cs" />
@@ -78,8 +79,8 @@
     <Folder Include="System\Data\Entity\Infrastructure\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609040914299_PricesV01.resx">
-      <DependentUpon>201609040914299_PricesV01.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201609051314114_init.resx">
+      <DependentUpon>201609051314114_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -3,7 +3,7 @@ namespace DatabaseManager.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class PricesV01 : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
@@ -36,7 +36,7 @@ namespace DatabaseManager.Migrations
                 "dbo.Items",
                 c => new
                     {
-                        ItemID = c.Int(nullable: false),
+                        ItemID = c.Long(nullable: false),
                         ItemName = c.String(),
                         ManufacturerName = c.String(),
                         Store_StoreID = c.Int(),
@@ -49,8 +49,8 @@ namespace DatabaseManager.Migrations
                 "dbo.Prices",
                 c => new
                     {
-                        PriceID = c.Int(nullable: false, identity: true),
-                        ItemID = c.Int(nullable: false),
+                        PriceID = c.Long(nullable: false, identity: true),
+                        ItemID = c.Long(nullable: false),
                         StoreID = c.Int(nullable: false),
                         UnitQty = c.String(),
                         Quantity = c.String(),

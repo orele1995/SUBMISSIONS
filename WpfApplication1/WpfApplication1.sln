@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication1", "WpfAppli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationProgram", "PresentationProgram\PresentationProgram.csproj", "{75571B0C-32DB-4A0D-922D-2CDA14B829E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication2", "WpfApplication2\WpfApplication2.csproj", "{0A850DDC-74AD-46F8-BBFE-E0184164D386}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication3", "WpfApplication3\WpfApplication3.csproj", "{ECA06962-519D-4ED0-84D5-87BB2C17951C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{75571B0C-32DB-4A0D-922D-2CDA14B829E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75571B0C-32DB-4A0D-922D-2CDA14B829E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75571B0C-32DB-4A0D-922D-2CDA14B829E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A850DDC-74AD-46F8-BBFE-E0184164D386}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A850DDC-74AD-46F8-BBFE-E0184164D386}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A850DDC-74AD-46F8-BBFE-E0184164D386}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A850DDC-74AD-46F8-BBFE-E0184164D386}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECA06962-519D-4ED0-84D5-87BB2C17951C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECA06962-519D-4ED0-84D5-87BB2C17951C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECA06962-519D-4ED0-84D5-87BB2C17951C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECA06962-519D-4ED0-84D5-87BB2C17951C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

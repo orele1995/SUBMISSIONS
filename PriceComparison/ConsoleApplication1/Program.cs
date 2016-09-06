@@ -12,9 +12,8 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            PricesContext p = new PricesContext();
             FilesParser fp = new FilesParser();
-            fp.ParseAllFiles(@"C:\Prices\bin\Prices1\osherad");   
+            fp.ParseAllFiles(@"C:\Prices\bin\Prices");
         }
     }
 }
