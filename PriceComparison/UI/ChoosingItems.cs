@@ -54,8 +54,8 @@ namespace UI
             {
                 prices = _manager.GetPricesOfItems(_shoppingCart, p => true);
             }
-            ViewItems viewItemsWindow = new ViewItems(prices);
-            viewItemsWindow.ShowDialog();
+          //  ViewItems viewItemsWindow = new ViewItems(prices);
+           // viewItemsWindow.ShowDialog();
         }
 
         private void chainsComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -201,6 +201,13 @@ namespace UI
         private bool FilterCartByStore(Price price)
         {
             return _manager.IsPriceInStore(price, _selectedStore);
+        }
+
+        private void compareButton_Click(object sender, EventArgs e)
+        {
+            var result = _manager.PricesForCart(_shoppingCart);
+            ViewItems windowViewItems = new ViewItems(result);
+            windowViewItems.ShowDialog();
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DatabaseManager
 {
-    public class Price
+    public class Price:IComparable<Price>
     {
         public long PriceID { get; set; }
         public long ItemID { get; set; }
@@ -16,6 +16,11 @@ namespace DatabaseManager
         public string UnitOfMeasure { get; set; }
         public double ItemPrice { get; set; }
         public double UnitOfMeasurePrice { get; set; }
+
+        public int CompareTo(Price other)
+        {
+            return ItemPrice.CompareTo(other.ItemPrice) ;
+        }
 
         public override bool Equals(object obj)
         {

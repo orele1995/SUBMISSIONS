@@ -41,6 +41,7 @@
             this.ChooseTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.resetButton = new System.Windows.Forms.Button();
+            this.compareButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ItemsCheckedListBox
@@ -165,11 +166,22 @@
             this.resetButton.UseVisualStyleBackColor = true;
             this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
+            // compareButton
+            // 
+            this.compareButton.Location = new System.Drawing.Point(12, 315);
+            this.compareButton.Name = "compareButton";
+            this.compareButton.Size = new System.Drawing.Size(111, 51);
+            this.compareButton.TabIndex = 8;
+            this.compareButton.Text = "השווה";
+            this.compareButton.UseVisualStyleBackColor = true;
+            this.compareButton.Click += new System.EventHandler(this.compareButton_Click);
+            // 
             // ChoosingItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(700, 454);
+            this.Controls.Add(this.compareButton);
             this.Controls.Add(this.ChooseTextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -206,6 +218,7 @@
         private System.Windows.Forms.TextBox ChooseTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.Button compareButton;
     }
 }
 

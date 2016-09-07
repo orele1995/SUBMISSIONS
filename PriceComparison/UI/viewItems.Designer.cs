@@ -28,35 +28,62 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ItemsDataGridView = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).BeginInit();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.chainsTabControl = new System.Windows.Forms.TabControl();
+            this.chainsTabControl.SuspendLayout();
             this.SuspendLayout();
             // 
-            // ItemsDataGridView
+            // tabPage2
             // 
-            this.ItemsDataGridView.AllowUserToOrderColumns = true;
-            this.ItemsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ItemsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ItemsDataGridView.Location = new System.Drawing.Point(0, 0);
-            this.ItemsDataGridView.Name = "ItemsDataGridView";
-            this.ItemsDataGridView.Size = new System.Drawing.Size(590, 378);
-            this.ItemsDataGridView.TabIndex = 0;
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(558, 317);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(558, 317);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // chainsTabControl
+            // 
+            this.chainsTabControl.Controls.Add(this.tabPage1);
+            this.chainsTabControl.Controls.Add(this.tabPage2);
+            this.chainsTabControl.Location = new System.Drawing.Point(12, 23);
+            this.chainsTabControl.Name = "chainsTabControl";
+            this.chainsTabControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.chainsTabControl.RightToLeftLayout = true;
+            this.chainsTabControl.SelectedIndex = 0;
+            this.chainsTabControl.ShowToolTips = true;
+            this.chainsTabControl.Size = new System.Drawing.Size(566, 343);
+            this.chainsTabControl.TabIndex = 0;
             // 
             // ViewItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(590, 378);
-            this.Controls.Add(this.ItemsDataGridView);
+            this.Controls.Add(this.chainsTabControl);
             this.Name = "ViewItems";
             this.Text = "viewItems";
-            ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).EndInit();
+            this.chainsTabControl.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView ItemsDataGridView;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabControl chainsTabControl;
     }
 }

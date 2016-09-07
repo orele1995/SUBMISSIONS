@@ -14,7 +14,6 @@ namespace DatabaseManager
     {        
       public PricesContext() : base("PricesContext") { }
 
-     
         public DbSet<Chain> Chains { get; set; }
         public DbSet<Store> Stores { get; set; }
         public DbSet<Item> Items { get; set; }
