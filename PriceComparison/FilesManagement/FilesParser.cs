@@ -5,71 +5,97 @@ using System.Xml;
 using System;
 using System.Xml.Linq;
 using System.Collections.Generic;
+using System.Text;
 
 namespace FilesManagement
 {
     public class FilesParser
     {
+        private const string AlreadyParsedFilesPath = "alreadyParsedFiles.txt";
+
+        public FilesParser()
+        {
+           var file = File.Open(AlreadyParsedFilesPath, FileMode.OpenOrCreate);
+            file.Close();
+        }
 
         public void ParseAllFiles (string directoryPath)
         {
-            FilesExtraction filesExtraction = new FilesExtraction();
             foreach (var directory in Directory.GetDirectories(directoryPath))
             {
                 var filesPath = Directory.EnumerateFiles(directory);
-                parseStoresFiles(filesPath, filesExtraction);
-                parseFullPriceFiles(filesPath, filesExtraction);
+                ParseFiles(filesPath, ParseStoresFile, "Stores");
+                ParseFiles(filesPath, ParsePriceFile, "PriceFull");
                 Console.WriteLine(directory);
             }          
         }
 
-        private void parseFullPriceFiles(IEnumerable<string> filesPath, FilesExtraction filesExtraction)
+        private void ParseFiles(IEnumerable<string> filesPath, Action<XDocument> parseAction, string nameOfFilesToParse )
         {
+            FilesExtraction filesExtraction = new FilesExtraction();
+
             foreach (var filePath in filesPath)
             {
-                if (filePath.IndexOf("PriceFull") != -1) // its a prices file
-                {
-                    FileStream fileStream = new FileStream(filePath, FileMode.Open);
-                    XDocument xml;
+                if (AlreadyParsed(filePath)) continue;
+                if (filePath.IndexOf(nameOfFilesToParse, StringComparison.Ordinal) == -1) continue;
+                FileStream fileStream = new FileStream(filePath, FileMode.Open);
+                XDocument xml;
 
-                    if (Path.GetExtension(filePath) == ".gz") // the file is zipped
-                        xml = filesExtraction.ExtractGZFile(fileStream);
-                    else if (Path.GetExtension(filePath) == ".zip")
-                        xml = filesExtraction.ExtractZipFile(fileStream);
-                    else
-                        xml = XDocument.Load(fileStream);
-                    ParsePriceFile(xml);
-                }
+                if (Path.GetExtension(filePath) == ".gz") // the file is zipped
+                    xml = filesExtraction.ExtractGZFile(fileStream);
+                else if (Path.GetExtension(filePath) == ".zip")
+                    xml = filesExtraction.ExtractZipFile(fileStream);
+                else
+                    xml = XDocument.Load(fileStream);
+              parseAction(xml);
+                AddFileToAlreadyParsedFile(filePath);
             }
         }
 
-        private void parseStoresFiles(IEnumerable<string> filesPath, FilesExtraction filesExtraction)
+        private void AddFileToAlreadyParsedFile(string filePath)
         {
-            foreach (var filePath in filesPath)
-            {
-                if (filePath.IndexOf("Stores") != -1) // its a stores file
-                {
-                    FileStream fileStream = new FileStream(filePath, FileMode.Open);
-                    XDocument xml;
+            var writer = new StreamWriter(AlreadyParsedFilesPath,true);
 
-                    if (Path.GetExtension(filePath) == ".gz") // the file is zipped
-                        xml = filesExtraction.ExtractGZFile(fileStream);
-                    else if (Path.GetExtension(filePath) == ".zip")
-                      xml = filesExtraction.ExtractZipFile(fileStream);
-                    else
-                        xml = XDocument.Load(fileStream);
-                    ParseStoresFile(xml);
-                }
+            try
+            {
+                writer.WriteLine(filePath);
             }
+            finally
+            {
+                    writer.Close();
+            }
+        }
+
+        private bool AlreadyParsed(string filePath)
+        {
+            StreamReader reader = new StreamReader(AlreadyParsedFilesPath);
+
+            try
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    if (line.Contains(filePath))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+
+            }
+            finally
+            {
+                reader.Close();
+            }          
+
         }
 
         private void ParsePriceFile(XDocument xmlDoc)
         {
-
             int storeCode = int.Parse(xmlDoc.Descendants("StoreId").First().Value);
             long chainId = long.Parse(xmlDoc.Descendants("ChainId").First().Value);
 
-            int storeId = DBManager.TheDBManager.FindStoreIdByCodeAndChain(storeCode, chainId);
+            int storeId = DbManager.TheDbManager.FindStoreIdByCodeAndChain(storeCode, chainId);
             if (storeId == 0) return; // store was not found
             var result = from item in xmlDoc.Descendants("Item")
                          let code = long.Parse(item.Element("ItemCode").Value)
@@ -84,10 +110,8 @@ namespace FilesManagement
                          item.Element("UnitQty").Value,
                          double.Parse(item.Element("ItemPrice").Value),
                          storeId);
-            foreach (var item in result)
-            {
-               
-            }
+            result.ToList();
+            
         }
 
         private void ParseStoresFile(XDocument xmlDoc)
@@ -101,13 +125,13 @@ namespace FilesManagement
                          select new Store
                          {
                              Store_code = int.Parse(store.Element("StoreId").Value),
-                             Chain_id = chainId,
+                             ChainID = chainId,
                              Address = store.Element("Address").Value,
                              City = store.Element("City").Value,
                              ZipCode = store.Element("ZipCode").Value
                          };
-            DBManager.TheDBManager.AddOrUpdateChain(newChain);
-            DBManager.TheDBManager.AddOrUpdateStores(stores);
+            DbManager.TheDbManager.AddOrUpdateChain(newChain);
+            DbManager.TheDbManager.AddOrUpdateStores(stores);
         }
 
         private bool ParseItemAndPrice(long itemID, string manufacturerItemDescription, string manufacturerName, string quantity, string unitOfMeasure, double unitOfMeasurePrice, string unitQty, double itemPrice, int storeId)
@@ -129,9 +153,9 @@ namespace FilesManagement
                 UnitQty = unitQty
             };
 
-            DBManager.TheDBManager.AddOrUpdateItem(item);
+            DbManager.TheDbManager.AddOrUpdateItem(item);
 
-            DBManager.TheDBManager.AddOrUpdatePrice(price);
+            DbManager.TheDbManager.AddOrUpdatePrice(price);
             return true;
 
         }
