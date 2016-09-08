@@ -38,7 +38,7 @@
             // ChainNameLabel
             // 
             this.ChainNameLabel.AutoSize = true;
-            this.ChainNameLabel.Location = new System.Drawing.Point(284, 26);
+            this.ChainNameLabel.Location = new System.Drawing.Point(204, 29);
             this.ChainNameLabel.Name = "ChainNameLabel";
             this.ChainNameLabel.Size = new System.Drawing.Size(55, 13);
             this.ChainNameLabel.TabIndex = 0;
@@ -55,16 +55,19 @@
             this.ItemsDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.ItemsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ItemsDataGridView.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.ItemsDataGridView.Location = new System.Drawing.Point(19, 54);
+            this.ItemsDataGridView.Location = new System.Drawing.Point(19, 69);
             this.ItemsDataGridView.Name = "ItemsDataGridView";
             this.ItemsDataGridView.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ItemsDataGridView.Size = new System.Drawing.Size(517, 204);
+            this.ItemsDataGridView.Size = new System.Drawing.Size(447, 246);
             this.ItemsDataGridView.TabIndex = 1;
+            this.ItemsDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemsDataGridView_CellEndEdit);
+            this.ItemsDataGridView.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemsDataGridView_CellEndEdit);
+            this.ItemsDataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.ItemsDataGridView_CellValidating);
             // 
             // totalPriceLabel
             // 
             this.totalPriceLabel.AutoSize = true;
-            this.totalPriceLabel.Location = new System.Drawing.Point(262, 272);
+            this.totalPriceLabel.Location = new System.Drawing.Point(184, 337);
             this.totalPriceLabel.Name = "totalPriceLabel";
             this.totalPriceLabel.Size = new System.Drawing.Size(35, 13);
             this.totalPriceLabel.TabIndex = 2;
@@ -73,7 +76,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(303, 272);
+            this.label1.Location = new System.Drawing.Point(225, 337);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 13);
             this.label1.TabIndex = 2;
@@ -88,7 +91,7 @@
             this.Controls.Add(this.ItemsDataGridView);
             this.Controls.Add(this.ChainNameLabel);
             this.Name = "DisplayShoppingCart";
-            this.Size = new System.Drawing.Size(615, 341);
+            this.Size = new System.Drawing.Size(495, 376);
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

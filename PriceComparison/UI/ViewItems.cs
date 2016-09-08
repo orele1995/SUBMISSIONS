@@ -7,14 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DatabaseManager;
+using PriceComperationController;
+using PriceComperationModel;
 
 namespace UI
 {
     public partial class ViewItems : Form
     {
         private BindingList<DisplayItem> _displayItems = new BindingList<DisplayItem>();
-        private readonly DbManager _manager = DbManager.TheDbManager;
+        private readonly PriceControl _control = PriceControl.ThePriceControl;
 
         public ViewItems(Dictionary<long, IEnumerable<Price>> pricesOfChains)
         {
@@ -24,7 +25,7 @@ namespace UI
             foreach (var chain in pricesOfChains)
             {
                 if (!chain.Value.Any()) continue;
-                string chainName = _manager.GetChain(chain.Key).Chain_name;
+                string chainName = _control.GetChain(chain.Key).Chain_name;
                 TabPage page = new TabPage(chainName);
                 page.Controls.Add(new DisplayShoppingCart(chain.Value.ToList()));
                 chainsTabControl.TabPages.Add(page);

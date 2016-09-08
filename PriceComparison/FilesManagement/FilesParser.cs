@@ -6,6 +6,7 @@ using System;
 using System.Xml.Linq;
 using System.Collections.Generic;
 using System.Text;
+using PriceComperationModel;
 
 namespace FilesManagement
 {
@@ -13,6 +14,12 @@ namespace FilesManagement
     {
         private const string AlreadyParsedFilesPath = "alreadyParsedFiles.txt";
 
+        private readonly IPriceComperationDataManager _manager;
+
+        public FilesParser(IPriceComperationDataManager dataManager)
+        {
+            _manager = dataManager;
+        }
         public FilesParser()
         {
            var file = File.Open(AlreadyParsedFilesPath, FileMode.OpenOrCreate);
@@ -95,7 +102,7 @@ namespace FilesManagement
             int storeCode = int.Parse(xmlDoc.Descendants("StoreId").First().Value);
             long chainId = long.Parse(xmlDoc.Descendants("ChainId").First().Value);
 
-            int storeId = DbManager.TheDbManager.FindStoreIdByCodeAndChain(storeCode, chainId);
+            int storeId = _manager.FindStoreIdByCodeAndChain(storeCode, chainId);
             if (storeId == 0) return; // store was not found
             var result = from item in xmlDoc.Descendants("Item")
                          let code = long.Parse(item.Element("ItemCode").Value)
@@ -130,8 +137,8 @@ namespace FilesManagement
                              City = store.Element("City").Value,
                              ZipCode = store.Element("ZipCode").Value
                          };
-            DbManager.TheDbManager.AddOrUpdateChain(newChain);
-            DbManager.TheDbManager.AddOrUpdateStores(stores);
+            _manager.AddOrUpdateChain(newChain);
+            _manager.AddOrUpdateStores(stores);
         }
 
         private bool ParseItemAndPrice(long itemID, string manufacturerItemDescription, string manufacturerName, string quantity, string unitOfMeasure, double unitOfMeasurePrice, string unitQty, double itemPrice, int storeId)
@@ -153,9 +160,9 @@ namespace FilesManagement
                 UnitQty = unitQty
             };
 
-            DbManager.TheDbManager.AddOrUpdateItem(item);
+            _manager.AddOrUpdateItem(item);
 
-            DbManager.TheDbManager.AddOrUpdatePrice(price);
+            _manager.AddOrUpdatePrice(price);
             return true;
 
         }

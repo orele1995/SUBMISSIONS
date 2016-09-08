@@ -47,7 +47,7 @@
             // ItemsCheckedListBox
             // 
             this.ItemsCheckedListBox.FormattingEnabled = true;
-            this.ItemsCheckedListBox.Location = new System.Drawing.Point(417, 72);
+            this.ItemsCheckedListBox.Location = new System.Drawing.Point(12, 93);
             this.ItemsCheckedListBox.Name = "ItemsCheckedListBox";
             this.ItemsCheckedListBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ItemsCheckedListBox.Size = new System.Drawing.Size(255, 349);
@@ -58,7 +58,7 @@
             // selectedItemsListBox
             // 
             this.selectedItemsListBox.FormattingEnabled = true;
-            this.selectedItemsListBox.Location = new System.Drawing.Point(132, 144);
+            this.selectedItemsListBox.Location = new System.Drawing.Point(294, 165);
             this.selectedItemsListBox.Name = "selectedItemsListBox";
             this.selectedItemsListBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.selectedItemsListBox.Size = new System.Drawing.Size(255, 277);
@@ -67,7 +67,7 @@
             // chainsComboBox
             // 
             this.chainsComboBox.FormattingEnabled = true;
-            this.chainsComboBox.Location = new System.Drawing.Point(132, 43);
+            this.chainsComboBox.Location = new System.Drawing.Point(299, 63);
             this.chainsComboBox.Name = "chainsComboBox";
             this.chainsComboBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chainsComboBox.Size = new System.Drawing.Size(255, 21);
@@ -77,7 +77,7 @@
             // storesComboBox
             // 
             this.storesComboBox.FormattingEnabled = true;
-            this.storesComboBox.Location = new System.Drawing.Point(132, 90);
+            this.storesComboBox.Location = new System.Drawing.Point(299, 110);
             this.storesComboBox.Name = "storesComboBox";
             this.storesComboBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.storesComboBox.Size = new System.Drawing.Size(255, 21);
@@ -85,7 +85,7 @@
             // 
             // NextButton
             // 
-            this.NextButton.Location = new System.Drawing.Point(12, 372);
+            this.NextButton.Location = new System.Drawing.Point(573, 393);
             this.NextButton.Name = "NextButton";
             this.NextButton.Size = new System.Drawing.Size(111, 49);
             this.NextButton.TabIndex = 4;
@@ -95,7 +95,7 @@
             // 
             // selectorButton
             // 
-            this.selectorButton.Location = new System.Drawing.Point(12, 43);
+            this.selectorButton.Location = new System.Drawing.Point(573, 62);
             this.selectorButton.Name = "selectorButton";
             this.selectorButton.Size = new System.Drawing.Size(111, 26);
             this.selectorButton.TabIndex = 5;
@@ -106,7 +106,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(332, 26);
+            this.label1.Location = new System.Drawing.Point(296, 47);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 6;
@@ -115,7 +115,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(330, 74);
+            this.label2.Location = new System.Drawing.Point(296, 94);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 6;
@@ -124,7 +124,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(317, 128);
+            this.label3.Location = new System.Drawing.Point(296, 149);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 13);
             this.label3.TabIndex = 6;
@@ -133,7 +133,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(515, 26);
+            this.label4.Location = new System.Drawing.Point(80, 47);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 13);
             this.label4.TabIndex = 6;
@@ -141,7 +141,7 @@
             // 
             // ChooseTextBox
             // 
-            this.ChooseTextBox.Location = new System.Drawing.Point(417, 43);
+            this.ChooseTextBox.Location = new System.Drawing.Point(124, 71);
             this.ChooseTextBox.Name = "ChooseTextBox";
             this.ChooseTextBox.Size = new System.Drawing.Size(143, 20);
             this.ChooseTextBox.TabIndex = 7;
@@ -150,7 +150,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(563, 46);
+            this.label5.Location = new System.Drawing.Point(12, 74);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(112, 13);
             this.label5.TabIndex = 6;
@@ -158,7 +158,7 @@
             // 
             // resetButton
             // 
-            this.resetButton.Location = new System.Drawing.Point(12, 85);
+            this.resetButton.Location = new System.Drawing.Point(573, 107);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(111, 26);
             this.resetButton.TabIndex = 5;
@@ -168,7 +168,7 @@
             // 
             // compareButton
             // 
-            this.compareButton.Location = new System.Drawing.Point(12, 315);
+            this.compareButton.Location = new System.Drawing.Point(573, 336);
             this.compareButton.Name = "compareButton";
             this.compareButton.Size = new System.Drawing.Size(111, 51);
             this.compareButton.TabIndex = 8;
@@ -197,6 +197,7 @@
             this.Controls.Add(this.ItemsCheckedListBox);
             this.Name = "ChoosingItems";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.RightToLeftLayout = true;
             this.Text = "בחירת פריטים";
             this.ResumeLayout(false);
             this.PerformLayout();

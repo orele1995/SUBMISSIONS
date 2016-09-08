@@ -44,9 +44,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DatabaseManager\DatabaseManager.csproj">
-      <Project>{8F1B6C3D-70F8-4192-A392-DF576AAD630C}</Project>
-      <Name>DatabaseManager</Name>
+    <ProjectReference Include="..\PriceComperationModel\PriceComperationModel.csproj">
+      <Project>{908624c2-8229-44d7-9e7e-62c379af8822}</Project>
+      <Name>PriceComperationModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

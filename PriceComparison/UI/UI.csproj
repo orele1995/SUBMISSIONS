@@ -61,7 +61,6 @@
     <Compile Include="ChoosingItems.Designer.cs">
       <DependentUpon>ChoosingItems.cs</DependentUpon>
     </Compile>
-    <Compile Include="DisplayItem.cs" />
     <Compile Include="DisplayShoppingCart.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -109,13 +108,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DatabaseManager\DatabaseManager.csproj">
-      <Project>{8f1b6c3d-70f8-4192-a392-df576aad630c}</Project>
-      <Name>DatabaseManager</Name>
+    <ProjectReference Include="..\PriceComperationController\PriceComperationController.csproj">
+      <Project>{81e87907-c5d5-428f-a8f4-47c18a7cf97e}</Project>
+      <Name>PriceComperationController</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FilesManagement\FilesManagement.csproj">
-      <Project>{905c4b0b-b0fb-425d-82af-830a0671a19b}</Project>
-      <Name>FilesManagement</Name>
+    <ProjectReference Include="..\PriceComperationModel\PriceComperationModel.csproj">
+      <Project>{908624c2-8229-44d7-9e7e-62c379af8822}</Project>
+      <Name>PriceComperationModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

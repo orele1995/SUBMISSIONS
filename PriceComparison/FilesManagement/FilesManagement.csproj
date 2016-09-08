@@ -69,6 +69,14 @@
       <Project>{8f1b6c3d-70f8-4192-a392-df576aad630c}</Project>
       <Name>DatabaseManager</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PriceComperationInterfaces\PriceComperationInterfaces.csproj">
+      <Project>{5D58015E-8192-4897-B925-A97935C960D5}</Project>
+      <Name>PriceComperationInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PriceComperationModel\PriceComperationModel.csproj">
+      <Project>{908624C2-8229-44D7-9E7E-62C379AF8822}</Project>
+      <Name>PriceComperationModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

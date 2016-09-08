@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PriceComperationModel;
 
 namespace DatabaseManager
 {
-    interface IPriceComperationDataManager
+    public interface IPriceComperationDataManager
     {
 
         void AddOrUpdateStore(Store store);
@@ -27,35 +28,38 @@ namespace DatabaseManager
         IEnumerable<Store> GetStores();
         IEnumerable<Chain> GetChains();
         IEnumerable<Item> GetItems();
-
-        IEnumerable<Store> GetStoresOfChain(long chainId);
-        IEnumerable<Store> GetStoresOfChain(long chainId, string city);
-        IEnumerable<Price> GetPricesOfChain(long chainId);
-        IEnumerable<Price> GetPricesOfItem(long itemId);
-
-        IEnumerable<Item> GetItemsOfChain(long chainId);
-        IEnumerable<Item> GetItemsOfStore(int storeId);
-
-        IEnumerable<string> GetAllCities();
-        IEnumerable<string> GetCitiesOfChain(long chainId);
-
-        IEnumerable<Item> AllItemsIncluded(long chainId, IEnumerable<Item> items);
-        IEnumerable<Item> AllItemsIncluded(int storeId, IEnumerable<Item> items);
-
-        bool IsItemInStore(Item item, int storeId);
-        bool IsItemInChain(Item item, long chainId);
-        bool IsPriceInChain(Price price, long chainId);
-        bool IsPriceInStore(Price price, int storeId);
+        IEnumerable<Price> GetPrices();
 
         int FindStoreIdByCodeAndChain(int storeCode, long chainId);
-        bool IsItemInAllChains(Item item);
-        Price GetLowestPriceOfItem(long itemId);
-        Price GetLowestPriceOfItem(long itemId, long chainId);
-        bool IsStoreInChain(long chainId, int storeId);
 
-        IEnumerable<Price> GetPricesOfItems(IEnumerable<Item> items, Predicate<Price> filter);
+        //IEnumerable<Store> GetStoresOfChain(long chainId);
+        //IEnumerable<Store> GetStoresOfChain(long chainId, string city);
+        //IEnumerable<Price> GetPricesOfChain(long chainId);
+        //IEnumerable<Price> GetPricesOfItem(long itemId);
 
-        Dictionary<long, IEnumerable<Price>> PricesForCart(IEnumerable<Item> shoppingCart);
+        //IEnumerable<Item> GetItemsOfChain(long chainId);
+        //IEnumerable<Item> GetItemsOfStore(int storeId);
+
+        //IEnumerable<string> GetAllCities();
+        //IEnumerable<string> GetCitiesOfChain(long chainId);
+
+        //IEnumerable<Item> AllItemsIncluded(long chainId, IEnumerable<Item> items);
+        //IEnumerable<Item> AllItemsIncluded(int storeId, IEnumerable<Item> items);
+
+        //bool IsItemInStore(Item item, int storeId);
+        //bool IsItemInChain(Item item, long chainId);
+        //bool IsPriceInChain(Price price, long chainId);
+        //bool IsPriceInStore(Price price, int storeId);
+
+        //int FindStoreIdByCodeAndChain(int storeCode, long chainId);
+        //bool IsItemInAllChains(Item item);
+        //Price GetLowestPriceOfItem(long itemId);
+        //Price GetLowestPriceOfItem(long itemId, long chainId);
+        //bool IsStoreInChain(long chainId, int storeId);
+
+        //IEnumerable<Price> GetPricesOfItems(IEnumerable<Item> items, Predicate<Price> filter);
+
+        //Dictionary<long, IEnumerable<Price>> PricesForCart(IEnumerable<Item> shoppingCart);
 
     }
 }
