@@ -16,20 +16,42 @@ namespace UI
     {
         private BindingList<DisplayItem> _displayItems = new BindingList<DisplayItem>();
         private readonly PriceControl _control = PriceControl.ThePriceControl;
+        private BindingList<ChainDetails> pricesOfChains = new BindingList<ChainDetails>();
 
-        public ViewItems(Dictionary<long, IEnumerable<Price>> pricesOfChains)
+        public ViewItems(IEnumerable<ChainDetails> chainDetailses , BindingList<Item> shoppingCart)
         {
             InitializeComponent();
             chainsTabControl.TabPages.Clear();
-            chainsTabControl.RightToLeftLayout = true;
-            foreach (var chain in pricesOfChains)
+            
+            foreach (var chain in chainDetailses)
             {
-                if (!chain.Value.Any()) continue;
-                string chainName = _control.GetChain(chain.Key).Chain_name;
-                TabPage page = new TabPage(chainName);
-                page.Controls.Add(new DisplayShoppingCart(chain.Value.ToList()));
+                if (!chain.Items.Any()) continue;
+                TabPage page = new TabPage(chain.ChainName);
+                pricesOfChains.Add(chain);
+                page.Controls.Add(new DisplayShoppingCart(chain) {Dock = DockStyle.Fill});
+               
                 chainsTabControl.TabPages.Add(page);
             }
+
+            itemsListBox.DataSource = shoppingCart;
+            itemsListBox.DisplayMember = "ItemName";
+
+
+            var cheapestChain = pricesOfChains.First();
+            StringBuilder statisticText = new StringBuilder("הרשת הזולה ביותר: ");
+            statisticText.AppendLine(cheapestChain.ChainName);
+            var priceText = cheapestChain.TotalSum.ToString();
+            statisticText.Append("מחיר לסל: ").AppendLine(priceText);
+            var precentText = string.Format("{0:0.00}", cheapestChain.PrecentOfCart) + "%";
+            statisticText.Append("אחוז פריטים מהסל המקורי: ").AppendLine(precentText);
+            dataLabel.Text = statisticText.ToString();
+
+        }
+
+        private void graphButton_Click(object sender, EventArgs e)
+        {
+            ChartOfPrices windowChartOfPrices = new ChartOfPrices(pricesOfChains);
+            windowChartOfPrices.ShowDialog();
         }
     }
 }

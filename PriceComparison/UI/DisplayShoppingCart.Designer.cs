@@ -55,10 +55,10 @@
             this.ItemsDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
             this.ItemsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ItemsDataGridView.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.ItemsDataGridView.Location = new System.Drawing.Point(19, 69);
+            this.ItemsDataGridView.Location = new System.Drawing.Point(3, 69);
             this.ItemsDataGridView.Name = "ItemsDataGridView";
             this.ItemsDataGridView.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ItemsDataGridView.Size = new System.Drawing.Size(447, 246);
+            this.ItemsDataGridView.Size = new System.Drawing.Size(489, 246);
             this.ItemsDataGridView.TabIndex = 1;
             this.ItemsDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemsDataGridView_CellEndEdit);
             this.ItemsDataGridView.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemsDataGridView_CellEndEdit);

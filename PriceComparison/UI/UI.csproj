@@ -44,6 +44,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,6 +56,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChartOfPrices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChartOfPrices.Designer.cs">
+      <DependentUpon>ChartOfPrices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CheapestCartView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheapestCartView.Designer.cs">
+      <DependentUpon>CheapestCartView.cs</DependentUpon>
+    </Compile>
     <Compile Include="ChoosingItems.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,12 +82,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpdateDatabase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateDatabase.Designer.cs">
+      <DependentUpon>UpdateDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewItems.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ViewItems.Designer.cs">
       <DependentUpon>ViewItems.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ChartOfPrices.resx">
+      <DependentUpon>ChartOfPrices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheapestCartView.resx">
+      <DependentUpon>CheapestCartView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ChoosingItems.resx">
       <DependentUpon>ChoosingItems.cs</DependentUpon>
     </EmbeddedResource>
@@ -90,6 +115,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UpdateDatabase.resx">
+      <DependentUpon>UpdateDatabase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewItems.resx">
       <DependentUpon>ViewItems.cs</DependentUpon>
     </EmbeddedResource>
@@ -108,6 +136,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FilesManagement\FilesManagement.csproj">
+      <Project>{905c4b0b-b0fb-425d-82af-830a0671a19b}</Project>
+      <Name>FilesManagement</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PriceComperationController\PriceComperationController.csproj">
       <Project>{81e87907-c5d5-428f-a8f4-47c18a7cf97e}</Project>
       <Name>PriceComperationController</Name>
@@ -116,6 +148,26 @@
       <Project>{908624c2-8229-44d7-9e7e-62c379af8822}</Project>
       <Name>PriceComperationModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="TFCOfficeShimLib">
+      <Guid>{F6030E7E-9BF4-4CD8-9DA1-61A74764D8DB}</Guid>
+      <VersionMajor>3</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -12,8 +12,8 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            FilesParser fp = new FilesParser();
-            fp.ParseAllFiles(@"C:\Prices\bin\Prices");
+            
+     
         }
     }
 }

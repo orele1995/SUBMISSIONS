@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.Migrations;
 using System.Globalization;
 using System.Linq;
+using System.Linq.Expressions;
 using PriceComperationModel;
 
 namespace DatabaseManager
@@ -34,7 +35,8 @@ namespace DatabaseManager
 
         public void AddOrUpdateStore(Store store)
         {
-            if (!context.Stores.Any(s => s.StoreID.Equals(store.StoreID)))
+            var chain = context.Chains.FirstOrDefault(c => c.ChainID == store.ChainID);
+            if (chain != null && chain.Stores.All(s => s.StoreCode != store.StoreCode)) 
                 context.Stores.AddOrUpdate(store);
             context.SaveChanges();
         }
@@ -46,37 +48,16 @@ namespace DatabaseManager
         }
         public void AddOrUpdateItem(Item item)
         {
-            //if (!context.Items.Any(i => i.ItemID.Equals(item.ItemID)))
-            try
-            {
-                if (item.ItemID > 1000000000)
-                {
-                    context.Items.Add(item);
-                    context.SaveChanges();
-                }
-            }
-            catch (Exception)
-            {
-
-                context.Items.Remove(item);
-            }
-
-        }
+            if (item.ItemID <= 99999999) return;
+            if (context.Items.Any(i => i.ItemID.Equals(item.ItemID))) return;
+            context.Items.Add(item);
+            context.SaveChanges();
+        }  
         public void AddOrUpdatePrice(Price price)
         {
-            // if (!context.Prices.Any(p => p.ItemID.Equals(price.ItemID) && p.StoreID.Equals(price.StoreID)))
-            try
-            {
-                context.Prices.Add(price);
-                context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-
-                context.Prices.Remove(price);
-
-            }
-
+            if( GetStore(price.StoreID).Prices.Any(p=>p.ItemID == price.ItemID)) return;
+            context.Prices.Add(price);
+            context.SaveChanges();
         }
 
         public void AddOrUpdateStores(IEnumerable<Store> stores)
@@ -114,22 +95,7 @@ namespace DatabaseManager
 
         }
 
-        public Store GetStore(int storeId)
-        {
-            return context.Stores.FirstOrDefault(s => s.StoreID == storeId);
-        }
-        public Chain GetChain(long chainId)
-        {
-            return context.Chains.FirstOrDefault(c => c.ChainID == chainId);
-        }
-        public Price GetPrice(int priceId)
-        {
-            return context.Prices.FirstOrDefault(p => p.PriceID == priceId);
-        }
-        public Item GetItem(long itemId)
-        {
-            return context.Items.FirstOrDefault(i => i.ItemID == itemId);
-        }
+       
 
         public IEnumerable<Store> GetStores()
         {
@@ -148,12 +114,65 @@ namespace DatabaseManager
             return context.Prices;
         }
 
+        public Store GetStore(int storeId)
+        {
+            return context.Stores.FirstOrDefault(s => s.StoreID == storeId);
+        }
+        public Chain GetChain(long chainId)
+        {
+            return context.Chains.FirstOrDefault(c => c.ChainID == chainId);
+        }
+        public Price GetPrice(int priceId)
+        {
+            return context.Prices.FirstOrDefault(p => p.PriceID == priceId);
+        }
+        public Item GetItem(long itemId)
+        {
+            return context.Items.FirstOrDefault(i => i.ItemID == itemId);
+        }
+
+        public IEnumerable<Store> GetStores(Expression<Func<Store, bool>> expression)
+        {
+            return context.Stores.Where(expression).Distinct();
+        }
+        public IEnumerable<Chain> GetChains(Expression<Func<Chain, bool>> expression)
+        {
+            return context.Chains.Where(expression).Distinct();
+        }
+        public IEnumerable<Item> GetItems(Expression<Func<Item, bool>> expression)
+        {
+            return context.Items.Where(expression).Distinct();
+        }
+        public IEnumerable<Price> GetPrices(Expression<Func<Price, bool>> expression)
+        {
+            return context.Prices.Where(expression).Distinct();
+        }
+
+        public Store GetStore(Expression<Func<Store, bool>> expression)
+        {
+            return context.Stores.FirstOrDefault(expression);
+        }
+        public Chain GetChain(Expression<Func<Chain, bool>> expression)
+        {
+            return context.Chains.FirstOrDefault(expression);
+        }
+        public Item GetItem(Expression<Func<Item, bool>> expression)
+        {
+            return context.Items.FirstOrDefault(expression);
+        }
+        public Price GetPrice(Expression<Func<Price, bool>> expression)
+        {
+            return context.Prices.FirstOrDefault(expression);
+        }
+
         public int FindStoreIdByCodeAndChain(int storeCode, long chainId)
         {
             return context.Stores
-                .Where(s => s.ChainID == chainId && s.Store_code == storeCode)
+                .Where(s => s.ChainID == chainId && s.StoreCode == storeCode)
                 .Select(s => s.StoreID).FirstOrDefault();
         }
+
+       
 
     }
 }

@@ -9,19 +9,16 @@ namespace PriceComperationModel
     public class Store
     {       
         public int StoreID { get; set; }
-        public int Store_code { get; set; } 
+        public int StoreCode { get; set; } 
         public long ChainID { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
-        public string ZipCode { get; set; }
         public virtual ICollection<Price> Prices { get; set; }
 
         public override bool Equals(object obj)
         {
-            Store other = obj as Store;
-            if (other == null) return false;
-            if (other.StoreID != StoreID) return false;
-            return true;
+            var other = obj as Store;
+            return other?.StoreID == StoreID;
         }
         public override int GetHashCode()
         {
@@ -31,7 +28,7 @@ namespace PriceComperationModel
         public override string ToString()
         {
             
-            return $"{Store_code}: {Address}, {City}";
+            return $"{StoreCode}: {Address}, {City}";
         }
     }
 }

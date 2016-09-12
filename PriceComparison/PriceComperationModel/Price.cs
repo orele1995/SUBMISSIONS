@@ -11,11 +11,7 @@ namespace PriceComperationModel
         public long PriceID { get; set; }
         public long ItemID { get; set; }
         public int StoreID { get; set; }
-        public string UnitQty { get; set; }
-        public string Quantity { get; set; }
-        public string UnitOfMeasure { get; set; }
         public double ItemPrice { get; set; }
-        public double UnitOfMeasurePrice { get; set; }
 
         public int CompareTo(Price other)
         {

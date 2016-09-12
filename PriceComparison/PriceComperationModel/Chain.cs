@@ -10,15 +10,13 @@ namespace PriceComperationModel
     {
         public long ChainID { get; set; }
 
-        public string Chain_name { get; set; }
+        public string ChainName { get; set; }
         public virtual ICollection<Store> Stores {get;set;}
 
         public override bool Equals(object obj)
         {
             Chain other = obj as Chain;
-            if (other == null) return false;
-            if (other.ChainID != ChainID) return false;
-            return true;
+            return other?.ChainID == ChainID;
         }
         public override int GetHashCode()
         {

@@ -54,11 +54,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBManager.cs" />
-    <Compile Include="Migrations\201609060816346_init.cs" />
-    <Compile Include="Migrations\201609060816346_init.Designer.cs">
-      <DependentUpon>201609060816346_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PricesContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -73,11 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="System\Data\Entity\Infrastructure\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609060816346_init.resx">
-      <DependentUpon>201609060816346_init.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PriceComperationInterfaces\PriceComperationInterfaces.csproj">

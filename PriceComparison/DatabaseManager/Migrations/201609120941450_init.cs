@@ -12,7 +12,7 @@ namespace DatabaseManager.Migrations
                 c => new
                     {
                         ChainID = c.Long(nullable: false),
-                        Chain_name = c.String(),
+                        ChainName = c.String(),
                     })
                 .PrimaryKey(t => t.ChainID);
             
@@ -21,11 +21,10 @@ namespace DatabaseManager.Migrations
                 c => new
                     {
                         StoreID = c.Int(nullable: false, identity: true),
-                        Store_code = c.Int(nullable: false),
+                        StoreCode = c.Int(nullable: false),
                         ChainID = c.Long(nullable: false),
                         Address = c.String(),
                         City = c.String(),
-                        ZipCode = c.String(),
                     })
                 .PrimaryKey(t => t.StoreID)
                 .ForeignKey("dbo.Chains", t => t.ChainID, cascadeDelete: true)
@@ -38,11 +37,7 @@ namespace DatabaseManager.Migrations
                         PriceID = c.Long(nullable: false, identity: true),
                         ItemID = c.Long(nullable: false),
                         StoreID = c.Int(nullable: false),
-                        UnitQty = c.String(),
-                        Quantity = c.String(),
-                        UnitOfMeasure = c.String(),
                         ItemPrice = c.Double(nullable: false),
-                        UnitOfMeasurePrice = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => t.PriceID)
                 .ForeignKey("dbo.Stores", t => t.StoreID, cascadeDelete: true)
@@ -57,6 +52,7 @@ namespace DatabaseManager.Migrations
                         ItemID = c.Long(nullable: false),
                         ItemName = c.String(),
                         ManufacturerName = c.String(),
+                        Quantity = c.String(),
                     })
                 .PrimaryKey(t => t.ItemID);
             

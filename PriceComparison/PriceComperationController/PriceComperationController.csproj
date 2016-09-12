@@ -44,16 +44,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChainDetails.cs" />
     <Compile Include="DatabaseType.cs" />
     <Compile Include="DisplayItem.cs" />
     <Compile Include="PriceControl.cs" />
-    <Compile Include="PriceControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DatabaseManager\DatabaseManager.csproj">
       <Project>{8F1B6C3D-70F8-4192-A392-DF576AAD630C}</Project>
       <Name>DatabaseManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PriceComperationDatabaseManagerFactory\DatabaseManagerFactory.csproj">
+      <Project>{e6327a80-fa9d-45ea-89b2-af0e4c2e3610}</Project>
+      <Name>DatabaseManagerFactory</Name>
     </ProjectReference>
     <ProjectReference Include="..\PriceComperationInterfaces\PriceComperationInterfaces.csproj">
       <Project>{5D58015E-8192-4897-B925-A97935C960D5}</Project>

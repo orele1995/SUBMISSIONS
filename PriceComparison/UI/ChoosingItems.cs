@@ -23,7 +23,7 @@ namespace UI
             ItemsCheckedListBox.DataSource = _control.GetItems().OrderBy(i => i.ItemName).ToList();
             ItemsCheckedListBox.DisplayMember = "ItemName";
             chainsComboBox.DataSource = _control.GetChains();
-            chainsComboBox.DisplayMember = "Chain_name";
+            chainsComboBox.DisplayMember = "ChainName";
             // cityComboBox.DataSource = Manager.GetAllCities();
             selectedItemsListBox.DataSource = _shoppingCart;
             selectedItemsListBox.DisplayMember = "ItemName";
@@ -38,21 +38,22 @@ namespace UI
 
         private void NextButton_Click(object sender, EventArgs e)
         {
-            IEnumerable<Price> prices = new List<Price>();
+            BindingList<DisplayItem> prices;
             if (_selectedStore != -1)
             {
-                prices = _control.GetPricesOfItems(_shoppingCart, FilterCartByStore);
+                prices = new BindingList<DisplayItem>(_control.GetPricesOfItems(_shoppingCart, FilterCartByStore).ToList());
             }
             else if (_selectedChain != -1)
             {
-                prices = _control.GetPricesOfItems(_shoppingCart, FilterCartByChain);
+                prices = new BindingList<DisplayItem>(_control.GetPricesOfItems(_shoppingCart, FilterCartByChain).ToList());
             }
             else
             {
-                prices = _control.GetPricesOfItems(_shoppingCart, p => true);
+                prices = new BindingList<DisplayItem>(_control.GetPricesOfItems(_shoppingCart, p => true).ToList());
+
             }
-          //  ViewItems viewItemsWindow = new ViewItems(prices);
-           // viewItemsWindow.ShowDialog();
+            CheapestCartView cheapestCartViewWindow = new CheapestCartView(prices);
+            cheapestCartViewWindow.ShowDialog();
         }
 
         private void chainsComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -61,8 +62,8 @@ namespace UI
             var chainId = ((Chain) chainsComboBox.SelectedItem).ChainID;
             storesComboBox.DataSource = _control.GetStoresOfChain(chainId);
 
-            chainsComboBox.ResetText();
-            chainsComboBox.SelectedIndex = -1;
+            storesComboBox.ResetText();
+            storesComboBox.SelectedIndex = -1;
 
             /* var selectedCity = cityComboBox.SelectedItem;
             //if (selectedCity == null)
@@ -202,9 +203,23 @@ namespace UI
 
         private void compareButton_Click(object sender, EventArgs e)
         {
-            var result = _control.PricesForCart(_shoppingCart);
-            ViewItems windowViewItems = new ViewItems(result);
+            if (_shoppingCart.Count() == 0)
+            {
+                MessageBox.Show("לא נבחרו פריטים להשוואה");
+                return;
+            }
+            var result = _control.GetChainDetailses(_shoppingCart);
+            ViewItems windowViewItems = new ViewItems(result, _shoppingCart);
             windowViewItems.ShowDialog();
+        }
+
+        private void selectedItemsListBox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var selectedItem = selectedItemsListBox.SelectedItem;
+            if (selectedItem == null) return;
+            _shoppingCart.Remove((Item)selectedItem);
+            int index = ItemsCheckedListBox.Items.IndexOf(selectedItem);
+            ItemsCheckedListBox.SetItemCheckState(index, CheckState.Unchecked);
         }
     }
 }

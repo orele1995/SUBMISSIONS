@@ -7,24 +7,25 @@ using DatabaseManager;
 using EnvDTE;
 using System.Configuration;
 using System.Collections.Specialized;
+using PriceComperationDatabaseManagerFactory;
 using ConfigurationManager = System.Configuration.ConfigurationManager;
 
-namespace PriceComperationController
+namespace DatabaseManagerFactory
 {
-    class PriceControllerFactory
+   public class PriceComperationDataManagerFactory
     {
 
-        private static PriceControllerFactory _theFactory;
+        private static PriceComperationDataManagerFactory _theFactory;
 
-        private PriceControllerFactory() { }
+        private PriceComperationDataManagerFactory() { }
 
-        public static PriceControllerFactory TheFactory
+        public static PriceComperationDataManagerFactory TheFactory
         {
             get
             {
                 if (_theFactory == null)
                 {
-                    _theFactory = new PriceControllerFactory();
+                    _theFactory = new PriceComperationDataManagerFactory();
                 }
                 return _theFactory;
             }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using PriceComperationModel;
@@ -29,6 +30,16 @@ namespace DatabaseManager
         IEnumerable<Chain> GetChains();
         IEnumerable<Item> GetItems();
         IEnumerable<Price> GetPrices();
+
+        IEnumerable<Store> GetStores(Expression<Func<Store, bool>> expression);
+        IEnumerable<Chain> GetChains(Expression<Func<Chain, bool>> expression);
+        IEnumerable<Item> GetItems(Expression<Func<Item, bool>> expression);
+        IEnumerable<Price> GetPrices(Expression<Func<Price, bool>> expression);
+
+        Store GetStore(Expression<Func<Store, bool>> expression);
+        Chain GetChain(Expression<Func<Chain, bool>> expression);
+        Item GetItem(Expression<Func<Item, bool>> expression);
+        Price GetPrice(Expression<Func<Price, bool>> expression);
 
         int FindStoreIdByCodeAndChain(int storeCode, long chainId);
 

@@ -29,9 +29,5 @@ namespace DatabaseManager
              .Property(i => i.ItemID)
              .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
         }
-
-
-       
-
     }
 }

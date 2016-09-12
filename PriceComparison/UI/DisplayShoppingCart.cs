@@ -15,17 +15,17 @@ namespace UI
 {
     public partial class DisplayShoppingCart : UserControl
     {
-        private readonly PriceControl _control = PriceControl.ThePriceControl;
 
-        private BindingList<DisplayItem> _displayItems;
+        private readonly ChainDetails _chainDetails;
 
-        public DisplayShoppingCart(List<Price> prices )
+        public DisplayShoppingCart(ChainDetails chainDetails)
         {
+            _chainDetails = chainDetails;
             InitializeComponent();
-            _displayItems = new BindingList<DisplayItem>(_control.GetDisplayItems(prices).ToList());           
-            ItemsDataGridView.DataSource = _displayItems;
-            ChainNameLabel.Text = _control.GetChainOfPrice(prices.First()).Chain_name;
-            totalPriceLabel.Text = prices.Sum(p => p.ItemPrice).ToString(CultureInfo.InvariantCulture);
+
+            ItemsDataGridView.DataSource = chainDetails.Items;
+            ChainNameLabel.Text = chainDetails.ChainName;
+            totalPriceLabel.Text = chainDetails.TotalSum.ToString();
 
             ItemsDataGridView.Columns[0].Visible = false;
             ItemsDataGridView.Columns[1].HeaderText = "קוד חנות";
@@ -41,16 +41,12 @@ namespace UI
             {
                 ItemsDataGridView.Columns[i].ReadOnly = true;
             }
-            
-
         }
 
         private void ItemsDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            
             //  if (ItemsDataGridView[e.RowIndex,e.ColumnIndex].)
-            totalPriceLabel.Text = _displayItems.Sum(p => p.ItemPrice*p.Quantity).ToString(CultureInfo.InvariantCulture);
-
+            totalPriceLabel.Text = _chainDetails.TotalSum.ToString();
         }
 
         private void ItemsDataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -64,16 +60,13 @@ namespace UI
                 ItemsDataGridView.Rows[e.RowIndex].ErrorText =
                     "הכנס ערך";
                 e.Cancel = true;
-
             }
             else if (!int.TryParse(text, out num))
             {
                 ItemsDataGridView.Rows[e.RowIndex].ErrorText =
-                       "יש להכניס מספרים בלבד";
+                    "יש להכניס מספרים בלבד";
                 e.Cancel = true;
-
             }
-
         }
     }
 }

@@ -11,6 +11,8 @@ namespace PriceComperationModel
         public  long ItemID { get; set;}
         public string ItemName { get; set; }
         public string ManufacturerName { get; set; }
+        public string Quantity { get; set; }
+
         public virtual ICollection<Price> Prices { get; set; }
 
 

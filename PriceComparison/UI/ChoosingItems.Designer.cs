@@ -63,6 +63,7 @@
             this.selectedItemsListBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.selectedItemsListBox.Size = new System.Drawing.Size(255, 277);
             this.selectedItemsListBox.TabIndex = 1;
+            this.selectedItemsListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.selectedItemsListBox_MouseDoubleClick);
             // 
             // chainsComboBox
             // 

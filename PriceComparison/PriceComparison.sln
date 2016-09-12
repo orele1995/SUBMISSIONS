@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilesManagement", "FilesMan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseManager", "DatabaseManager\DatabaseManager.csproj", "{8F1B6C3D-70F8-4192-A392-DF576AAD630C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{A1E3D8EA-28AC-45F2-B351-A3C4259A7FBA}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{FB18FFEA-8F6C-49AA-8B55-463E4D68DC64}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceComperationController", "PriceComperationController\PriceComperationController.csproj", "{81E87907-C5D5-428F-A8F4-47C18A7CF97E}"
@@ -16,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceComperationInterfaces", "PriceComperationInterfaces\PriceComperationInterfaces.csproj", "{5D58015E-8192-4897-B925-A97935C960D5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceComperationModel", "PriceComperationModel\PriceComperationModel.csproj", "{908624C2-8229-44D7-9E7E-62C379AF8822}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseManagerFactory", "PriceComperationDatabaseManagerFactory\DatabaseManagerFactory.csproj", "{E6327A80-FA9D-45EA-89B2-AF0E4C2E3610}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +31,6 @@ Global
 		{8F1B6C3D-70F8-4192-A392-DF576AAD630C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F1B6C3D-70F8-4192-A392-DF576AAD630C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F1B6C3D-70F8-4192-A392-DF576AAD630C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A1E3D8EA-28AC-45F2-B351-A3C4259A7FBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1E3D8EA-28AC-45F2-B351-A3C4259A7FBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1E3D8EA-28AC-45F2-B351-A3C4259A7FBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1E3D8EA-28AC-45F2-B351-A3C4259A7FBA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FB18FFEA-8F6C-49AA-8B55-463E4D68DC64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FB18FFEA-8F6C-49AA-8B55-463E4D68DC64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB18FFEA-8F6C-49AA-8B55-463E4D68DC64}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +47,10 @@ Global
 		{908624C2-8229-44D7-9E7E-62C379AF8822}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{908624C2-8229-44D7-9E7E-62C379AF8822}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{908624C2-8229-44D7-9E7E-62C379AF8822}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6327A80-FA9D-45EA-89B2-AF0E4C2E3610}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6327A80-FA9D-45EA-89B2-AF0E4C2E3610}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6327A80-FA9D-45EA-89B2-AF0E4C2E3610}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6327A80-FA9D-45EA-89B2-AF0E4C2E3610}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
