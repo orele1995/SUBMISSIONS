@@ -18,12 +18,7 @@ namespace UI
         public ChartOfPrices(BindingList<ChainDetails> chainDetailses)
         {
             InitializeComponent();
-          //var s = chainDetailses.Select(c => new Series(c.ChainName,(int)( c.PrecentOfCart )));
-          //  foreach (var si in s)
-          //  {
-          //      chainsChart.Series.Add(si);
-          //  }
-
+    
             foreach (var chainDetailse in chainDetailses)
             {
                 chainsChart.Series["Price"].Points.AddXY(chainDetailse.ChainName, chainDetailse.TotalSum);
@@ -62,6 +57,11 @@ namespace UI
 
                 fs.Close();
             }
+        }
+
+        private void closePictureBox_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -35,18 +35,27 @@
             this.chainsChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.saveButton = new System.Windows.Forms.Button();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.closePictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.chainsChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // chainsChart
             // 
+            this.chainsChart.BackColor = System.Drawing.Color.Gainsboro;
+            this.chainsChart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.chainsChart.BackImageTransparentColor = System.Drawing.Color.Transparent;
+            this.chainsChart.BackSecondaryColor = System.Drawing.Color.Transparent;
+            this.chainsChart.BorderlineColor = System.Drawing.Color.Transparent;
             chartArea1.Name = "ChartArea1";
             this.chainsChart.ChartAreas.Add(chartArea1);
-            this.chainsChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chainsChart.Dock = System.Windows.Forms.DockStyle.Left;
             legend1.Name = "Legend1";
             this.chainsChart.Legends.Add(legend1);
             this.chainsChart.Location = new System.Drawing.Point(0, 0);
+            this.chainsChart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chainsChart.Name = "chainsChart";
+            this.chainsChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             this.chainsChart.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             series1.ChartArea = "ChartArea1";
             series1.LabelToolTip = "אחוז מהסל המבוקש";
@@ -60,30 +69,48 @@
             series2.Name = "Price";
             this.chainsChart.Series.Add(series1);
             this.chainsChart.Series.Add(series2);
-            this.chainsChart.Size = new System.Drawing.Size(662, 404);
+            this.chainsChart.Size = new System.Drawing.Size(719, 590);
             this.chainsChart.TabIndex = 0;
             // 
             // saveButton
             // 
             this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveButton.Location = new System.Drawing.Point(521, 314);
+            this.saveButton.Location = new System.Drawing.Point(622, 497);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(95, 45);
+            this.saveButton.Size = new System.Drawing.Size(111, 66);
             this.saveButton.TabIndex = 1;
             this.saveButton.Text = "שמור גרף כתמונה";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
+            // closePictureBox
+            // 
+            this.closePictureBox.Image = global::UI.Properties.Resources.Close_Window_96;
+            this.closePictureBox.Location = new System.Drawing.Point(732, 0);
+            this.closePictureBox.Name = "closePictureBox";
+            this.closePictureBox.Size = new System.Drawing.Size(40, 38);
+            this.closePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.closePictureBox.TabIndex = 4;
+            this.closePictureBox.TabStop = false;
+            this.closePictureBox.Click += new System.EventHandler(this.closePictureBox_Click);
+            // 
             // ChartOfPrices
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(662, 404);
+            this.BackColor = System.Drawing.Color.Gainsboro;
+            this.ClientSize = new System.Drawing.Size(772, 590);
+            this.Controls.Add(this.closePictureBox);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.chainsChart);
+            this.Font = new System.Drawing.Font("Segoe Print", 8.25F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ChartOfPrices";
             this.Text = "ChartOfPrices";
             ((System.ComponentModel.ISupportInitialize)(this.chainsChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -93,5 +120,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chainsChart;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.PictureBox closePictureBox;
     }
 }

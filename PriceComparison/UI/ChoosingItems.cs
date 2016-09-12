@@ -221,5 +221,10 @@ namespace UI
             int index = ItemsCheckedListBox.Items.IndexOf(selectedItem);
             ItemsCheckedListBox.SetItemCheckState(index, CheckState.Unchecked);
         }
+
+        private void closePictureBox_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

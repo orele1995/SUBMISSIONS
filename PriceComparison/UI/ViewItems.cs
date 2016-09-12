@@ -18,18 +18,18 @@ namespace UI
         private readonly PriceControl _control = PriceControl.ThePriceControl;
         private BindingList<ChainDetails> pricesOfChains = new BindingList<ChainDetails>();
 
-        public ViewItems(IEnumerable<ChainDetails> chainDetailses , BindingList<Item> shoppingCart)
+        public ViewItems(IEnumerable<ChainDetails> chainDetailses, BindingList<Item> shoppingCart)
         {
             InitializeComponent();
             chainsTabControl.TabPages.Clear();
-            
+            BackgroundImage = UI.Properties.Resources.background_15;
             foreach (var chain in chainDetailses)
             {
                 if (!chain.Items.Any()) continue;
                 TabPage page = new TabPage(chain.ChainName);
                 pricesOfChains.Add(chain);
                 page.Controls.Add(new DisplayShoppingCart(chain) {Dock = DockStyle.Fill});
-               
+
                 chainsTabControl.TabPages.Add(page);
             }
 
@@ -53,5 +53,12 @@ namespace UI
             ChartOfPrices windowChartOfPrices = new ChartOfPrices(pricesOfChains);
             windowChartOfPrices.ShowDialog();
         }
+
+        private void closePictureBox_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+       
     }
 }

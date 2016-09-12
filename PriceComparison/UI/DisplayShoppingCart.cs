@@ -26,18 +26,16 @@ namespace UI
             ItemsDataGridView.DataSource = chainDetails.Items;
             ChainNameLabel.Text = chainDetails.ChainName;
             totalPriceLabel.Text = chainDetails.TotalSum.ToString();
+            ItemsDataGridView.Columns[0].HeaderText = "שם המוצר";
+            ItemsDataGridView.Columns[1].HeaderText = "שם יצרן";
+            ItemsDataGridView.Columns[2].HeaderText = "מחיר";
+            ItemsDataGridView.Columns[3].HeaderText = "רשת";
+            ItemsDataGridView.Columns[4].HeaderText = "קוד חנות";
+            ItemsDataGridView.Columns[5].HeaderText = "עיר";
+            ItemsDataGridView.Columns[6].HeaderText = "כתובת";
+            ItemsDataGridView.Columns[7].HeaderText = "כמות";
 
-            ItemsDataGridView.Columns[0].Visible = false;
-            ItemsDataGridView.Columns[1].HeaderText = "קוד חנות";
-            ItemsDataGridView.Columns[2].HeaderText = "כתובת";
-            ItemsDataGridView.Columns[3].HeaderText = "עיר";
-            ItemsDataGridView.Columns[4].HeaderText = "מיקוד";
-            ItemsDataGridView.Columns[5].HeaderText = "שם המוצר";
-            ItemsDataGridView.Columns[6].HeaderText = "שם יצרן";
-            ItemsDataGridView.Columns[7].HeaderText = "מחיר";
-            ItemsDataGridView.Columns[8].HeaderText = "כמות";
-
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 6; i++)
             {
                 ItemsDataGridView.Columns[i].ReadOnly = true;
             }
@@ -67,6 +65,11 @@ namespace UI
                     "יש להכניס מספרים בלבד";
                 e.Cancel = true;
             }
+        }
+
+        private void DisplayShoppingCart_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

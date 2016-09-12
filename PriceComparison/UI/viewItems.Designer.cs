@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewItems));
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.chainsTabControl = new System.Windows.Forms.TabControl();
@@ -35,26 +36,31 @@
             this.graphButton = new System.Windows.Forms.Button();
             this.dataLabel = new System.Windows.Forms.Label();
             this.itemsListBox = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.closePictureBox = new System.Windows.Forms.PictureBox();
             this.chainsTabControl.SuspendLayout();
             this.dataGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 28);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(598, 364);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage2.Size = new System.Drawing.Size(699, 538);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage1
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 28);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(598, 364);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage1.Size = new System.Drawing.Size(699, 538);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -63,32 +69,37 @@
             // 
             this.chainsTabControl.Controls.Add(this.tabPage1);
             this.chainsTabControl.Controls.Add(this.tabPage2);
-            this.chainsTabControl.Location = new System.Drawing.Point(23, 62);
+            this.chainsTabControl.Location = new System.Drawing.Point(27, 91);
+            this.chainsTabControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chainsTabControl.Name = "chainsTabControl";
             this.chainsTabControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.chainsTabControl.RightToLeftLayout = true;
             this.chainsTabControl.SelectedIndex = 0;
             this.chainsTabControl.ShowToolTips = true;
-            this.chainsTabControl.Size = new System.Drawing.Size(606, 390);
+            this.chainsTabControl.Size = new System.Drawing.Size(707, 570);
             this.chainsTabControl.TabIndex = 0;
             // 
             // dataGroupBox
             // 
+            this.dataGroupBox.BackColor = System.Drawing.Color.Transparent;
             this.dataGroupBox.Controls.Add(this.graphButton);
             this.dataGroupBox.Controls.Add(this.dataLabel);
-            this.dataGroupBox.Location = new System.Drawing.Point(655, 269);
+            this.dataGroupBox.Location = new System.Drawing.Point(766, 395);
+            this.dataGroupBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGroupBox.Name = "dataGroupBox";
+            this.dataGroupBox.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGroupBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.dataGroupBox.Size = new System.Drawing.Size(268, 179);
+            this.dataGroupBox.Size = new System.Drawing.Size(313, 262);
             this.dataGroupBox.TabIndex = 2;
             this.dataGroupBox.TabStop = false;
             this.dataGroupBox.Text = "מידע סטטיסטי";
             // 
             // graphButton
             // 
-            this.graphButton.Location = new System.Drawing.Point(16, 114);
+            this.graphButton.Location = new System.Drawing.Point(58, 170);
+            this.graphButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.graphButton.Name = "graphButton";
-            this.graphButton.Size = new System.Drawing.Size(75, 23);
+            this.graphButton.Size = new System.Drawing.Size(171, 72);
             this.graphButton.TabIndex = 1;
             this.graphButton.Text = "הצג גרף מחירים";
             this.graphButton.UseVisualStyleBackColor = true;
@@ -98,29 +109,65 @@
             // 
             this.dataLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dataLabel.AutoSize = true;
-            this.dataLabel.Location = new System.Drawing.Point(16, 41);
+            this.dataLabel.BackColor = System.Drawing.Color.Transparent;
+            this.dataLabel.ForeColor = System.Drawing.Color.Gainsboro;
+            this.dataLabel.Location = new System.Drawing.Point(219, 45);
             this.dataLabel.Name = "dataLabel";
-            this.dataLabel.Size = new System.Drawing.Size(62, 13);
+            this.dataLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.dataLabel.Size = new System.Drawing.Size(75, 19);
             this.dataLabel.TabIndex = 0;
             this.dataLabel.Text = "מחיר לסל: ";
-            this.dataLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.dataLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // itemsListBox
             // 
+            this.itemsListBox.BackColor = System.Drawing.Color.Gainsboro;
+            this.itemsListBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemsListBox.FormattingEnabled = true;
-            this.itemsListBox.Location = new System.Drawing.Point(655, 84);
+            this.itemsListBox.ItemHeight = 19;
+            this.itemsListBox.Location = new System.Drawing.Point(764, 123);
+            this.itemsListBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.itemsListBox.Name = "itemsListBox";
-            this.itemsListBox.Size = new System.Drawing.Size(268, 173);
+            this.itemsListBox.Size = new System.Drawing.Size(312, 249);
             this.itemsListBox.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe Print", 20F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(424, 40);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(239, 47);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "השוואת מחירים";
+            // 
+            // closePictureBox
+            // 
+            this.closePictureBox.Image = global::UI.Properties.Resources.Close_Window_96;
+            this.closePictureBox.Location = new System.Drawing.Point(12, 12);
+            this.closePictureBox.Name = "closePictureBox";
+            this.closePictureBox.Size = new System.Drawing.Size(40, 38);
+            this.closePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.closePictureBox.TabIndex = 5;
+            this.closePictureBox.TabStop = false;
+            this.closePictureBox.Click += new System.EventHandler(this.closePictureBox_Click);
             // 
             // ViewItems
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 500);
+            this.BackColor = System.Drawing.Color.Gainsboro;
+            this.ClientSize = new System.Drawing.Size(1091, 731);
+            this.Controls.Add(this.closePictureBox);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.itemsListBox);
             this.Controls.Add(this.dataGroupBox);
             this.Controls.Add(this.chainsTabControl);
+            this.Font = new System.Drawing.Font("Segoe Print", 8.25F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ViewItems";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
@@ -128,7 +175,9 @@
             this.chainsTabControl.ResumeLayout(false);
             this.dataGroupBox.ResumeLayout(false);
             this.dataGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -141,5 +190,7 @@
         private System.Windows.Forms.ListBox itemsListBox;
         private System.Windows.Forms.Label dataLabel;
         private System.Windows.Forms.Button graphButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox closePictureBox;
     }
 }

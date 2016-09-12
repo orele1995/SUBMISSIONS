@@ -3,6 +3,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 using PriceComperationController;
+using Excel = Microsoft.Office.Interop.Excel;
+
 
 
 namespace UI
@@ -19,17 +21,16 @@ namespace UI
             ItemsDataGridView.DataSource = _prices;
             totalPriceLabel.Text = _prices.Sum(p=> p.ItemPrice* p.Quantity).ToString();
 
-            ItemsDataGridView.Columns[0].HeaderText = "רשת";
-            ItemsDataGridView.Columns[1].HeaderText = "קוד חנות";
-            ItemsDataGridView.Columns[2].HeaderText = "כתובת";
-            ItemsDataGridView.Columns[3].HeaderText = "עיר";
-            ItemsDataGridView.Columns[4].HeaderText = "מיקוד";
-            ItemsDataGridView.Columns[5].HeaderText = "שם המוצר";
-            ItemsDataGridView.Columns[6].HeaderText = "שם יצרן";
-            ItemsDataGridView.Columns[7].HeaderText = "מחיר";
-            ItemsDataGridView.Columns[8].HeaderText = "כמות";
+            ItemsDataGridView.Columns[0].HeaderText = "שם המוצר"; 
+            ItemsDataGridView.Columns[1].HeaderText = "שם יצרן"; 
+            ItemsDataGridView.Columns[2].HeaderText = "מחיר";  
+            ItemsDataGridView.Columns[3].HeaderText = "רשת";  
+            ItemsDataGridView.Columns[4].HeaderText = "קוד חנות";
+            ItemsDataGridView.Columns[5].HeaderText = "עיר";
+            ItemsDataGridView.Columns[6].HeaderText = "כתובת";
+            ItemsDataGridView.Columns[7].HeaderText = "כמות";
 
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i <6; i++)
             {
                 ItemsDataGridView.Columns[i].ReadOnly = true;
             }
@@ -54,14 +55,14 @@ namespace UI
             {
                 ItemsDataGridView.Rows[e.RowIndex].ErrorText =
                     "הכנס ערך";
-            //    e.Cancel = true;
+                e.Cancel = true;
 
             }
             else if (!int.TryParse(text, out num))
             {
                 ItemsDataGridView.Rows[e.RowIndex].ErrorText =
                        "יש להכניס מספרים בלבד";
-             //   e.Cancel = true;
+                e.Cancel = true;
 
             }
 
@@ -70,41 +71,75 @@ namespace UI
         private void exportButton_Click(object sender, EventArgs e)
         {
 
+            saveFileDialog.Filter = "Excel |*.xlsx";
+            saveFileDialog.Title = "Save an Excel File";
+            saveFileDialog.ShowDialog();
+
+            if (saveFileDialog.FileName != "")
+            {
+                System.IO.FileStream fs =
+                    (System.IO.FileStream) saveFileDialog.OpenFile();
+                ExportToExcel(fs.Name);
+                fs.Close();
+                MessageBox.Show("המסמך נשמר בהצלחה");
+            }
+
+            MessageBox.Show("אנא בחר נתיב לשמירת המסמך");
         }
 
-        //private void ExportToExcel()
-        //{
-        //    Excel.Application xlApp;
-        //    Excel.Workbook xlWorkBook;
-        //    Excel.Worksheet xlWorkSheet;
-        //    object misValue = System.Reflection.Missing.Value;
+        private void ExportToExcel(string pathToSave)
+        {
+            Excel.Application xlApp;
+            Excel.Workbook xlWorkBook;
+            Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
 
-        //    xlApp = new Excel.Application();
-        //    xlWorkBook = xlApp.Workbooks.Add(misValue);
-        //    xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-        //    int i = 0;
-        //    int j = 0;
+            xlApp = new Excel.Application();
+            xlWorkBook = xlApp.Workbooks.Add(misValue);
+            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            int i = 0;
+            int j = 0;
 
-        //    for (i = 0; i <= dataGridView1.RowCount - 1; i++)
-        //    {
-        //        for (j = 0; j <= dataGridView1.ColumnCount - 1; j++)
-        //        {
-        //            DataGridViewCell cell = dataGridView1[j, i];
-        //            xlWorkSheet.Cells[i + 1, j + 1] = cell.Value;
-        //        }
-        //    }
+            for (i = 0; i <= ItemsDataGridView.RowCount - 1; i++)
+            {
+                for (j = 0; j <= ItemsDataGridView.ColumnCount - 1; j++)
+                {
+                    DataGridViewCell cell = ItemsDataGridView[j, i];
+                    xlWorkSheet.Cells[i + 1, j + 1] = cell.Value;
+                }
+            }
 
-        //    xlWorkBook.SaveAs("csharp.net-informations.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-        //    xlWorkBook.Close(true, misValue, misValue);
-        //    xlApp.Quit();
+            xlWorkBook.SaveAs(pathToSave, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+            xlWorkBook.Close(true, misValue, misValue);
+            xlApp.Quit();
 
-        //    releaseObject(xlWorkSheet);
-        //    releaseObject(xlWorkBook);
-        //    releaseObject(xlApp);
+            releaseObject(xlWorkSheet);
+            releaseObject(xlWorkBook);
+            releaseObject(xlApp);
 
-        //    MessageBox.Show("Excel file created , you can find the file c:\\csharp.net-informations.xls");
-        //}
+        }
 
-    
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
+            }
+        }
+
+        private void closePictureBox_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

@@ -38,9 +38,11 @@
             // ChainNameLabel
             // 
             this.ChainNameLabel.AutoSize = true;
-            this.ChainNameLabel.Location = new System.Drawing.Point(204, 29);
+            this.ChainNameLabel.BackColor = System.Drawing.Color.Transparent;
+            this.ChainNameLabel.Font = new System.Drawing.Font("Segoe Print", 15F, System.Drawing.FontStyle.Bold);
+            this.ChainNameLabel.Location = new System.Drawing.Point(203, 37);
             this.ChainNameLabel.Name = "ChainNameLabel";
-            this.ChainNameLabel.Size = new System.Drawing.Size(55, 13);
+            this.ChainNameLabel.Size = new System.Drawing.Size(117, 35);
             this.ChainNameLabel.TabIndex = 0;
             this.ChainNameLabel.Text = "שם הרשת";
             // 
@@ -53,12 +55,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ItemsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.ItemsDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
+            this.ItemsDataGridView.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.ItemsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ItemsDataGridView.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.ItemsDataGridView.Location = new System.Drawing.Point(3, 69);
+            this.ItemsDataGridView.Location = new System.Drawing.Point(3, 101);
+            this.ItemsDataGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ItemsDataGridView.Name = "ItemsDataGridView";
             this.ItemsDataGridView.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ItemsDataGridView.Size = new System.Drawing.Size(489, 246);
+            this.ItemsDataGridView.Size = new System.Drawing.Size(570, 360);
             this.ItemsDataGridView.TabIndex = 1;
             this.ItemsDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemsDataGridView_CellEndEdit);
             this.ItemsDataGridView.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.ItemsDataGridView_CellEndEdit);
@@ -67,31 +71,39 @@
             // totalPriceLabel
             // 
             this.totalPriceLabel.AutoSize = true;
-            this.totalPriceLabel.Location = new System.Drawing.Point(184, 337);
+            this.totalPriceLabel.BackColor = System.Drawing.Color.Transparent;
+            this.totalPriceLabel.Font = new System.Drawing.Font("Segoe Print", 10F, System.Drawing.FontStyle.Bold);
+            this.totalPriceLabel.Location = new System.Drawing.Point(205, 487);
             this.totalPriceLabel.Name = "totalPriceLabel";
-            this.totalPriceLabel.Size = new System.Drawing.Size(35, 13);
+            this.totalPriceLabel.Size = new System.Drawing.Size(51, 24);
             this.totalPriceLabel.TabIndex = 2;
             this.totalPriceLabel.Text = "label1";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(225, 337);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe Print", 10F);
+            this.label1.Location = new System.Drawing.Point(262, 487);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.Size = new System.Drawing.Size(67, 24);
             this.label1.TabIndex = 2;
             this.label1.Text = ":סך הכל";
             // 
             // DisplayShoppingCart
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Gainsboro;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.totalPriceLabel);
             this.Controls.Add(this.ItemsDataGridView);
             this.Controls.Add(this.ChainNameLabel);
+            this.Font = new System.Drawing.Font("Segoe Print", 8.25F);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DisplayShoppingCart";
-            this.Size = new System.Drawing.Size(495, 376);
+            this.Size = new System.Drawing.Size(577, 550);
+            this.Load += new System.EventHandler(this.DisplayShoppingCart_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ItemsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

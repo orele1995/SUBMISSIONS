@@ -38,5 +38,10 @@ namespace UI
             MessageBox.Show("בסיס הנתונים עודכן בהצלחה");
 
         }
+
+        private void closePictureBox_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
