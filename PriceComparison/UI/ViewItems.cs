@@ -17,6 +17,16 @@ namespace UI
         private BindingList<DisplayItem> _displayItems = new BindingList<DisplayItem>();
         private readonly PriceControl _control = PriceControl.ThePriceControl;
         private BindingList<ChainDetails> pricesOfChains = new BindingList<ChainDetails>();
+        private const int WM_NCHITTEST = 0x84;
+        private const int HT_CLIENT = 0x1;
+        private const int HT_CAPTION = 0x2;
+
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+            if (m.Msg == WM_NCHITTEST)
+                m.Result = (IntPtr)(HT_CAPTION);
+        }
 
         public ViewItems(IEnumerable<ChainDetails> chainDetailses, BindingList<Item> shoppingCart)
         {
@@ -59,6 +69,9 @@ namespace UI
             Close();
         }
 
-       
+        private void graphPictureBox_Click(object sender, EventArgs e)
+        {
+            graphButton_Click(this, new EventArgs());
+        }
     }
 }

@@ -14,9 +14,11 @@ namespace FilesManagement
     public class FilesParser
     {
         private const string AlreadyParsedFilesPath = "alreadyParsedFiles.txt";
-
         private readonly IPriceComperationDataManager _manager;
         private static FilesParser _theParser;
+        public EventHandler<FileDoneEventArgs> FileDone;
+        private int numOfFilesInAllDirectories = 0;
+        private int numOfFilesDone = 0;
 
         public static FilesParser TheParser
         {
@@ -40,6 +42,9 @@ namespace FilesManagement
 
         public void ParseAllFiles (string directoryPath)
         {
+            numOfFilesInAllDirectories = Directory.GetFiles(directoryPath,"*store*",SearchOption.AllDirectories).Length;
+            numOfFilesInAllDirectories += Directory.GetFiles(directoryPath, "*PriceFull*", SearchOption.AllDirectories).Length;
+            numOfFilesDone = 0;
             foreach (var directory in Directory.GetDirectories(directoryPath))
             {
                 var filesPath = Directory.EnumerateFiles(directory);
@@ -55,8 +60,14 @@ namespace FilesManagement
 
             foreach (var filePath in filesPath)
             {
-                if (IsAlreadyParsed(filePath)) continue;
                 if (filePath.IndexOf(nameOfFilesToParse, StringComparison.Ordinal) == -1) continue;
+
+                if (IsAlreadyParsed(filePath))
+                {
+                    numOfFilesDone += 1;
+                    FileDone(this, new FileDoneEventArgs { NumOfFiles = numOfFilesInAllDirectories, NumOfFilesDone = numOfFilesDone });
+                   continue;
+                }
                 var fileStream = new FileStream(filePath, FileMode.Open);
                 XDocument xml;
 
@@ -67,7 +78,9 @@ namespace FilesManagement
                 else
                     xml = XDocument.Load(fileStream);
               parseAction(xml);
-                AddFileToAlreadyParsedFile(filePath);
+              AddFileToAlreadyParsedFile(filePath);
+                numOfFilesDone += 1;
+                FileDone(this,new FileDoneEventArgs {NumOfFiles = numOfFilesInAllDirectories, NumOfFilesDone = numOfFilesDone});
             }
         }
 

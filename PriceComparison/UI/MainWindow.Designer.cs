@@ -83,6 +83,7 @@
             // 
             // priceCompareationPictureBox
             // 
+            this.priceCompareationPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.priceCompareationPictureBox.Image = global::UI.Properties.Resources.Cash_Register_96;
             this.priceCompareationPictureBox.Location = new System.Drawing.Point(407, 109);
             this.priceCompareationPictureBox.Name = "priceCompareationPictureBox";
@@ -91,9 +92,11 @@
             this.priceCompareationPictureBox.TabIndex = 1;
             this.priceCompareationPictureBox.TabStop = false;
             this.priceCompareationPictureBox.Click += new System.EventHandler(this.priceCompareationPictureBox_Click);
+            this.priceCompareationPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.priceCompareationPictureBox_MouseDown);
             // 
             // updateDatabasePictureBox
             // 
+            this.updateDatabasePictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.updateDatabasePictureBox.Image = global::UI.Properties.Resources.Upload_96;
             this.updateDatabasePictureBox.Location = new System.Drawing.Point(92, 109);
             this.updateDatabasePictureBox.Name = "updateDatabasePictureBox";
@@ -102,6 +105,7 @@
             this.updateDatabasePictureBox.TabIndex = 0;
             this.updateDatabasePictureBox.TabStop = false;
             this.updateDatabasePictureBox.Click += new System.EventHandler(this.updateDatabasePictureBox_Click);
+            this.updateDatabasePictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.updateDatabasePictureBox_MouseDown);
             // 
             // MainWindow
             // 

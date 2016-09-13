@@ -12,6 +12,15 @@ namespace UI
     public partial class CheapestCartView : Form
     {
         private readonly BindingList<DisplayItem> _prices;
+        private const int WM_NCHITTEST = 0x84;
+        private const int HT_CLIENT = 0x1;
+        private const int HT_CAPTION = 0x2;
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+            if (m.Msg == WM_NCHITTEST)
+                m.Result = (IntPtr)(HT_CAPTION);
+        }
 
         public CheapestCartView(BindingList<DisplayItem> prices)
         {
@@ -55,14 +64,14 @@ namespace UI
             {
                 ItemsDataGridView.Rows[e.RowIndex].ErrorText =
                     "הכנס ערך";
-                e.Cancel = true;
+             //   e.Cancel = true;
 
             }
             else if (!int.TryParse(text, out num))
             {
                 ItemsDataGridView.Rows[e.RowIndex].ErrorText =
                        "יש להכניס מספרים בלבד";
-                e.Cancel = true;
+             //   e.Cancel = true;
 
             }
 
@@ -70,72 +79,71 @@ namespace UI
 
         private void exportButton_Click(object sender, EventArgs e)
         {
-
-            saveFileDialog.Filter = "Excel |*.xlsx";
-            saveFileDialog.Title = "Save an Excel File";
-            saveFileDialog.ShowDialog();
-
-            if (saveFileDialog.FileName != "")
-            {
-                System.IO.FileStream fs =
-                    (System.IO.FileStream) saveFileDialog.OpenFile();
-                ExportToExcel(fs.Name);
-                fs.Close();
-                MessageBox.Show("המסמך נשמר בהצלחה");
-            }
-
-            MessageBox.Show("אנא בחר נתיב לשמירת המסמך");
+            ExportToExcel();
         }
 
-        private void ExportToExcel(string pathToSave)
+        
+        private void ExportToExcel()
         {
-            Excel.Application xlApp;
-            Excel.Workbook xlWorkBook;
-            Excel.Worksheet xlWorkSheet;
-            object misValue = System.Reflection.Missing.Value;
+            // Creating a Excel object. 
+            Excel._Application excel = new Microsoft.Office.Interop.Excel.Application();
+            Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
+            Excel._Worksheet worksheet = null;
 
-            xlApp = new Excel.Application();
-            xlWorkBook = xlApp.Workbooks.Add(misValue);
-            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-            int i = 0;
-            int j = 0;
-
-            for (i = 0; i <= ItemsDataGridView.RowCount - 1; i++)
-            {
-                for (j = 0; j <= ItemsDataGridView.ColumnCount - 1; j++)
-                {
-                    DataGridViewCell cell = ItemsDataGridView[j, i];
-                    xlWorkSheet.Cells[i + 1, j + 1] = cell.Value;
-                }
-            }
-
-            xlWorkBook.SaveAs(pathToSave, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-            xlWorkBook.Close(true, misValue, misValue);
-            xlApp.Quit();
-
-            releaseObject(xlWorkSheet);
-            releaseObject(xlWorkBook);
-            releaseObject(xlApp);
-
-        }
-
-        private void releaseObject(object obj)
-        {
             try
             {
-                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
-                obj = null;
+
+                worksheet = workbook.ActiveSheet;
+
+                worksheet.Name = "ExportedFromDatGrid";
+
+                int cellRowIndex = 1;
+                int cellColumnIndex = 1;
+
+                //Loop through each row and read value from each column. 
+                for (int i = 0; i < ItemsDataGridView.Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j < ItemsDataGridView.Columns.Count; j++)
+                    {
+                        // Excel index starts from 1,1. As first Row would have the Column headers, adding a condition check. 
+                        if (cellRowIndex == 1)
+                        {
+                            worksheet.Cells[cellRowIndex, cellColumnIndex] = ItemsDataGridView.Columns[j].HeaderText;
+                        }
+                        else
+                        {
+                            worksheet.Cells[cellRowIndex, cellColumnIndex] = ItemsDataGridView.Rows[i].Cells[j].Value.ToString();
+                        }
+                        cellColumnIndex++;
+                    }
+                    cellColumnIndex = 1;
+                    cellRowIndex++;
+                }
+
+                SaveFileDialog saveDialog = new SaveFileDialog();
+                saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                saveDialog.FilterIndex = 2;
+
+                if (saveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    workbook.SaveAs(saveDialog.FileName);
+                    MessageBox.Show("הטבלה יוצאה בהצלחה");
+                }
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
-                obj = null;
-                MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
+                MessageBox.Show(ex.Message);
             }
             finally
             {
-                GC.Collect();
+                excel.Quit();
+                workbook = null;
+                excel = null;
             }
+
         }
+
+
 
         private void closePictureBox_Click(object sender, EventArgs e)
         {

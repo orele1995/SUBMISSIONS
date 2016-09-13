@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileDoneEventArgs.cs" />
     <Compile Include="FilesExtraction.cs" />
     <Compile Include="FilesParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

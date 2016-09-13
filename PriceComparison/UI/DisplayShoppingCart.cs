@@ -57,19 +57,15 @@ namespace UI
             {
                 ItemsDataGridView.Rows[e.RowIndex].ErrorText =
                     "הכנס ערך";
-                e.Cancel = true;
+              //  e.Cancel = true;
             }
             else if (!int.TryParse(text, out num))
             {
                 ItemsDataGridView.Rows[e.RowIndex].ErrorText =
                     "יש להכניס מספרים בלבד";
-                e.Cancel = true;
+               // e.Cancel = true;
             }
         }
 
-        private void DisplayShoppingCart_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

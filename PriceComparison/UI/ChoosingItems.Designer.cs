@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChoosingItems));
             this.ItemsCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.selectedItemsListBox = new System.Windows.Forms.ListBox();
             this.chainsComboBox = new System.Windows.Forms.ComboBox();
@@ -43,7 +44,10 @@
             this.resetButton = new System.Windows.Forms.Button();
             this.compareButton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.closePictureBox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,7 +78,7 @@
             // chainsComboBox
             // 
             this.chainsComboBox.FormattingEnabled = true;
-            this.chainsComboBox.Location = new System.Drawing.Point(349, 92);
+            this.chainsComboBox.Location = new System.Drawing.Point(463, 100);
             this.chainsComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chainsComboBox.Name = "chainsComboBox";
             this.chainsComboBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -85,7 +89,7 @@
             // storesComboBox
             // 
             this.storesComboBox.FormattingEnabled = true;
-            this.storesComboBox.Location = new System.Drawing.Point(349, 161);
+            this.storesComboBox.Location = new System.Drawing.Point(464, 148);
             this.storesComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.storesComboBox.Name = "storesComboBox";
             this.storesComboBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -105,10 +109,10 @@
             // 
             // selectorButton
             // 
-            this.selectorButton.Location = new System.Drawing.Point(652, 80);
+            this.selectorButton.Location = new System.Drawing.Point(664, 221);
             this.selectorButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.selectorButton.Name = "selectorButton";
-            this.selectorButton.Size = new System.Drawing.Size(129, 49);
+            this.selectorButton.Size = new System.Drawing.Size(129, 75);
             this.selectorButton.TabIndex = 5;
             this.selectorButton.Text = "סנן";
             this.selectorButton.UseVisualStyleBackColor = true;
@@ -132,21 +136,22 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe Print", 8.25F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label2.Location = new System.Drawing.Point(345, 137);
+            this.label2.Location = new System.Drawing.Point(344, 151);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 19);
+            this.label2.Size = new System.Drawing.Size(114, 19);
             this.label2.TabIndex = 6;
-            this.label2.Text = "בחר חנות:";
+            this.label2.Text = "בחר חנות לסינון:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe Print", 8.25F, System.Drawing.FontStyle.Bold);
+            this.label3.Font = new System.Drawing.Font("Segoe Print", 10F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label3.Location = new System.Drawing.Point(345, 198);
+            this.label3.Location = new System.Drawing.Point(339, 193);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 19);
+            this.label3.Size = new System.Drawing.Size(98, 24);
             this.label3.TabIndex = 6;
             this.label3.Text = "העגלה שלך:";
             // 
@@ -154,21 +159,22 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe Print", 8.25F, System.Drawing.FontStyle.Bold);
+            this.label4.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label4.Location = new System.Drawing.Point(12, 69);
+            this.label4.Location = new System.Drawing.Point(92, 63);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 19);
+            this.label4.Size = new System.Drawing.Size(117, 28);
             this.label4.TabIndex = 6;
             this.label4.Text = "בחר פריטים";
             // 
             // ChooseTextBox
             // 
-            this.ChooseTextBox.Location = new System.Drawing.Point(154, 97);
+            this.ChooseTextBox.Location = new System.Drawing.Point(189, 97);
             this.ChooseTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ChooseTextBox.Name = "ChooseTextBox";
-            this.ChooseTextBox.Size = new System.Drawing.Size(155, 27);
+            this.ChooseTextBox.Size = new System.Drawing.Size(120, 27);
             this.ChooseTextBox.TabIndex = 7;
+            this.ChooseTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ChooseTextBox.TextChanged += new System.EventHandler(this.ChooseTextBox_TextChanged);
             // 
             // label5
@@ -177,18 +183,20 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe Print", 8.25F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label5.Location = new System.Drawing.Point(12, 100);
+            this.label5.Location = new System.Drawing.Point(10, 100);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(142, 19);
+            this.label5.Size = new System.Drawing.Size(173, 19);
             this.label5.TabIndex = 6;
-            this.label5.Text = "הקלד טקסט לחיפוש:";
+            this.label5.Text = "הקלד טקסט לחיפוש מוצר";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // resetButton
             // 
-            this.resetButton.Location = new System.Drawing.Point(652, 149);
+            this.resetButton.Location = new System.Drawing.Point(664, 304);
             this.resetButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(129, 49);
+            this.resetButton.Size = new System.Drawing.Size(129, 75);
             this.resetButton.TabIndex = 5;
             this.resetButton.Text = "בטל סינון";
             this.resetButton.UseVisualStyleBackColor = true;
@@ -211,11 +219,34 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe Print", 8.25F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label6.Location = new System.Drawing.Point(345, 69);
+            this.label6.Location = new System.Drawing.Point(344, 100);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(73, 19);
+            this.label6.Size = new System.Drawing.Size(113, 19);
             this.label6.TabIndex = 6;
-            this.label6.Text = "בחר רשת:";
+            this.label6.Text = "בחר רשת לסינון:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold);
+            this.label7.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label7.Location = new System.Drawing.Point(561, 68);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(52, 28);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "סינון";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::UI.Properties.Resources.Check_961;
+            this.pictureBox1.Location = new System.Drawing.Point(691, 386);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(80, 76);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
             // 
             // closePictureBox
             // 
@@ -235,12 +266,14 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(817, 637);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.closePictureBox);
             this.Controls.Add(this.compareButton);
             this.Controls.Add(this.ChooseTextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
@@ -253,11 +286,14 @@
             this.Controls.Add(this.ItemsCheckedListBox);
             this.Font = new System.Drawing.Font("Segoe Print", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ChoosingItems";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "בחירת פריטים";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -282,6 +318,8 @@
         private System.Windows.Forms.Button compareButton;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox closePictureBox;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

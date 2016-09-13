@@ -38,9 +38,11 @@
             this.itemsListBox = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.closePictureBox = new System.Windows.Forms.PictureBox();
+            this.graphPictureBox = new System.Windows.Forms.PictureBox();
             this.chainsTabControl.SuspendLayout();
             this.dataGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.graphPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage2
@@ -49,7 +51,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(699, 538);
+            this.tabPage2.Size = new System.Drawing.Size(853, 538);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -60,13 +62,15 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage1.Size = new System.Drawing.Size(699, 538);
+            this.tabPage1.Size = new System.Drawing.Size(853, 538);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // chainsTabControl
             // 
+            this.chainsTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.chainsTabControl.Controls.Add(this.tabPage1);
             this.chainsTabControl.Controls.Add(this.tabPage2);
             this.chainsTabControl.Location = new System.Drawing.Point(27, 91);
@@ -76,15 +80,16 @@
             this.chainsTabControl.RightToLeftLayout = true;
             this.chainsTabControl.SelectedIndex = 0;
             this.chainsTabControl.ShowToolTips = true;
-            this.chainsTabControl.Size = new System.Drawing.Size(707, 570);
+            this.chainsTabControl.Size = new System.Drawing.Size(861, 570);
             this.chainsTabControl.TabIndex = 0;
             // 
             // dataGroupBox
             // 
             this.dataGroupBox.BackColor = System.Drawing.Color.Transparent;
+            this.dataGroupBox.Controls.Add(this.graphPictureBox);
             this.dataGroupBox.Controls.Add(this.graphButton);
             this.dataGroupBox.Controls.Add(this.dataLabel);
-            this.dataGroupBox.Location = new System.Drawing.Point(766, 395);
+            this.dataGroupBox.Location = new System.Drawing.Point(920, 399);
             this.dataGroupBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGroupBox.Name = "dataGroupBox";
             this.dataGroupBox.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -96,10 +101,10 @@
             // 
             // graphButton
             // 
-            this.graphButton.Location = new System.Drawing.Point(58, 170);
+            this.graphButton.Location = new System.Drawing.Point(19, 170);
             this.graphButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.graphButton.Name = "graphButton";
-            this.graphButton.Size = new System.Drawing.Size(171, 72);
+            this.graphButton.Size = new System.Drawing.Size(116, 72);
             this.graphButton.TabIndex = 1;
             this.graphButton.Text = "הצג גרף מחירים";
             this.graphButton.UseVisualStyleBackColor = true;
@@ -110,14 +115,16 @@
             this.dataLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dataLabel.AutoSize = true;
             this.dataLabel.BackColor = System.Drawing.Color.Transparent;
-            this.dataLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.dataLabel.Location = new System.Drawing.Point(219, 45);
+            this.dataLabel.Font = new System.Drawing.Font("Segoe Print", 10F);
+            this.dataLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dataLabel.Location = new System.Drawing.Point(19, 33);
             this.dataLabel.Name = "dataLabel";
             this.dataLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.dataLabel.Size = new System.Drawing.Size(75, 19);
+            this.dataLabel.Size = new System.Drawing.Size(75, 29);
             this.dataLabel.TabIndex = 0;
             this.dataLabel.Text = "מחיר לסל: ";
-            this.dataLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.dataLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.dataLabel.UseCompatibleTextRendering = true;
             // 
             // itemsListBox
             // 
@@ -125,7 +132,7 @@
             this.itemsListBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.itemsListBox.FormattingEnabled = true;
             this.itemsListBox.ItemHeight = 19;
-            this.itemsListBox.Location = new System.Drawing.Point(764, 123);
+            this.itemsListBox.Location = new System.Drawing.Point(921, 119);
             this.itemsListBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.itemsListBox.Name = "itemsListBox";
             this.itemsListBox.Size = new System.Drawing.Size(312, 249);
@@ -153,12 +160,23 @@
             this.closePictureBox.TabStop = false;
             this.closePictureBox.Click += new System.EventHandler(this.closePictureBox_Click);
             // 
+            // graphPictureBox
+            // 
+            this.graphPictureBox.Image = global::UI.Properties.Resources.Bar_Chart_96;
+            this.graphPictureBox.Location = new System.Drawing.Point(139, 169);
+            this.graphPictureBox.Name = "graphPictureBox";
+            this.graphPictureBox.Size = new System.Drawing.Size(73, 72);
+            this.graphPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.graphPictureBox.TabIndex = 5;
+            this.graphPictureBox.TabStop = false;
+            this.graphPictureBox.Click += new System.EventHandler(this.graphPictureBox_Click);
+            // 
             // ViewItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(1091, 731);
+            this.ClientSize = new System.Drawing.Size(1245, 731);
             this.Controls.Add(this.closePictureBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.itemsListBox);
@@ -171,11 +189,13 @@
             this.Name = "ViewItems";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "viewItems";
             this.chainsTabControl.ResumeLayout(false);
             this.dataGroupBox.ResumeLayout(false);
             this.dataGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.graphPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,5 +212,6 @@
         private System.Windows.Forms.Button graphButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox closePictureBox;
+        private System.Windows.Forms.PictureBox graphPictureBox;
     }
 }

@@ -212,6 +212,27 @@
   <ItemGroup>
     <None Include="Resources\Close Window-96.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Shop-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Coins-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Buy-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\XLS-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Check-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Check-961.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bar Chart-96.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -15,6 +15,17 @@ namespace UI
         private int _selectedChain = -1;
         private int _selectedStore = -1;
         private readonly PriceControl _control = PriceControl.ThePriceControl;
+       
+        private const int WM_NCHITTEST = 0x84;
+        private const int HT_CLIENT = 0x1;
+        private const int HT_CAPTION = 0x2;
+
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+            if (m.Msg == WM_NCHITTEST)
+                m.Result = (IntPtr)(HT_CAPTION);
+        }
 
         public ChoosingItems()
         {
@@ -170,6 +181,7 @@ namespace UI
             ItemsCheckedListBox.DisplayMember = "ItemName";
 
             _shoppingCart = new BindingList<Item>(includedItems.ToList());
+           
         }
 
         private void ChooseTextBox_TextChanged(object sender, EventArgs e)
@@ -189,6 +201,8 @@ namespace UI
             chainsComboBox.SelectedIndex = -1;
             storesComboBox.SelectedIndex = -1;
             ItemsCheckedListBox.DataSource = _control.GetItems();
+            ItemsCheckedListBox.DisplayMember = "ItemName";
+
         }
 
         private bool FilterCartByChain(Price price)
@@ -225,6 +239,11 @@ namespace UI
         private void closePictureBox_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

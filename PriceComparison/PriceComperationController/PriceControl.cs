@@ -102,10 +102,9 @@ namespace PriceComperationController
 
         public IEnumerable<Item> GetItemsOfChain(long chainId)
         {
-            return
-                _manager.GetPrices(p => GetStoresOfChain(chainId).FirstOrDefault(s => p.StoreID == s.StoreID) != null)
-                    .Select(p => _manager.GetItem(p.ItemID)).Distinct().ToList();
-        }
+
+            return _manager.GetChain(chainId).Stores.SelectMany(s => GetItemsOfStore(s.StoreID)).Distinct().ToList();
+       }
 
         public IEnumerable<Item> GetItemsOfStore(int storeId)
         {
@@ -197,15 +196,29 @@ namespace PriceComperationController
         public IEnumerable<Item> AllItemsIncluded(long chainId, IEnumerable<Item> items)
         {
             var itemsInChain = GetItemsOfChain(chainId);
-            var includedItems = _manager.GetItems(item => itemsInChain.Any(i => i.ItemID == item.ItemID)).ToList();
+            var result = new List<Item>();
 
-            return includedItems.ToList();
+            foreach (var item in itemsInChain)
+            {
+                if (!items.Any(i => i.ItemID == item.ItemID)) continue;
+                result.Add(item);
+                if (result.Count == items.Count()) return result;
+            }
+            return result;
         }
 
         public IEnumerable<Item> AllItemsIncluded(int storeId, IEnumerable<Item> items)
         {
             var itemsInStore = GetItemsOfStore(storeId);
-            return _manager.GetItems(item => itemsInStore.Any(i => i.ItemID == item.ItemID)).ToList();
+            var result = new List<Item>();
+
+            foreach (var item in itemsInStore)
+            {
+                if (!items.Any(i => i.ItemID == item.ItemID)) continue;
+                result.Add(item);
+                if (result.Count == items.Count()) return result;
+            }
+            return result;
         }
 
         public Price GetLowestPriceOfItem(long itemId, long chainId)
