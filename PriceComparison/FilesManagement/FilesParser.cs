@@ -54,7 +54,7 @@ namespace FilesManagement
             }          
         }
 
-        private void ParseFiles(IEnumerable<string> filesPath, Action<XDocument> parseAction, string nameOfFilesToParse )
+        private void ParseFiles(IEnumerable<string> filesPath, Action<XDocument> parseAction, string nameOfFilesToParse)
         {
             var filesExtraction = new FilesExtraction();
 
@@ -65,22 +65,33 @@ namespace FilesManagement
                 if (IsAlreadyParsed(filePath))
                 {
                     numOfFilesDone += 1;
-                    FileDone(this, new FileDoneEventArgs { NumOfFiles = numOfFilesInAllDirectories, NumOfFilesDone = numOfFilesDone });
-                   continue;
+                    FileDone(this,
+                        new FileDoneEventArgs {NumOfFiles = numOfFilesInAllDirectories, NumOfFilesDone = numOfFilesDone});
+                    continue;
                 }
-                var fileStream = new FileStream(filePath, FileMode.Open);
-                XDocument xml;
+                FileStream fileStream = null;
+                try
+                {
+                    fileStream = new FileStream(filePath, FileMode.Open);
+                    XDocument xml;
 
-                if (Path.GetExtension(filePath) == ".gz") // the file is zipped
-                    xml = filesExtraction.ExtractGZFile(fileStream);
-                else if (Path.GetExtension(filePath) == ".zip")
-                    xml = filesExtraction.ExtractZipFile(fileStream);
-                else
-                    xml = XDocument.Load(fileStream);
-              parseAction(xml);
-              AddFileToAlreadyParsedFile(filePath);
-                numOfFilesDone += 1;
-                FileDone(this,new FileDoneEventArgs {NumOfFiles = numOfFilesInAllDirectories, NumOfFilesDone = numOfFilesDone});
+                    if (Path.GetExtension(filePath) == ".gz") // the file is zipped
+                        xml = filesExtraction.ExtractGZFile(fileStream);
+                    else if (Path.GetExtension(filePath) == ".zip")
+                        xml = filesExtraction.ExtractZipFile(fileStream);
+                    else
+                        xml = XDocument.Load(fileStream);
+                    parseAction(xml);
+                    AddFileToAlreadyParsedFile(filePath);
+                    numOfFilesDone += 1;
+                    FileDone(this,
+                        new FileDoneEventArgs {NumOfFiles = numOfFilesInAllDirectories, NumOfFilesDone = numOfFilesDone});
+
+                }
+                finally
+                {
+                    fileStream?.Close();
+                }
             }
         }
 

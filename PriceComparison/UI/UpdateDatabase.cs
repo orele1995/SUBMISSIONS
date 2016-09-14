@@ -20,9 +20,7 @@ namespace UI
         public UpdateDatabase()
         {
             InitializeComponent();
-            progressBar.Value = 0;
-            progressBar.Hide();
-            progressLabel.Hide();
+         
         }
 
         private void browseButton_Click(object sender, EventArgs e)
@@ -45,11 +43,18 @@ namespace UI
                 return;
             }
             okButton.Enabled = false;
-            progressBar.Show();
+            ProgressBar progressBar = new ProgressBar();
+            progressBar.Left = 500;
+            progressBar.Width = 600;
+            progressBar.Height = 50;
             progressBar.Value = 0;
+            progressBar.Location = new Point {X = 60, Y = 310};
+            Controls.Add(progressBar);
+            Height = Height + 70;
+            Label progressLabel = new Label();
+            progressLabel.Location = new Point {X = 320, Y = 370};
             progressLabel.Text = "סיים " + 0 + " / " + 0 + " קבצים";
-
-            progressLabel.Show();
+            Controls.Add(progressLabel);
             Task.Run(() =>
             {
                 FilesParser.TheParser.FileDone += (o, args) =>
@@ -67,7 +72,9 @@ namespace UI
                     okButton.Enabled = true;
 
                     MessageBox.Show("בסיס הנתונים עודכן בהצלחה");
-
+                    Controls.Remove(progressBar);
+                    Controls.Remove(progressLabel);
+                    Height -= 50;
                 }, null);
 
             });

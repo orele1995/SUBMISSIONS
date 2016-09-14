@@ -59,11 +59,13 @@
             this.chainsChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             this.chainsChart.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             series1.ChartArea = "ChartArea1";
+            series1.IsValueShownAsLabel = true;
             series1.LabelToolTip = "אחוז מהסל המבוקש";
             series1.Legend = "Legend1";
             series1.LegendText = "אחוז מהסל המבוקש";
             series1.Name = "Precents";
             series2.ChartArea = "ChartArea1";
+            series2.IsXValueIndexed = true;
             series2.LabelToolTip = "מחיר לסל";
             series2.Legend = "Legend1";
             series2.LegendText = "מחיר לסל";

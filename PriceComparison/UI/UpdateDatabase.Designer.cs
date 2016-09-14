@@ -36,8 +36,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.closePictureBox = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.progressLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,34 +102,13 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "בחר תיקיה לטעינת קבצים";
             // 
-            // progressBar
-            // 
-            this.progressBar.Location = new System.Drawing.Point(59, 315);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(596, 45);
-            this.progressBar.TabIndex = 5;
-            // 
-            // progressLabel
-            // 
-            this.progressLabel.AutoSize = true;
-            this.progressLabel.BackColor = System.Drawing.Color.Transparent;
-            this.progressLabel.Font = new System.Drawing.Font("Segoe Print", 10F);
-            this.progressLabel.Location = new System.Drawing.Point(535, 366);
-            this.progressLabel.Name = "progressLabel";
-            this.progressLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.progressLabel.Size = new System.Drawing.Size(79, 24);
-            this.progressLabel.TabIndex = 2;
-            this.progressLabel.Text = "התקדמות";
-            // 
             // UpdateDatabase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(731, 399);
-            this.Controls.Add(this.progressBar);
+            this.ClientSize = new System.Drawing.Size(731, 323);
             this.Controls.Add(this.closePictureBox);
-            this.Controls.Add(this.progressLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pathTextBox);
@@ -159,7 +136,5 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox closePictureBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ProgressBar progressBar;
-        private System.Windows.Forms.Label progressLabel;
     }
 }
