@@ -70,7 +70,6 @@ namespace UI
                 synchronizationContext.Send(_ =>
                 {
                     okButton.Enabled = true;
-
                     MessageBox.Show("בסיס הנתונים עודכן בהצלחה");
                     Controls.Remove(progressBar);
                     Controls.Remove(progressLabel);
