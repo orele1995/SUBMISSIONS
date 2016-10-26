@@ -150,13 +150,13 @@
       <Project>{905c4b0b-b0fb-425d-82af-830a0671a19b}</Project>
       <Name>FilesManagement</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PriceComperationController\PriceComperationController.csproj">
+    <ProjectReference Include="..\PriceComperationController\PriceComparisonController.csproj">
       <Project>{81e87907-c5d5-428f-a8f4-47c18a7cf97e}</Project>
-      <Name>PriceComperationController</Name>
+      <Name>PriceComparisonController</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PriceComperationModel\PriceComperationModel.csproj">
+    <ProjectReference Include="..\PriceComperationModel\PriceComparisonModel.csproj">
       <Project>{908624c2-8229-44d7-9e7e-62c379af8822}</Project>
-      <Name>PriceComperationModel</Name>
+      <Name>PriceComparisonModel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -70,13 +70,13 @@
     <Folder Include="System\Data\Entity\Infrastructure\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PriceComperationInterfaces\PriceComperationInterfaces.csproj">
+    <ProjectReference Include="..\PriceComperationInterfaces\PriceComparisonInterfaces.csproj">
       <Project>{5d58015e-8192-4897-b925-a97935c960d5}</Project>
-      <Name>PriceComperationInterfaces</Name>
+      <Name>PriceComparisonInterfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PriceComperationModel\PriceComperationModel.csproj">
+    <ProjectReference Include="..\PriceComperationModel\PriceComparisonModel.csproj">
       <Project>{908624C2-8229-44D7-9E7E-62C379AF8822}</Project>
-      <Name>PriceComperationModel</Name>
+      <Name>PriceComparisonModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

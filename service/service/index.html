@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <link href="style.css" rel="stylesheet" />
+
+</head>
+<body ng-controller="mainCtrl as $ctrl" ng-cloak>
+
+    <input ng-model="$ctrl.searchText" ng-model-options="{ debounce: 300}" />
+<ul>
+    <movie
+        ng-repeat="item in $ctrl.Movies | filter: { 'Title': $ctrl.searchText }"
+        model="item" 
+           >
+        
+    </movie>
+    
+</ul>
+
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="main-ctrl.js"></script>
+<script src="movie-service.js"></script>
+    <script src="movie-ctrl.js"></script>
+<script src="app.js"></script>
+   
+</body>
+</html>

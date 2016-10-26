@@ -1,0 +1,31 @@
+﻿<div class="row">
+    <div class="col-sm-5">
+        <select dir="rtl" 
+                ng-options="store as store.address + ' ,' + store.city for store in $ctrl.stores"
+                ng-model="$ctrl.selectedStore"
+                class="form-control"
+                ng-change="$ctrl.changeStore()">
+
+            <option value=""
+                    hidden
+                    selected>בחר חנות</option>
+            </select>
+    </div>
+    <div class="col-sm-5">
+        <select dir="rtl"
+                class="form-control"
+                ng-options="chain as chain.chainName for chain in $ctrl.chains"
+                ng-model="$ctrl.selectedChain"
+                ng-change="$ctrl.changeChain()">
+            <option value=""
+                    hidden
+                    selected>בחר רשת</option>
+        </select>
+    </div>
+    <div class="col-sm-2 choose-store-txt">
+        <b>
+            <span> בחר חנות</span>
+            <span> {{$ctrl.num}}</span>
+        </b>
+    </div>
+</div>

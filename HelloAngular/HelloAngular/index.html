@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>calculator</title>
+    <meta charset="utf-8"/>
+    <link href="style.css" rel="stylesheet" />
+
+</head>
+<body ng-controller="mainCtrl">
+    <div class="calacCointainer">
+        <input id="input" readonly type="text"  ng-model="input_box"/>
+        <div class="buttonsCointainer">
+            <button id="1" ng-click="onClickNum(1)" class="numButton">1</button>
+            <button id="2"ng-click="onClickNum(2)" class="numButton">2</button>
+            <button id="3" ng-click="onClickNum(3)" class="numButton">3</button>
+            <button id="+" ng-click="onClickString('+')" class="opButton">+</button>
+            <button id="4" ng-click="onClickNum(4)" class="numButton">4</button>
+            <button id="5" ng-click="onClickNum(5)" class="numButton">5</button>
+            <button id="6" ng-click="onClickNum(6)" class="numButton">6</button>
+            <button id="-" ng-click="onClickString('-')" class="opButton">-</button>
+            <button id="7"  ng-click="onClickNum(7)" class="numButton">7</button>
+            <button id="8"  ng-click="onClickNum(8)" class="numButton">8</button>
+            <button id="9"  ng-click="onClickNum(9)" class="numButton">9</button>
+            <button id="*" ng-click="onClickString('*')" class="opButton">*</button>
+            <button id="c" ng-click="onClickString('c')" class="clearButton">c</button>
+            <button id="0" ng-click="onClickNum(9)" class="numButton">0</button>
+            <button id="=" ng-click="onClickString('=')" class="eqButton">=</button>
+            <button id="/" ng-click="onClickString('/')" class="opButton">/</button>
+        </div>
+    </div>
+   
+
+
+    <!--<input type="text" ng-model="message"/>
+        <br/>
+    Your Text: {{message}}
+        <br />
+        <button ng-click="onClick()">click me</button>-->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>

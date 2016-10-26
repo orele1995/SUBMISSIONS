@@ -1,0 +1,119 @@
+﻿<div class="container general-page">
+    <div class="row">
+        <div class="col-sm-10">
+            <div class="brand-txt">
+                Brand
+            </div>
+        </div>
+        <div class="col-sm-2 border-left-small text-center">
+            <div>
+                <b>סל קניות</b>
+            </div>
+            <div dir="rtl">
+                <span>{{$ctrl.numOfItems}}</span>
+                <span> מוצרים</span>
+            </div>
+        </div>
+    </div>
+    <div class="row choosing-section">
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-10">
+            <div class="row text-right">
+                <h2>אתר השוואת המחירים המוביל בישראל</h2>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 select-store-body">
+                    <div ng-repeat="store in $ctrl.stores">
+                        <store-selection num="store.storeId"
+                                         on-change-store="$ctrl.changeStore($num, $store)">
+                        </store-selection>
+                    </div>
+                    <div class="row text-right">
+                        <div class="col-sm-10">
+                            <i class="add-store-txt" ng-click="$ctrl.addStore()">הוסף חנות להשואה</i>
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-1">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <div class="row search-section">
+                <div class="col-sm-3" dir="rtl">
+                    <button class="btn btn-default compare-button" ng-click="$ctrl.compare()"> השווה סל קניות</button>
+                </div>
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <div class="icon-addon addon-md">
+                            <input type="text"
+                                   class="form-control search-input"
+                                   id="search"
+                                   ng-model="$ctrl.selectedItem"
+                                   uib-typeahead="item as item.itemName for item in $ctrl.items | filter:{itemName:$viewValue}"
+                                   typeahead-template-url="item-template.html"
+                                   typeahead-show-hint="true" 
+                                   typeahead-min-length="0">
+                            <label for="search" class="glyphicon glyphicon-search" rel="tooltip" title="חפש מוצר"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-1 text-right search-text">
+                    <b>חפש</b>
+                </div>
+
+            </div>
+            <div class="row search-results-header text-right">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-2">
+                    <b>כמות להוספה</b>
+                </div>
+                <div class="col-sm-2">
+                    <b>יח/משקל</b>
+                </div>
+                <div class="col-sm-4">
+                    <b>שם המוצר</b>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div ng-if="$ctrl.shoppingCart.length === 0">
+                    <h3>
+                        הסל שלך ריק, הוסף מוצרים לסל
+                    </h3>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script type="text/ng-template" id="item-template.html">
+    <div class="row item-row" style="color: black">
+        <div class="col-sm-3">
+            <button class="btn btn-default compare-button"> הוסף</button>
+        </div>
+        <div class="col-sm-3">
+            <input class="form-control" type="number">
+        </div>
+        <div class="col-sm-3 text-right" dir="rtl">
+            <div class="row"><b>{{match.model.itemName}}</b></div>
+            <div class="row">{{match.model.manufacturerName}}</div>
+            <div class="row"><br /></div>
+            <div class="row">{{match.model.quantity}}</div>
+        </div>
+        <div class="col-sm-3">
+            <img src="http://www.premierguard.com/wordpress/wp-content/uploads/product_image_placeholder.png"
+                 alt="תמונת מוצר"
+                 class="item-image" />
+        </div>
+
+    </div>
+</script>

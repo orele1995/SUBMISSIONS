@@ -1,0 +1,63 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h3> Choose Items </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <input type="text" ng-model="$ctrl.selectedChain" uib-typeahead="chain as chain.chainName for chain in $ctrl.chains | filter:{chainName:$viewValue}" class="form-control" typeahead-on-select="$ctrl.changeChain()">
+        </div>
+        <div class="col-sm-4">
+            <input type="text" ng-model="$ctrl.selectedStore" uib-typeahead="store as store.address+','+store.city  for store in $ctrl.stores| filter: $viewValue" class="form-control" typeahead-on-select="$ctrl.changeStore()">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-1">
+            <div class="row">
+                <div id="custom-search-input">
+                    <div class="input-group col-md-12 margin-ten">
+                        <input type="text" class="search-query form-control" placeholder="Search" ng-model="$ctrl.searchTxt" ng-model-options="{ debounce: 300}" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-danger" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="list-group" id="all-items" ng-repeat="item in $ctrl.items | filter:{'itemName' : $ctrl.searchTxt}">
+                    <list-item item="item"
+                               class="list-group-item"
+                               on-select="$ctrl.selectFromAll(item)"
+                               on-unselect="$ctrl.unselectFromAll(item)"></list-item>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-2 v-center center-block">
+            <button title="add to shopping cart" class="btn btn-default center-block add" ng-click="$ctrl.addToCart()"><i class="glyphicon glyphicon-chevron-right"></i></button>
+            <button title="remove from shopping cart" class="btn btn-default center-block remove" ng-click="$ctrl.removeFromCart()"><i class="glyphicon glyphicon-chevron-left"></i></button>
+            <button type="button" class="btn btn-primary center-block margin-ten"> השווה </button>
+        </div>
+        <div class="col-sm-4">
+            <div class="row text-center"> <span> העגלה שלך</span> </div>
+            <div class="row">
+                <div class="list-group" id="shopping-cart" ng-repeat="item in $ctrl.shoppingCart">
+                    <list-item item="item"
+                               class="list-group-item"
+                               on-select="$ctrl.selectFromCart(item)"
+                               on-unselect="$ctrl.unselectFromCart(item)"></list-item>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+

@@ -53,9 +53,9 @@
       <Project>{8f1b6c3d-70f8-4192-a392-df576aad630c}</Project>
       <Name>DatabaseManager</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PriceComperationInterfaces\PriceComperationInterfaces.csproj">
+    <ProjectReference Include="..\PriceComperationInterfaces\PriceComparisonInterfaces.csproj">
       <Project>{5d58015e-8192-4897-b925-a97935c960d5}</Project>
-      <Name>PriceComperationInterfaces</Name>
+      <Name>PriceComparisonInterfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

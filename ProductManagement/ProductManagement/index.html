@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Products</title>
+    <meta charset="utf-8"/>
+    <link href="Style.min.css" rel="stylesheet"/>
+</head>
+<body ng-controller="mainCtrl as $ctrl" ng-cloak>
+<ng-view></ng-view>
+<!--<div>
+        <input ng-model="$ctrl.searchText" ng-model-options="{ debounce: 300}" />
+        <div class="cointainer">
+            <div class="list">
+                <ul>
+                    <item ng-repeat="item in $ctrl.getProducts()| filter :{ 'name': $ctrl.searchText, 'description': $ctrl.searchText }"
+                          item="item">
+                    </item>
+                </ul>
+            </div>
+            <div class="form">
+
+            </div>
+        </div>
+    </div>-->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="main-ctrl.js"></script>
+    <script src="product.js"></script>
+
+    <script src="products-service.js"></script>
+    <script src="item-ctrl.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

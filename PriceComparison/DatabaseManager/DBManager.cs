@@ -12,7 +12,7 @@ namespace DatabaseManager
     public class DbManager: IPriceComperationDataManager
 
     {
-        private readonly PricesContext context;
+        private PricesContext context;
 
         #region singelton
 
@@ -21,6 +21,7 @@ namespace DatabaseManager
         private DbManager()
         {
             context = new PricesContext();
+           
         }
 
         public static DbManager TheDbManager
@@ -128,7 +129,7 @@ namespace DatabaseManager
 
         public IEnumerable<Price> GetPrices()
         {
-            return context.Prices;
+            return context.Prices.ToList();
         }
 
         public Store GetStore(int storeId)

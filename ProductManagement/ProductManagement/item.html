@@ -1,0 +1,11 @@
+﻿<li>
+    <div class="picture">
+        <img ng-src="/pictures/new-product.jpg" class="image" />
+    </div>
+    <div class="product-information">
+        <div >{{$ctrl.item.name}}</div>
+        <div>{{$ctrl.item.description}}</div>
+    </div>
+    <button ng-click="$ctrl.onRemove($ctrl.item)">Remove</button>
+    <a ref ="#/Product: {{$ctrl.item.id}}"></a>
+</li>

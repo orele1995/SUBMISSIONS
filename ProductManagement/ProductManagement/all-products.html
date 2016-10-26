@@ -1,0 +1,16 @@
+﻿<div>
+    <input ng-model="$ctrl.searchText" ng-model-options="{ debounce: 300}" />
+    <div class="cointainer">
+        <div class="list">
+            <ul>
+                <item ng-repeat="item in $ctrl.getProducts()| filter :{ 'name': $ctrl.searchText, 'description': $ctrl.searchText }"
+                      item="item">
+                </item>
+               
+            </ul>
+        </div>
+        <div class="form">
+
+        </div>
+    </div>
+</div>
