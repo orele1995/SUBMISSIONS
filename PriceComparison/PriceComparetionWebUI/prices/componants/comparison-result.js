@@ -17,4 +17,3 @@ var PriceComparison;
         });
     })(Prices = PriceComparison.Prices || (PriceComparison.Prices = {}));
 })(PriceComparison || (PriceComparison = {}));
-//# sourceMappingURL=comparison-result.js.map

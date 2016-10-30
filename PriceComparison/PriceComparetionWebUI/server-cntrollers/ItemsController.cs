@@ -24,16 +24,16 @@ namespace PriceComparetionWebUI
 
         [Route("GetItems")]
         [HttpGet]
-        public Item[] GetItems()
+        public object[] GetItems()
         {
-            return new Item[]
+            return new object[]
             {
-                new Item {ItemName = "במבה", ManufacturerName = "אוסם", Quantity = "100", ItemID = 1},
-                new Item {ItemName = "ביסלי", ManufacturerName = "אוסם", Quantity = "100", ItemID = 2},
-                new Item {ItemName = "דוריטוס", ManufacturerName = "אוסם", Quantity = "100", ItemID = 3},
-                new Item {ItemName = "חלב", ManufacturerName = "תנובה", Quantity = "1 ליטר", ItemID = 3},
-                new Item {ItemName = "לחם", ManufacturerName = "נאמן", Quantity = "100", ItemID = 3},
-                new Item {ItemName = "מים", ManufacturerName = "נביעות", Quantity = "1 ליטר", ItemID = 3}
+                new  {ItemName = "במבה", ManufacturerName = "אוסם", Quantity = "100", ItemID = 1, NumOfItems=0},
+                new  {ItemName = "ביסלי", ManufacturerName = "אוסם", Quantity = "100", ItemID = 2, NumOfItems=0},
+                new  {ItemName = "דוריטוס", ManufacturerName = "אוסם", Quantity = "100", ItemID = 3, NumOfItems=0},
+                new  {ItemName = "חלב", ManufacturerName = "תנובה", Quantity = "1 ליטר", ItemID = 3, NumOfItems=0},
+                new  {ItemName = "לחם", ManufacturerName = "נאמן", Quantity = "100", ItemID = 3, NumOfItems=0},
+                new  {ItemName = "מים", ManufacturerName = "נביעות", Quantity = "1 ליטר", ItemID = 3, NumOfItems=0}
             };
         }
 

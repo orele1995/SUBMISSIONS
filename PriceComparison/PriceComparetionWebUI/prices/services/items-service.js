@@ -34,4 +34,3 @@ var PriceComparison;
         pricesModule.service("pricesService", PricesService);
     })(Prices = PriceComparison.Prices || (PriceComparison.Prices = {}));
 })(PriceComparison || (PriceComparison = {}));
-//# sourceMappingURL=items-service.js.map

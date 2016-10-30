@@ -1,11 +1,10 @@
 ﻿<div class="row">
     <div class="col-sm-5">
         <select dir="rtl" 
-                ng-options="store as store.address + ' ,' + store.city for store in $ctrl.stores"
-                ng-model="$ctrl.selectedStore"
+                ng-options="store as store.address + ', ' + store.city for store in $ctrl.stores"
+                ng-model="$ctrl.selected"
                 class="form-control"
                 ng-change="$ctrl.changeStore()">
-
             <option value=""
                     hidden
                     selected>בחר חנות</option>

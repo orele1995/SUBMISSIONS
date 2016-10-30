@@ -31,4 +31,3 @@ var PriceComparison;
         });
     })(Prices = PriceComparison.Prices || (PriceComparison.Prices = {}));
 })(PriceComparison || (PriceComparison = {}));
-//# sourceMappingURL=list-item.js.map

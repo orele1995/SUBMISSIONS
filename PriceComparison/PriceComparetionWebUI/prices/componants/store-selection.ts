@@ -6,29 +6,33 @@
         selectedStore: IStore;
         chains: IChain[];
         stores: IStore[] = [];
-        onChangeStore: Function;
-        
+        selected:IStore;
+
+ 
+
         constructor(private pricesService: IPricesService) {
-            pricesService.getChanis().then(data => this.chains = data);
+
+
+            pricesService.getChanis()
+                .then(data => this.chains = data);
         }
 
         changeChain() {
             if (this.selectedChain) {
                 this.stores = this.selectedChain.stores;
-            } else {
+            }
+            else {
                 this.stores = [];
             }
         }
 
-        changeStore() {
+        changeStore(selected:IStore) {
             if (this.selectedStore) {
-                this.onChangeStore({
-                    $num: this.num,
-                    $store: this.selectedStore
-                });
-            }
+                this.selectedStore = this.selected;
+               }
         }
     }
+
 
     pricesModule.component("storeSelection",
     {
@@ -37,7 +41,7 @@
         bindings:
         {
             num: "=",
-            onChangeStore: "&"
+            selectedStore: "="
         }
     });
 }

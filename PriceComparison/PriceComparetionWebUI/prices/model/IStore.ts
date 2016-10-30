@@ -1,11 +1,16 @@
 ﻿namespace PriceComparison.Prices {
 
+    export interface IStoreModel {
+        id: number;
+        store:IStore;
+    }
+
     export interface IStore {
-        storeId: number;
+        storeID: number;
         storeCode: number;
-        chainId: number;
+        chainID: number;
         address: string;
         city: string;
         prices: IPrice[];
-    }
+        }
 }

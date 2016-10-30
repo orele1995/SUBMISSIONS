@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-10">
             <div class="brand-txt">
-                Brand
+                אוראל השוואות בע"מ
             </div>
         </div>
         <div class="col-sm-2 border-left-small text-center">
@@ -10,7 +10,7 @@
                 <b>סל קניות</b>
             </div>
             <div dir="rtl">
-                <span>{{$ctrl.numOfItems}}</span>
+                <span>{{$ctrl.shoppingCart.length}}</span>
                 <span> מוצרים</span>
             </div>
         </div>
@@ -24,9 +24,9 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 select-store-body">
-                    <div ng-repeat="store in $ctrl.stores">
-                        <store-selection num="store.storeId"
-                                         on-change-store="$ctrl.changeStore($num, $store)">
+                    <div ng-repeat="storeModel in $ctrl.stores track by storeModel.id">
+                        <store-selection num="$index +1"
+                                         selected-store="storeModel.store">
                         </store-selection>
                     </div>
                     <div class="row text-right">
@@ -50,15 +50,16 @@
                 </div>
                 <div class="col-sm-8">
                     <div class="form-group">
-                        <div class="icon-addon addon-md">
+                        <div class="icon-addon addon-md" dir="rtl">
                             <input type="text"
-                                   class="form-control search-input"
+                                   class="form-control search-input "
                                    id="search"
                                    ng-model="$ctrl.selectedItem"
                                    uib-typeahead="item as item.itemName for item in $ctrl.items | filter:{itemName:$viewValue}"
-                                   typeahead-template-url="item-template.html"
-                                   typeahead-show-hint="true" 
-                                   typeahead-min-length="0">
+                                   typeahead-popup-template-url="item-template.html"
+                                   typeahead-on-select="$ctrl.onSelect($item, $model, $label)"
+                                   typeahead-show-hint="true"
+                                   typeahead-min-length="0"/>
                             <label for="search" class="glyphicon glyphicon-search" rel="tooltip" title="חפש מוצר"></label>
                         </div>
                     </div>
@@ -81,39 +82,89 @@
                 </div>
             </div>
             <div class="row text-center">
-                <div ng-if="$ctrl.shoppingCart.length === 0">
+                <div ng-show="$ctrl.shoppingCart.length === 0">
                     <h3>
                         הסל שלך ריק, הוסף מוצרים לסל
                     </h3>
+                </div>
+                <div ng-show="$ctrl.shoppingCart.length !== 0">
+                    <div ng-repeat="item in $ctrl.shoppingCart">
+                        <div class="row item-row">
+                            <div class="col-sm-2">
+                                <button class="btn btn-default add-button"
+                                        ng-click="$ctrl.onRemoveClick(item)">
+                                    הסר
+                                </button>
+                            </div>
+                            <div class="col-sm-2 ">
+                                <input dir="rtl"
+                                       min="0"
+                                       class="number-picker"
+                                       type="number"
+                                       ng-model="item.numOfItems">
+                            </div>
+                            <div class="col-sm-6 text-right" dir="rtl">
+                                <div class="row"><b>{{item.itemName}}</b>
+                                </div>
+                                <div class="row">{{item.manufacturerName}}</div>
+                                <div class="row"><br/>
+                                </div>
+                                <div class="row">{{item.quantity}}</div>
+                            </div>
+                            <div class="col-sm-2">
+                                <img src="http://www.premierguard.com/wordpress/wp-content/uploads/product_image_placeholder.png"
+                                     alt="תמונת מוצר"
+                                     class="item-image"/>
+                            </div>
 
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
 
-
-
-
 <script type="text/ng-template" id="item-template.html">
-    <div class="row item-row" style="color: black">
-        <div class="col-sm-3">
-            <button class="btn btn-default compare-button"> הוסף</button>
-        </div>
-        <div class="col-sm-3">
-            <input class="form-control" type="number">
-        </div>
-        <div class="col-sm-3 text-right" dir="rtl">
-            <div class="row"><b>{{match.model.itemName}}</b></div>
-            <div class="row">{{match.model.manufacturerName}}</div>
-            <div class="row"><br /></div>
-            <div class="row">{{match.model.quantity}}</div>
-        </div>
-        <div class="col-sm-3">
-            <img src="http://www.premierguard.com/wordpress/wp-content/uploads/product_image_placeholder.png"
-                 alt="תמונת מוצר"
-                 class="item-image" />
+    <div class="custom-popup-wrapper"
+         ng-style="{top: position().top+'px', left: position().left+'px'}"
+         style="display: block;"
+         ng-show="isOpen() && !moveInProgress"
+         aria-hidden="{{!isOpen()}}">
+        <ul class="dropdown-menu" 
+            role="listbox">
+            <li class="uib-typeahead-match" 
+                ng-repeat="match in matches"
+                role="option" 
+                id="{{::match.model.itemID}}">
+                <div class="row item-row" ng-click="$event.stopPropagation();">
+                    <div class="col-sm-2">
+                        <button class="btn btn-default add-button" 
+                                ng-click="selectMatch($index)" >הוסף</button>
+                    </div>
+                    <div class="col-sm-2 ">
+                        <input dir="rtl" 
+                               min="0"
+                               class="number-picker" 
+                               type="number" 
+                               ng-model="match.model.numOfItems">
+                    </div>
+                    <div class="col-sm-6 text-right" dir="rtl">
+                        <div class="row"><b>{{match.model.itemName}}</b></div>
+                        <div class="row">{{match.model.manufacturerName}}</div>
+                        <div class="row"><br/></div>
+                        <div class="row">{{match.model.quantity}}</div>
+                    </div>
+                    <div class="col-sm-2">
+                        <img src="http://www.premierguard.com/wordpress/wp-content/uploads/product_image_placeholder.png"
+                             alt="תמונת מוצר"
+                             class="item-image" />
+                    </div>
+
+                </div>
+            </li>
+        </ul>
         </div>
 
-    </div>
 </script>

@@ -7,4 +7,3 @@ var PriceComparison;
     }());
     app.controller("mainCtrl", MainCtrl);
 })(PriceComparison || (PriceComparison = {}));
-//# sourceMappingURL=main-ctrl.js.map

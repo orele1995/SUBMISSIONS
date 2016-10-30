@@ -1,10 +1,11 @@
 ﻿namespace PriceComparison.Prices {
 
     export interface IItem {
-        itemId: number;
+        itemID: number;
         itemName: string;
         manufacturerName: string;
         quantity: string;
+        numOfItems: number;
     }
 }
 
