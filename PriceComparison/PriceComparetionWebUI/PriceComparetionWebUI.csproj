@@ -136,6 +136,7 @@
     <Content Include="bower_components\angular-bootstrap-select\build\angular-bootstrap-select.js" />
     <Content Include="bower_components\angular-bootstrap-select\build\angular-bootstrap-select.min.js" />
     <Content Include="bower_components\angular-bootstrap-select\src\angular-bootstrap-select.js" />
+    <Content Include="bower_components\angular-route\angular-route.min.js" />
     <Content Include="bower_components\angular-ui-select\dist\select.css" />
     <Content Include="bower_components\angular-ui-select\dist\select.js" />
     <Content Include="bower_components\angular-ui-select\dist\select.min.css" />
@@ -260,6 +261,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="prices\templates\comparison-result.html" />
     <Content Include="prices\templates\item-template.html" />
     <Content Include="prices\templates\list-item.html" />
     <Content Include="prices\templates\selection-tmplate.html" />
@@ -443,6 +445,7 @@
     <TypeScriptCompile Include="prices\componants\selection.ts" />
     <TypeScriptCompile Include="prices\componants\store-selection.ts" />
     <TypeScriptCompile Include="prices\model\IChain.ts" />
+    <TypeScriptCompile Include="prices\model\ICompareResult.ts" />
     <TypeScriptCompile Include="prices\model\IDisplayItem.ts" />
     <TypeScriptCompile Include="prices\model\IItem.ts" />
     <TypeScriptCompile Include="prices\model\IPrice.ts" />

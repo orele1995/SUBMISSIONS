@@ -33,7 +33,13 @@ var PriceComparison;
                         storeCode: 1
                     }
                 });
-                pricesService.getItems().then(function (data) { return _this.items = data; });
+                $scope.$watch(function () { return _this.stores[0]; }, function (newValue, oldValue) {
+                    if (newValue.store !== null) {
+                        if (newValue.store.prices.length !== 0) {
+                            pricesService.getItemsOfStore(newValue.store).then(function (data) { return _this.items = data; });
+                        }
+                    }
+                }, true);
             }
             SelectionCrtl.prototype.addStore = function () {
                 this.stores.push({
@@ -62,11 +68,24 @@ var PriceComparison;
                     numOfItems: $item.numOfItems,
                     quantity: $item.quantity
                 });
-                this.items[this.items.indexOf($item)].numOfItems = 0;
-                //     this.selectedItem = undefined;
+                this.items[this.items.indexOf($item)].numOfItems = 1;
             };
             SelectionCrtl.prototype.onRemoveClick = function (item) {
                 this.shoppingCart.splice(this.shoppingCart.indexOf(item), 1);
+            };
+            SelectionCrtl.prototype.onCompareClick = function () {
+                var stores = [];
+                for (var i = 0; i < this.stores.length; i++) {
+                    stores.push(this.stores[i].store);
+                }
+                this.pricesService.setPricesResult(this.shoppingCart, stores);
+            };
+            SelectionCrtl.prototype.storesSelected = function () {
+                for (var i = 0; i < this.stores.length; i++) {
+                    if (this.stores[i].store.prices === [])
+                        return false;
+                }
+                return true;
             };
             return SelectionCrtl;
         }());

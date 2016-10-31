@@ -1,5 +1,11 @@
-﻿:root {
-  --base-color: #f2f6f9;
+﻿@import url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
+:root {
+  --base-color: #dee5e7;
+  --normal-font-size: 15px;
+}
+body {
+  font-family: 'Open Sans Hebrew', sans-serif;
+  font-size: var(--normal-font-size);
 }
 [ng\:cloak],
 [ng-cloak],
@@ -133,12 +139,14 @@
   right: 0px;
 }
 .choosing-section {
-  background-color: #f2f6f9;
   padding: 15px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' http://www.happyharvesterdubai.com/assets/data/box_banner.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .general-page {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  width: 100%;
+  height: 100%;
 }
 .border-left-small {
   border-left: 2px var(--base-color) solid;
@@ -166,28 +174,29 @@ store-selection .row {
   font-style: normal;
   text-decoration: underline;
   cursor: pointer;
+  color: #39c3eb;
 }
-.compare-button {
-  margin-left: 0px;
-  padding-top: 0xp;
-  padding-bottom: 0xp;
-  background-color: var(--base-color);
-  border: 1px solid #dbe4eb;
+.base-button {
+  background-color: #0cb6e7;
   font-weight: bold;
   text-decoration: none;
-  font-size: large;
-  width: 100%;
-  height: 35px;
   text-align: center;
+  color: Window;
+  border-bottom: solid 2px #0082b5;
+  padding: 5px;
+}
+.compare-button {
+  width: 100%;
   float: left;
+  font-size: large;
 }
 .add-button {
-  background-color: var(--base-color);
-  border: 1px solid #dbe4eb;
-  font-weight: bold;
-  font-size: large;
-  height: 35px;
-  text-align: center;
+  font-size: medium;
+  padding: 10px 0 10px 0;
+  width: 100%;
+  margin: 22px;
+  margin-left: -10px;
+  vertical-align: middle;
 }
 .search-text {
   font-size: large;
@@ -205,16 +214,23 @@ store-selection .row {
   padding-bottom: 20px;
   font-size: medium;
   border-bottom: #dbe4eb 1px solid;
+  margin-left: -2px;
+  margin-right: -2px;
 }
 .item-image {
-  height: 50px;
-  width: 50px;
-  margin: 5px;
-  float: right;
+  height: 54px;
+  width: 54px;
+  margin: 14px 0px;
 }
 .item-row {
   margin: 10px;
-  border-bottom: solid 2px var(--base-color);
+  border-bottom: solid 1px #DEE5E7 ;
+  color: black;
+  height: 100px;
+}
+.result-item-row {
+  margin: 10px;
+  border-bottom: solid 1px #DEE5E7 ;
   color: black;
 }
 .dropdown-menu {
@@ -249,8 +265,105 @@ input[type=number]::-webkit-outer-spin-button {
   text-align: center;
   width: 100%;
   height: 100%;
+  margin: 21px 0px;
   vertical-align: middle;
   font-size: medium;
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+.page-header {
+  font-size: 30px;
+  color: Window;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' http://www.happyharvesterdubai.com/assets/data/box_banner.jpg');
+  padding: 50px;
+  margin-top: 0px;
+}
+.cheapest-heading {
+  background-color: #68af3e;
+  color: Window;
+  padding: 10px;
+  margin-right: -5px;
+  margin-left: -5px;
+  width: 300px;
+  box-sizing: content-box;
+  position: absolute;
+  top: -37px;
+}
+.results-container {
+  margin-top: 50px;
+}
+.result-container {
+  border: 3px solid var(--base-color);
+  border-radius: 3px;
+  padding: 15px 5px 5px 5px;
+  width: 310px;
+}
+.min-result-container {
+  padding-bottom: 15px;
+}
+.text-box {
+  border: 3px solid var(--base-color);
+  padding: 7px;
+  width: 70%;
+  height: auto;
+  margin: 7px;
+  display: inline-block;
+}
+.sum-display {
+  background-color: #394244;
+  padding: 15px;
+  margin: 10px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font-size: large;
+  color: window;
+}
+.min-sum-display {
+  background-color: #68af3e;
+}
+.item-details {
+  font-size: medium;
+  margin-bottom: 3px;
+}
+.left-triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 7px 7px 0;
+  border-color: transparent #4e8c28 transparent transparent;
+  top: 4px;
+  position: absolute;
+  left: 49px;
+  float: left;
+}
+.right-triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 7px 7px 0 0;
+  border-color: #4e8c28 transparent transparent transparent;
+  margin-right: -5px;
+  position: absolute;
+  top: 4px;
+  float: right;
+}
+.min-price {
+  color: #2d991a;
+  font-weight: bold;
+}
+.max-price {
+  color: #dd335f;
+  font-weight: bold;
+}
+.slogen-box {
+  color: Window;
+}
+.fill-parent {
+  height: 100%;
+}
+.quantity-text {
+  margin: 34px;
+}
+.details-text {
+  margin: 20px;
 }

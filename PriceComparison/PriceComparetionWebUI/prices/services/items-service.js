@@ -28,6 +28,37 @@ var PriceComparison;
                     return data.data;
                 });
             };
+            PricesService.prototype.setPricesResult = function (items, stores) {
+                this.items = items;
+                this.stores = stores;
+            };
+            PricesService.prototype.getResults = function (_items, _stores) {
+                return this.$http.post("api/priceComparetion/getPricesResult", {
+                    items: _items,
+                    stores: _stores
+                })
+                    .then(function (data) {
+                    return data.data;
+                });
+            };
+            PricesService.prototype.getPricesResult = function () {
+                var _this = this;
+                return this.getResults(this.items, this.stores)
+                    .then(function (data) {
+                    _this.results = data;
+                    return _this.results;
+                });
+            };
+            PricesService.prototype.getItemsOfStore = function (store) {
+                return this.$http.get("api/priceComparetion/GetItemsOfStore", {
+                    params: {
+                        storeId: store.storeID
+                    }
+                })
+                    .then(function (data) {
+                    return data.data;
+                });
+            };
             return PricesService;
         }());
         Prices.PricesService = PricesService;

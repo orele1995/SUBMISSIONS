@@ -1,11 +1,11 @@
 ﻿<div class="container general-page">
     <div class="row">
-        <div class="col-sm-10">
+        <div class="col-sm-11">
             <div class="brand-txt">
                 אוראל השוואות בע"מ
             </div>
         </div>
-        <div class="col-sm-2 border-left-small text-center">
+        <div class="col-sm-1 border-left-small text-center">
             <div>
                 <b>סל קניות</b>
             </div>
@@ -19,7 +19,7 @@
         <div class="col-sm-1">
         </div>
         <div class="col-sm-10">
-            <div class="row text-right">
+            <div class="row text-right slogen-box">
                 <h2>אתר השוואת המחירים המוביל בישראל</h2>
             </div>
             <div class="row">
@@ -46,8 +46,14 @@
         <div class="col-sm-10">
             <div class="row search-section">
                 <div class="col-sm-3" dir="rtl">
-                    <button class="btn btn-default compare-button" ng-click="$ctrl.compare()"> השווה סל קניות</button>
-                </div>
+                    <a href="#results">
+                        <button class="btn base-button compare-button"
+                                ng-disabled="$ctrl.shoppingCart.length===0 || !$ctrl.storesSelected()"
+                                ng-click="$ctrl.onCompareClick()">                       
+                        השווה סל קניות
+                    </button>
+                        </a>
+</div>
                 <div class="col-sm-8">
                     <div class="form-group">
                         <div class="icon-addon addon-md" dir="rtl">
@@ -55,7 +61,7 @@
                                    class="form-control search-input "
                                    id="search"
                                    ng-model="$ctrl.selectedItem"
-                                   uib-typeahead="item as item.itemName for item in $ctrl.items | filter:{itemName:$viewValue}"
+                                   uib-typeahead="item as item.itemName for item in $ctrl.items | filter:{itemName:$viewValue} | limitTo:15"
                                    typeahead-popup-template-url="item-template.html"
                                    typeahead-on-select="$ctrl.onSelect($item, $model, $label)"
                                    typeahead-show-hint="true"
@@ -69,7 +75,7 @@
                 </div>
 
             </div>
-            <div class="row search-results-header text-right">
+            <div class="row search-results-header text-center">
                 <div class="col-sm-2"></div>
                 <div class="col-sm-2">
                     <b>כמות להוספה</b>
@@ -90,8 +96,9 @@
                 <div ng-show="$ctrl.shoppingCart.length !== 0">
                     <div ng-repeat="item in $ctrl.shoppingCart">
                         <div class="row item-row">
+                            
                             <div class="col-sm-2">
-                                <button class="btn btn-default add-button"
+                                <button class="btn base-button add-button"
                                         ng-click="$ctrl.onRemoveClick(item)">
                                     הסר
                                 </button>
@@ -103,14 +110,19 @@
                                        type="number"
                                        ng-model="item.numOfItems">
                             </div>
-                            <div class="col-sm-6 text-right" dir="rtl">
-                                <div class="row"><b>{{item.itemName}}</b>
-                                </div>
-                                <div class="row">{{item.manufacturerName}}</div>
-                                <div class="row"><br/>
-                                </div>
-                                <div class="row">{{item.quantity}}</div>
+
+                            <div class="col-sm-2 fill-parent">
+                                <div class="quantity-text">{{item.quantity}}</div>
                             </div>
+
+                            <div class="col-sm-4 text-right fill-parent" dir="rtl">
+                                <div class="details-text">
+                                    <div class="row">
+                                        <b>{{item.itemName}}</b>
+                                    </div>
+                                    <div class="row">{{item.manufacturerName}}</div>
+                                </div>
+                             </div>
                             <div class="col-sm-2">
                                 <img src="http://www.premierguard.com/wordpress/wp-content/uploads/product_image_placeholder.png"
                                      alt="תמונת מוצר"
@@ -140,12 +152,12 @@
                 id="{{::match.model.itemID}}">
                 <div class="row item-row" ng-click="$event.stopPropagation();">
                     <div class="col-sm-2">
-                        <button class="btn btn-default add-button" 
+                        <button class="btn base-button add-button" 
                                 ng-click="selectMatch($index)" >הוסף</button>
                     </div>
                     <div class="col-sm-2 ">
                         <input dir="rtl" 
-                               min="0"
+                               min="1"
                                class="number-picker" 
                                type="number" 
                                ng-model="match.model.numOfItems">
