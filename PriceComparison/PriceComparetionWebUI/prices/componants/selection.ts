@@ -33,6 +33,7 @@
                 }
             });
 
+
             $scope.$watch(() => { return this.stores[0] },
                 (newValue: IStoreModel, oldValue) => {
                     if (newValue.store !== null) {
