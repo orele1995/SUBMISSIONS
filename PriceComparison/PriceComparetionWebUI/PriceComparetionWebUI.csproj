@@ -264,10 +264,7 @@
     <Content Include="prices\gif\135.gif" />
     <Content Include="prices\gif\loader.gif" />
     <Content Include="prices\templates\comparison-result.html" />
-    <Content Include="prices\templates\item-template.html" />
-    <Content Include="prices\templates\list-item.html" />
     <Content Include="prices\templates\selection-tmplate.html" />
-    <Content Include="prices\templates\selection.html" />
     <Content Include="prices\templates\store-selection.html" />
     <Content Include="scripts\bootstrap-select.js" />
     <Content Include="scripts\bootstrap-select.min.js" />
@@ -444,7 +441,6 @@
     <TypeScriptCompile Include="directives\selectize.ts" />
     <TypeScriptCompile Include="main-ctrl.ts" />
     <TypeScriptCompile Include="prices\componants\comparison-result.ts" />
-    <TypeScriptCompile Include="prices\componants\list-item.ts" />
     <TypeScriptCompile Include="prices\componants\selection.ts" />
     <TypeScriptCompile Include="prices\componants\store-selection.ts" />
     <TypeScriptCompile Include="prices\model\IChain.ts" />
