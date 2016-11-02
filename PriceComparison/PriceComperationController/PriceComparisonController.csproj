@@ -47,6 +47,7 @@
     <Compile Include="ChainDetails.cs" />
     <Compile Include="DatabaseType.cs" />
     <Compile Include="DisplayItem.cs" />
+    <Compile Include="MultipleItem.cs" />
     <Compile Include="PriceControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

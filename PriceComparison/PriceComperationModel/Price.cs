@@ -1,16 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PriceComperationModel
 {
+    [DataContract]
     public class Price:IComparable<Price>
     {
+        [DataMember]
         public long PriceID { get; set; }
+        [DataMember]
         public long ItemID { get; set; }
+        [DataMember]
         public int StoreID { get; set; }
+        [DataMember]
         public double ItemPrice { get; set; }
 
         public int CompareTo(Price other)

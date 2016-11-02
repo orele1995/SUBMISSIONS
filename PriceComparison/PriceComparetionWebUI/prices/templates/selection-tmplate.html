@@ -1,143 +1,147 @@
-﻿<div class="container general-page">
-    <div class="row">
-        <div class="col-sm-11">
-            <div class="brand-txt">
-                אוראל השוואות בע"מ
+﻿<div style="position: relative; width: 100%; height: 100%;">
+  
+    <div class="container general-page">
+        <div class="row">
+            <div class="col-sm-11">
+                <div class="brand-txt">
+                    אוראל השוואות בע"מ
+                </div>
             </div>
-        </div>
-        <div class="col-sm-1 border-left-small text-center">
-            <div>
-                <b>סל קניות</b>
-            </div>
-            <div dir="rtl">
-                <span>{{$ctrl.shoppingCart.length}}</span>
-                <span> מוצרים</span>
-            </div>
-        </div>
-    </div>
-    <div class="row choosing-section">
-        <div class="col-sm-1">
-        </div>
-        <div class="col-sm-10">
-            <div class="row text-right slogen-box">
-                <h2>אתר השוואת המחירים המוביל בישראל</h2>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 select-store-body">
-                    <div ng-repeat="storeModel in $ctrl.stores track by storeModel.id">
-                        <store-selection num="$index +1"
-                                         selected-store="storeModel.store">
-                        </store-selection>
-                    </div>
-                    <div class="row text-right">
-                        <div class="col-sm-10">
-                            <i class="add-store-txt" ng-click="$ctrl.addStore()">הוסף חנות להשואה</i>
-                        </div>
-                        <div class="col-sm-2"></div>
-                    </div>
+            <div class="col-sm-1 border-left-small text-center">
+                <div>
+                    <b>סל קניות</b>
+                </div>
+                <div dir="rtl">
+                    <span>{{$ctrl.shoppingCart.length}}</span>
+                    <span> מוצרים</span>
                 </div>
             </div>
         </div>
-        <div class="col-sm-1">
+        <div class="row choosing-section">
+            <div class="col-sm-1">
+            </div>
+            <div class="col-sm-10">
+                <div class="row text-right slogen-box">
+                    <h2>אתר השוואת המחירים המוביל בישראל</h2>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 select-store-body">
+                        <div ng-repeat="storeModel in $ctrl.stores track by storeModel.id">
+                            <store-selection num="$index +1"
+                                             selected-store="storeModel.store"
+                                             on-change-store="$ctrl.onFirstStoreChanged($storeModel)"
+                                             chains="$ctrl.chains">
+                           </store-selection>
+                        </div>
+                        <div class="row text-right">
+                            <div class="col-sm-10">
+                                <i class="add-store-txt" ng-click="$ctrl.addStore()">הוסף חנות להשואה</i>
+                            </div>
+                            <div class="col-sm-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1">
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-10">
-            <div class="row search-section">
-                <div class="col-sm-3" dir="rtl">
-                    <a href="#results">
-                        <button class="btn base-button compare-button"
-                                ng-disabled="$ctrl.shoppingCart.length===0 || !$ctrl.storesSelected()"
-                                ng-click="$ctrl.onCompareClick()">                       
-                        השווה סל קניות
-                    </button>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <div class="row search-section">
+                    <div class="col-sm-3" dir="rtl">
+                        <a href="#results">
+                            <button class="btn base-button compare-button"
+                                    ng-disabled="$ctrl.shoppingCart.length===0 || !$ctrl.storesSelected()"
+                                    ng-click="$ctrl.onCompareClick()">
+                                השווה סל קניות
+                            </button>
                         </a>
-</div>
-                <div class="col-sm-8">
-                    <div class="form-group">
-                        <div class="icon-addon addon-md" dir="rtl">
-                            <input type="text"
-                                   class="form-control search-input "
-                                   id="search"
-                                   ng-model="$ctrl.selectedItem"
-                                   uib-typeahead="item as item.itemName for item in $ctrl.items | filter:{itemName:$viewValue} | limitTo:15"
-                                   typeahead-popup-template-url="item-template.html"
-                                   typeahead-on-select="$ctrl.onSelect($item, $model, $label)"
-                                   typeahead-show-hint="true"
-                                   typeahead-min-length="0"/>
-                            <label for="search" class="glyphicon glyphicon-search" rel="tooltip" title="חפש מוצר"></label>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <div class="icon-addon addon-md" dir="rtl">
+                                <input type="text"
+                                       class="form-control search-input "
+                                       id="search"
+                                       ng-model="$ctrl.selectedItem"
+                                       uib-typeahead="item as item.itemName for item in $ctrl.items | filter:{itemName:$viewValue} | limitTo:15"
+                                       typeahead-popup-template-url="item-template.html"
+                                       typeahead-on-select="$ctrl.onSelect($item, $model, $label)"
+                                       typeahead-show-hint="true"
+                                       typeahead-min-length="0" />
+                                <label for="search" class="glyphicon glyphicon-search" rel="tooltip" title="חפש מוצר"></label>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-1 text-right search-text">
-                    <b>חפש</b>
-                </div>
+                    <div class="col-sm-1 text-right search-text">
+                        <b>חפש</b>
+                    </div>
 
-            </div>
-            <div class="row search-results-header text-center">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-2">
-                    <b>כמות להוספה</b>
                 </div>
-                <div class="col-sm-2">
-                    <b>יח/משקל</b>
+                <div class="row search-results-header text-center">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-2">
+                        <b>כמות להוספה</b>
+                    </div>
+                    <div class="col-sm-2">
+                        <b>יח/משקל</b>
+                    </div>
+                    <div class="col-sm-4">
+                        <b>שם המוצר</b>
+                    </div>
                 </div>
-                <div class="col-sm-4">
-                    <b>שם המוצר</b>
-                </div>
-            </div>
-            <div class="row text-center">
-                <div ng-show="$ctrl.shoppingCart.length === 0">
-                    <h3>
-                        הסל שלך ריק, הוסף מוצרים לסל
-                    </h3>
-                </div>
-                <div ng-show="$ctrl.shoppingCart.length !== 0">
-                    <div ng-repeat="item in $ctrl.shoppingCart">
-                        <div class="row item-row">
-                            
-                            <div class="col-sm-2">
-                                <button class="btn base-button add-button"
-                                        ng-click="$ctrl.onRemoveClick(item)">
-                                    הסר
-                                </button>
-                            </div>
-                            <div class="col-sm-2 ">
-                                <input dir="rtl"
-                                       min="0"
-                                       class="number-picker"
-                                       type="number"
-                                       ng-model="item.numOfItems">
-                            </div>
+                <div class="row text-center">
+                    <div ng-show="$ctrl.shoppingCart.length === 0">
+                        <h3>
+                            הסל שלך ריק, הוסף מוצרים לסל
+                        </h3>
+                    </div>
+                    <div ng-show="$ctrl.shoppingCart.length !== 0">
+                        <div ng-repeat="item in $ctrl.shoppingCart">
+                            <div class="row item-row">
 
-                            <div class="col-sm-2 fill-parent">
-                                <div class="quantity-text">{{item.quantity}}</div>
-                            </div>
-
-                            <div class="col-sm-4 text-right fill-parent" dir="rtl">
-                                <div class="details-text">
-                                    <div class="row">
-                                        <b>{{item.itemName}}</b>
-                                    </div>
-                                    <div class="row">{{item.manufacturerName}}</div>
+                                <div class="col-sm-2">
+                                    <button class="btn base-button add-button"
+                                            ng-click="$ctrl.onRemoveClick(item)">
+                                        הסר
+                                    </button>
                                 </div>
-                             </div>
-                            <div class="col-sm-2">
-                                <img src="http://www.premierguard.com/wordpress/wp-content/uploads/product_image_placeholder.png"
-                                     alt="תמונת מוצר"
-                                     class="item-image"/>
-                            </div>
+                                <div class="col-sm-2 ">
+                                    <input dir="rtl"
+                                           min="0"
+                                           class="number-picker"
+                                           type="number"
+                                           ng-model="item.numOfItems">
+                                </div>
 
+                                <div class="col-sm-2 fill-parent">
+                                    <div class="quantity-text">{{item.quantity}}</div>
+                                </div>
+
+                                <div class="col-sm-4 text-right fill-parent" dir="rtl">
+                                    <div class="details-text">
+                                        <div class="row">
+                                            <b>{{item.itemName}}</b>
+                                        </div>
+                                        <div class="row">{{item.manufacturerName}}</div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <img src="http://www.premierguard.com/wordpress/wp-content/uploads/product_image_placeholder.png"
+                                         alt="תמונת מוצר"
+                                         class="item-image" />
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
-
 </div>
-
 <script type="text/ng-template" id="item-template.html">
     <div class="custom-popup-wrapper"
          ng-style="{top: position().top+'px', left: position().left+'px'}"

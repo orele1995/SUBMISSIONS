@@ -2,13 +2,13 @@
 @import url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
 
 :root {
-  --base-color: #dee5e7;
-  --normal-font-size: 15px;
+    --base-color: #dee5e7;
+    --normal-font-size: 15px;
 }
 
 body {
-font-family: 'Open Sans Hebrew', sans-serif;
-font-size: var(--normal-font-size);
+    font-family: 'Open Sans Hebrew', sans-serif;
+    font-size: var(--normal-font-size);
 }
 
 
@@ -18,21 +18,34 @@ font-size: var(--normal-font-size);
 }
 
 .v-center {
-  min-height:200px;
-  display: flex;
-  justify-content:center;
-  flex-flow: column wrap;
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    flex-flow: column wrap;
 }
-.gi-2x{font-size: 2em;}
-.gi-3x{font-size: 3em;}
-.gi-4x{font-size: 4em;}
-.gi-5x{font-size: 5em;}
 
-.margin-ten{
-        margin: 10px;
+.gi-2x {
+    font-size: 2em;
 }
+
+.gi-3x {
+    font-size: 3em;
+}
+
+.gi-4x {
+    font-size: 4em;
+}
+
+.gi-5x {
+    font-size: 5em;
+}
+
+.margin-ten {
+    margin: 10px;
+}
+
 #custom-search-input {
-    margin:0;
+    margin: 0;
     margin-top: 10px;
     padding: 0;
 }
@@ -43,7 +56,6 @@ font-size: var(--normal-font-size);
     padding-left: 3px;
     padding-left: 4px \9;
     /* IE7-8 doesn't have border-radius, so don't indent the padding */
-
     margin-bottom: 0;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -63,11 +75,11 @@ font-size: var(--normal-font-size);
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
-    color:#D9230F;
+    color: #D9230F;
 }
 
 .search-query:focus + button {
-    z-index: 3;   
+    z-index: 3;
 }
 
 .center-block {
@@ -82,10 +94,9 @@ font-size: var(--normal-font-size);
 
 .icon-addon {
     position: relative;
-    color:var(--base-color);
+    color: var(--base-color);
     display: block;
-    direction:rtl;
-
+    direction: rtl;
 }
 
 .icon-addon:after,
@@ -99,7 +110,7 @@ font-size: var(--normal-font-size);
 }
 
 .icon-addon.addon-md .glyphicon,
-.icon-addon .glyphicon, 
+.icon-addon .glyphicon,
 .icon-addon.addon-md .fa,
 .icon-addon .fa {
     position: absolute;
@@ -110,7 +121,7 @@ font-size: var(--normal-font-size);
     margin-left: -2.5px;
     text-align: center;
     padding: 10px 0;
-    top: 1px
+    top: 1px;
 }
 
 
@@ -120,6 +131,7 @@ font-size: var(--normal-font-size);
     float: left;
     font-weight: normal;
 }
+
 .icon-addon .form-control:focus + .glyphicon,
 .icon-addon:hover .glyphicon,
 .icon-addon .form-control:focus + .fa,
@@ -128,19 +140,18 @@ font-size: var(--normal-font-size);
 }
 
 
-  .custom-popup-wrapper {
+.custom-popup-wrapper {
     position: absolute;
     top: 100%;
     left: 0;
     z-index: 1000;
     display: none;
     background-color: #f9f9f9;
-        right:0px;
+    right: 0px;
+}
 
-  }
 
-
-  .custom-popup-wrapper > .dropdown-menu {
+.custom-popup-wrapper > .dropdown-menu {
     position: static;
     float: none;
     display: block;
@@ -149,183 +160,189 @@ font-size: var(--normal-font-size);
     border: none;
     border-radius: 0;
     box-shadow: none;
-    right:0px;
-  }
+    right: 0px;
+}
 
 
 //========================================
 
-
-.choosing-section{
-     padding:15px;
+.backround-image-prop {
     background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(' http://www.happyharvesterdubai.com/assets/data/box_banner.jpg');
-     background-repeat: no-repeat;
-      background-size: cover; 
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-.general-page{
-     width:100%;
+
+.choosing-section {
+    padding: 15px;
+    .backround-image-prop
+}
+
+.general-page {
+    width: 100%;
     height: 100%;
 }
-.border-left-small{
-    border-left:2px var(--base-color) solid; 
+
+.border-left-small {
+    border-left: 2px var(--base-color) solid;
 }
-.right-direction{
-    direction:rtl;
+
+.right-direction {
+    direction: rtl;
 }
-.brand-txt{
-    position:relative;
-    top:5px;
+
+.brand-txt {
+    position: relative;
+    top: 5px;
     font-size: large;
 }
-.select-store-body{
+
+.select-store-body {
     background-color: Window;
-  padding:15px;
-
+    padding: 15px;
 }
 
-store-selection{
-    .row{
-    margin-bottom: 5px;
+store-selection {
+    .row {
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+}
+
+.choose-store-txt {
     margin-top: 5px;
-    }    
- }
-
-.choose-store-txt{
-    margin-top: 5px;
 }
 
-.add-store-txt{
-        font-style:normal;
-        text-decoration: underline;
-        cursor:pointer;
-        color: #39c3eb;
- }
-
-.base-button{
-     background-color: #0cb6e7;
-   font-weight: bold;
-   text-decoration: none;
-      text-align:center;
-      color: Window;
-      border-bottom: solid 2px #0082b5;
-      padding: 5px;
+.add-store-txt {
+    font-style: normal;
+    text-decoration: underline;
+    cursor: pointer;
+    color: #39c3eb;
 }
-.compare-button{
-     width: 100%;
-   float: left;
-      font-size:large;
 
+.base-button {
+    background-color: #0cb6e7;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    color: Window;
+    border-bottom: solid 2px #0082b5;
+    padding: 5px;
 }
-.add-button{
-         font-size: medium;
+
+.compare-button {
+    width: 100%;
+    float: left;
+    font-size: large;
+}
+
+.add-button {
+    font-size: medium;
     padding: 10px 0 10px 0;
     width: 100%;
     margin: 22px;
     margin-left: -10px;
     vertical-align: middle;
-    }
+}
 
-.search-text{
-    font-size:large; 
+.search-text {
+    font-size: large;
     margin-top: 5px;
 }
 
 
 
-.search-input{
-    font-size:medium; 
-    }
-.search-section{
+.search-input {
+    font-size: medium;
+}
+
+.search-section {
     margin-top: 20px;
 }
 
-.search-results-header{
-       background-color: var(--base-color);
-       padding-top: 20px;
-       padding-bottom: 20px;
-       font-size:medium;
-       border-bottom: #dbe4eb 1px solid;
-           margin-left: -2px;
+.search-results-header {
+    background-color: var(--base-color);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: medium;
+    border-bottom: #dbe4eb 1px solid;
+    margin-left: -2px;
     margin-right: -2px;
 }
 
-.item-image{
-     height: 54px;
+.item-image {
+    height: 54px;
     width: 54px;
     margin: 14px 0px;
 }
 
-.item-row{
+.item-row {
     margin: 10px;
-    border-bottom: solid 1px #DEE5E7 ; 
+    border-bottom: solid 1px #DEE5E7;
     color: black;
     height: 100px;
 }
 
-.result-item-row{
+.result-item-row {
     margin: 10px;
-    border-bottom: solid 1px #DEE5E7 ; 
+    border-bottom: solid 1px #DEE5E7;
     color: black;
 }
 
-.dropdown-menu{
-    right:0px;
-overflow: auto;
+.dropdown-menu {
+    right: 0px;
+    overflow: auto;
     max-height: 300px;
-
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button {  
-
-   opacity: 1;
-direction: rtl;
-}
-
-::-webkit-scrollbar-track
-{
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    opacity: 1;
     direction: rtl;
-	border-radius: 10px;
-	background-color: window;
 }
 
-::-webkit-scrollbar
-{
+::-webkit-scrollbar-track {
     direction: rtl;
-	width: 15px;
-	background-color: window;
+    border-radius: 10px;
+    background-color: window;
 }
 
-::-webkit-scrollbar-thumb
-{
+::-webkit-scrollbar {
     direction: rtl;
-	border-radius: 10px;
-    border: 3px solid  window;
-	background-color: var(--base-color);
+    width: 15px;
+    background-color: window;
 }
-.number-picker{
-  border: 1px solid var(--base-color);
-  border-radius: 3px;
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  margin: 21px 0px;
-  vertical-align: middle;
-  font-size: medium;
-  padding-top: 11px; 
-  padding-bottom: 11px; 
+
+::-webkit-scrollbar-thumb {
+    direction: rtl;
+    border-radius: 10px;
+    border: 3px solid window;
+    background-color: var(--base-color);
+}
+
+.number-picker {
+    border: 1px solid var(--base-color);
+    border-radius: 3px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    margin: 21px 0px;
+    vertical-align: middle;
+    font-size: medium;
+    padding-top: 11px;
+    padding-bottom: 11px;
 }
 
 
-.page-header{
+.page-header {
     font-size: 30px;
     color: Window;
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(' http://www.happyharvesterdubai.com/assets/data/box_banner.jpg');
-        padding: 50px;
-    margin-top:0px;
+    padding: 50px;
+    margin-top: 0px;
+    .backround-image-prop
 }
-.cheapest-heading{
-   background-color: #68af3e;
+
+.cheapest-heading {
+    background-color: #68af3e;
     color: Window;
     padding: 10px;
     margin-right: -5px;
@@ -336,20 +353,22 @@ direction: rtl;
     top: -37px;
 }
 
-.results-container{
-        margin-top: 50px;
-}
-.result-container{
-   border: 3px solid var(--base-color);
-   border-radius: 3px;
-   padding: 15px 5px 5px 5px;
-   width: 310px;
+.results-container {
+    margin-top: 50px;
 }
 
-.min-result-container{
+.result-container {
+    border: 3px solid var(--base-color);
+    border-radius: 3px;
+    padding: 15px 5px 5px 5px;
+    width: 310px;
+}
+
+.min-result-container {
     padding-bottom: 15px;
 }
-.text-box{
+
+.text-box {
     border: 3px solid var(--base-color);
     padding: 7px;
     width: 70%;
@@ -357,24 +376,27 @@ direction: rtl;
     margin: 7px;
     display: inline-block;
 }
-.sum-display{
-       background-color: #394244;
+
+.sum-display {
+    background-color: #394244;
     padding: 15px;
     margin: 10px;
     margin-top: 25px;
     margin-bottom: 25px;
     font-size: large;
     color: window;
-  }
-.min-sum-display{
-        background-color: #68af3e;
-   
 }
-.item-details{
+
+.min-sum-display {
+    background-color: #68af3e;
+}
+
+.item-details {
     font-size: medium;
     margin-bottom: 3px;
 }
-.left-triangle{
+
+.left-triangle {
     width: 0;
     height: 0;
     border-style: solid;
@@ -382,38 +404,71 @@ direction: rtl;
     border-color: transparent #4e8c28 transparent transparent;
     top: 4px;
     position: absolute;
-    left: 49px;
+    left: 45px;
     float: left;
 }
 
-.right-triangle{
-   width: 0;
-height: 0;
-border-style: solid;
-border-width: 7px 7px 0 0;
-border-color: #4e8c28 transparent transparent transparent;
+.right-triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 7px 7px 0 0;
+    border-color: #4e8c28 transparent transparent transparent;
     margin-right: -5px;
     position: absolute;
-     top: 4px;
+    top: 4px;
     float: right;
 }
-.min-price{
+
+.min-price {
     color: #2d991a;
     font-weight: bold;
 }
-.max-price{
+
+.max-price {
     color: #dd335f;
     font-weight: bold;
-    }
-.slogen-box{
+}
+
+.slogen-box {
     color: Window;
 }
-.fill-parent{
+
+.fill-parent {
     height: 100%;
 }
-.quantity-text{
+
+.quantity-text {
     margin: 34px;
 }
-.details-text{
+
+.details-text {
     margin: 20px;
+}
+
+.no-price {
+    color: #ff0000;
+}
+
+.loader-container {
+    height: 100%;
+    width: 100%;
+    position :absolute;
+    z-index: 1000;
+    background-color: black;
+    opacity:0.8;
+
+    .loader {
+background-image: url('prices/gif/loader.gif');
+    margin: auto;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 28px;
+    width: 256px;
+    z-index: 1001;
+    transform: translate(-50%,-50%);
+        transform:translate(-50%,-50%)
+    }
 }

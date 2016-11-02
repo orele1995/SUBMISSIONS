@@ -10,7 +10,7 @@ namespace PriceComperationController
     {
         public string ItemName { get; set; }
         public string ManufacturerName { get; set; }
-        public double ItemPrice { get; set; }
+        public double? ItemPrice { get; set; }
         public string ChainName { get; set; }
         public int StoreCode { get; set; }
         public string City { get; set; }

@@ -108,9 +108,23 @@ namespace PriceComperationController
 
         public IEnumerable<Item> GetItemsOfStore(int storeId)
         {
-            return _manager.GetStore(storeId).Prices.Select(p => _manager.GetItem(p.ItemID)).ToList();
+            var itemIds= _manager.GetStore(storeId).Prices.Select(i=> i.ItemID);
+            return _manager.GetItems().Where(i => itemIds.Contains(i.ItemID)).ToArray();            
         }
-
+        public IEnumerable<MultipleItem> GetMultipleItemsOfStore(int storeId)
+        {
+            var itemIds = _manager.GetStore(storeId).Prices.Select(i => i.ItemID);
+            return _manager.GetItems()
+                .Where(i => itemIds.Contains(i.ItemID))
+                .Select(i=>new MultipleItem()
+                {
+                    ItemID = i.ItemID,
+                    Quantity = i.Quantity,
+                    ItemName = i.ItemName,
+                    ManufacturerName = i.ManufacturerName,
+                    NumOfItems = 1
+                }).ToArray();
+        }
         public IEnumerable<DisplayItem> GetPricesOfItems(IEnumerable<Item> items, Predicate<Price> filter)
         {
             var prices =
@@ -163,6 +177,35 @@ namespace PriceComperationController
                 PrecentOfCart = calcPrecentsOfCart(GetDisplayItems(price.Value).ToList(), shoppingCart)
             }).ToList();
             return chainDetailsList.OrderByDescending(c => c.PrecentOfCart).ThenBy(c => c.TotalSum);
+        }
+
+        public IEnumerable<object> CulcCartPrices(IEnumerable<MultipleItem> cart, IEnumerable<Store> stores)
+        {
+            var result = new List<object>();
+            foreach (var store in stores)
+            {
+                var prices = cart.Select(item =>
+                {
+                    var price = store.Prices.FirstOrDefault(p => item.ItemID == p.ItemID);
+                    return new DisplayItem()
+                    {
+                        ItemPrice = price?.ItemPrice,
+                        City = store.City,
+                        ChainName = _manager.GetChain(store.ChainID).ChainName,
+                        Address = store.Address,
+                        Quantity = item.NumOfItems,
+                        StoreCode = store.StoreCode,
+                        ItemName = item.ItemName,
+                        ManufacturerName = item.ManufacturerName
+                    };
+                }).ToArray();
+                result.Add(new {
+                    storeId=store.StoreID ,               
+                    cart=prices,
+                    sum= prices.Sum(i=>i.ItemPrice*i.Quantity)
+                });
+            }
+            return result;
         }
 
         #endregion

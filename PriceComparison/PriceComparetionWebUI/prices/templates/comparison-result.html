@@ -35,17 +35,16 @@
                                     <span class="text-box">{{result.cart[0].chainName}}</span>
                                 </div>
                                 <div class="row text-center">
-                                    <span class="text-box">{{result.store.address}}, {{result.store.city}}</span>
+                                    <span class="text-box">{{result.cart[0].address}}, {{result.cart[0].city}}</span>
                                 </div>
                                 <div class="row text-center">
                                     <div ng-class="result.sum!==$ctrl.minSum? 'sum-display' : 'sum-display min-sum-display'"
-                                         > {{result.sum}}</div>
+                                         > {{result.sum.toFixed(2);}}</div>
                                 </div>
                                 <div class="row result-item-row" ng-repeat="item in result.cart">
-                                    <div class="col-sm-3 item-details" ng-class="$ctrl.classOfPrice(item)">{{item.itemPrice}}</div>
-                                    <div class="col-sm-2"></div>
+                                    <div class="col-sm-4 item-details" ng-class="$ctrl.classOfPrice(item)">{{item.itemPrice ||"לא במלאי"}}</div>
                                     <div class="col-sm-2 item-details">{{item.quantity}}X</div>
-                                    <div class="col-sm-5 item-details">{{item.itemName}}</div>
+                                    <div class="col-sm-6 item-details">{{item.itemName}}</div>
                                 </div>
                             </div>
                         </div>

@@ -48,8 +48,9 @@
         getResults(_items: IItem[], _stores: IStore[]): ng.IPromise<ICompareResult[]> {
             return this.$http.post("api/priceComparetion/getPricesResult",
                 {
-                    items: _items,
-                    stores: _stores
+                        cart: _items,
+                        stores: _stores
+                    
                 })
                 .then(data => {
                     return data.data;

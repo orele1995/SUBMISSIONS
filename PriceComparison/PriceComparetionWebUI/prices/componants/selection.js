@@ -3,9 +3,10 @@ var PriceComparison;
     var Prices;
     (function (Prices) {
         var SelectionCrtl = (function () {
-            function SelectionCrtl(pricesService, $scope) {
+            function SelectionCrtl(pricesService, $scope, loadingService) {
                 var _this = this;
                 this.pricesService = pricesService;
+                this.loadingService = loadingService;
                 this.stores = [];
                 this.numOfItems = 0;
                 this.numOfStores = 1;
@@ -33,14 +34,21 @@ var PriceComparison;
                         storeCode: 1
                     }
                 });
-                $scope.$watch(function () { return _this.stores[0]; }, function (newValue, oldValue) {
-                    if (newValue.store !== null) {
-                        if (newValue.store.prices.length !== 0) {
-                            pricesService.getItemsOfStore(newValue.store).then(function (data) { return _this.items = data; });
-                        }
-                    }
-                }, true);
+                this.loadingService.loading(pricesService.getChanis())
+                    .then(function (data) {
+                    _this.chains = data;
+                });
             }
+            SelectionCrtl.prototype.onFirstStoreChanged = function (newValue) {
+                var _this = this;
+                if (newValue !== null && newValue !== undefined && newValue.id === 1) {
+                    if (newValue.store.chainID !== 1) {
+                        this.loadingService.loading(this.pricesService.getItemsOfStore(newValue.store)).then(function (data) {
+                            _this.items = data;
+                        });
+                    }
+                }
+            };
             SelectionCrtl.prototype.addStore = function () {
                 this.stores.push({
                     id: this.numOfStores++,
@@ -82,7 +90,7 @@ var PriceComparison;
             };
             SelectionCrtl.prototype.storesSelected = function () {
                 for (var i = 0; i < this.stores.length; i++) {
-                    if (this.stores[i].store.prices === [])
+                    if (this.stores[i].store.chainID === 1)
                         return false;
                 }
                 return true;
@@ -95,3 +103,4 @@ var PriceComparison;
         });
     })(Prices = PriceComparison.Prices || (PriceComparison.Prices = {}));
 })(PriceComparison || (PriceComparison = {}));
+//# sourceMappingURL=selection.js.map

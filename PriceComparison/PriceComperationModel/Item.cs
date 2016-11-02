@@ -1,18 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PriceComperationModel
 {
+    [DataContract]
     public class Item
     {
-        public  long ItemID { get; set;}
+        [DataMember]
+        public long ItemID { get; set;}
+        [DataMember]
         public string ItemName { get; set; }
+        [DataMember]
         public string ManufacturerName { get; set; }
+        [DataMember]
         public string Quantity { get; set; }
 
+        [DataMember]
         public virtual ICollection<Price> Prices { get; set; }
 
 

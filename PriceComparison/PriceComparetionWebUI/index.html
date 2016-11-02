@@ -9,30 +9,36 @@
     <meta charset="utf-8" />
 </head>
 <body ng-controller="mainCtrl as $ctrl" ng-cloak>
-    <ng-view></ng-view>
+    <div class="loader-container" ng-show="$ctrl.loading">
+          <div class="loader"></div>
+      </div>
 
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="scripts/jquery-1.9.1.min.js"></script>
-    <script src="scripts/bootstrap.min.js"></script>
-    <script src="bower_components/angular-ui-select/dist/select.min.js"></script>
-    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
-    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+<ng-view></ng-view>
+
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="scripts/jquery-1.9.1.min.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+<script src="bower_components/angular-ui-select/dist/select.min.js"></script>
+<script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+<script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
 
 
-    <script src="prices/prices-module.js"></script>
-    <script src="prices/services/items-service.js"></script>
-    <script src="prices/componants/list-item.js"></script>
+<script src="prices/prices-module.js"></script>
+<script src="prices/services/items-service.js"></script>
+<script src="prices/componants/list-item.js"></script>
 
-    <script src="prices/componants/selection.js"></script>
-    <script src="prices/componants/store-selection.js"></script>
-    <script src="prices/model/IDisplayItem.js"></script>
+<script src="prices/componants/selection.js"></script>
+<script src="prices/componants/store-selection.js"></script>
+<script src="prices/model/IDisplayItem.js"></script>
 <script src="prices/model/IItem.js"></script>
 
 <script src="prices/componants/comparison-result.js"></script>
 
-    <script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
 
-    <script src="app.js"></script>
-    <script src="main-ctrl.js"></script>
+<script src="app.js"></script>
+    <script src="prices/services/loading-service.js"></script>
+
+<script src="main-ctrl.js"></script>
 </body>
 </html>

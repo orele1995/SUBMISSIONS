@@ -34,7 +34,7 @@ var PriceComparison;
             };
             PricesService.prototype.getResults = function (_items, _stores) {
                 return this.$http.post("api/priceComparetion/getPricesResult", {
-                    items: _items,
+                    cart: _items,
                     stores: _stores
                 })
                     .then(function (data) {
@@ -65,3 +65,4 @@ var PriceComparison;
         pricesModule.service("pricesService", PricesService);
     })(Prices = PriceComparison.Prices || (PriceComparison.Prices = {}));
 })(PriceComparison || (PriceComparison = {}));
+//# sourceMappingURL=items-service.js.map

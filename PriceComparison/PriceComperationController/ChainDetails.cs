@@ -17,7 +17,7 @@ namespace PriceComperationController
 
         public double TotalSum 
         {
-            get { return Items.Sum(i => i.ItemPrice*i.Quantity); }
+            get { return (double)Items.Sum(i => i.ItemPrice*i.Quantity); }
         }
 
         public double PrecentOfCart { get; set; }

@@ -2,7 +2,7 @@
 namespace PriceComparison.Prices {
 
     export interface ICompareResult {
-        store: IStore;
+        storeId: number;
         cart: IDisplayItem[];
         sum: number;
         }

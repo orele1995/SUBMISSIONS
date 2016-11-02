@@ -4,8 +4,8 @@
         results: ICompareResult[];
         minSum: Number;
 
-        constructor(private pricesService: IPricesService) {
-            this.pricesService.getPricesResult()
+        constructor(private pricesService: IPricesService, private loadingService: ILoadingService) {
+            this.loadingService.loading(this.pricesService.getPricesResult())
                 .then((data) => {
                     this.results = data;
                     this.minSum = this.results[0].sum;
@@ -18,6 +18,9 @@
         }
 
         public classOfPrice(item: IDisplayItem): string {
+            if (item.itemPrice === null) {
+                return "no-price";
+            }
             var minPrice;
             var maxPrice;
 

@@ -138,6 +138,11 @@ body {
   box-shadow: none;
   right: 0px;
 }
+.backround-image-prop {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' http://www.happyharvesterdubai.com/assets/data/box_banner.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .choosing-section {
   padding: 15px;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' http://www.happyharvesterdubai.com/assets/data/box_banner.jpg');
@@ -224,13 +229,13 @@ store-selection .row {
 }
 .item-row {
   margin: 10px;
-  border-bottom: solid 1px #DEE5E7 ;
+  border-bottom: solid 1px #DEE5E7;
   color: black;
   height: 100px;
 }
 .result-item-row {
   margin: 10px;
-  border-bottom: solid 1px #DEE5E7 ;
+  border-bottom: solid 1px #DEE5E7;
   color: black;
 }
 .dropdown-menu {
@@ -256,7 +261,7 @@ input[type=number]::-webkit-outer-spin-button {
 ::-webkit-scrollbar-thumb {
   direction: rtl;
   border-radius: 10px;
-  border: 3px solid  window;
+  border: 3px solid window;
   background-color: var(--base-color);
 }
 .number-picker {
@@ -274,9 +279,11 @@ input[type=number]::-webkit-outer-spin-button {
 .page-header {
   font-size: 30px;
   color: Window;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' http://www.happyharvesterdubai.com/assets/data/box_banner.jpg');
   padding: 50px;
   margin-top: 0px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' http://www.happyharvesterdubai.com/assets/data/box_banner.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .cheapest-heading {
   background-color: #68af3e;
@@ -333,7 +340,7 @@ input[type=number]::-webkit-outer-spin-button {
   border-color: transparent #4e8c28 transparent transparent;
   top: 4px;
   position: absolute;
-  left: 49px;
+  left: 45px;
   float: left;
 }
 .right-triangle {
@@ -366,4 +373,27 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .details-text {
   margin: 20px;
+}
+.no-price {
+  color: #ff0000;
+}
+.loader-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1000;
+  background-color: black;
+  opacity: 0.8;
+}
+.loader-container .loader {
+  background-image: url('prices/gif/loader.gif');
+  margin: auto;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 28px;
+  width: 256px;
+  z-index: 1001;
+  transform: translate(-50%, -50%);
 }

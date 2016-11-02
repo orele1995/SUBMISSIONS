@@ -11,3 +11,4 @@ app.config(function ($routeProvider) {
         template: "<comparison-result></comparison-result>"
     });
 });
+//# sourceMappingURL=app.js.map

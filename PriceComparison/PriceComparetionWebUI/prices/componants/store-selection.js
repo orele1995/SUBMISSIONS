@@ -3,12 +3,10 @@ var PriceComparison;
     var Prices;
     (function (Prices) {
         var StoreSelection = (function () {
-            function StoreSelection(pricesService) {
-                var _this = this;
+            function StoreSelection(pricesService, loadingService) {
                 this.pricesService = pricesService;
+                this.loadingService = loadingService;
                 this.stores = [];
-                pricesService.getChanis()
-                    .then(function (data) { return _this.chains = data; });
             }
             StoreSelection.prototype.changeChain = function () {
                 if (this.selectedChain) {
@@ -19,8 +17,14 @@ var PriceComparison;
                 }
             };
             StoreSelection.prototype.changeStore = function (selected) {
-                if (this.selectedStore) {
+                if (this.selected) {
                     this.selectedStore = this.selected;
+                    this.onChangeStore({
+                        $storeModel: {
+                            id: this.num,
+                            store: this.selectedStore
+                        }
+                    });
                 }
             };
             return StoreSelection;
@@ -30,8 +34,11 @@ var PriceComparison;
             controller: StoreSelection,
             bindings: {
                 num: "=",
-                selectedStore: "="
+                selectedStore: "=",
+                onChangeStore: "&",
+                chains: "="
             }
         });
     })(Prices = PriceComparison.Prices || (PriceComparison.Prices = {}));
 })(PriceComparison || (PriceComparison = {}));
+//# sourceMappingURL=store-selection.js.map

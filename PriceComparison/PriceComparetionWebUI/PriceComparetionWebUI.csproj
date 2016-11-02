@@ -261,6 +261,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="prices\gif\135.gif" />
+    <Content Include="prices\gif\loader.gif" />
     <Content Include="prices\templates\comparison-result.html" />
     <Content Include="prices\templates\item-template.html" />
     <Content Include="prices\templates\list-item.html" />
@@ -433,6 +435,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="server-cntrollers\GetPriceResultParams.cs" />
     <Compile Include="server-cntrollers\ItemsController.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -452,6 +455,7 @@
     <TypeScriptCompile Include="prices\model\IStore.ts" />
     <TypeScriptCompile Include="prices\prices-module.ts" />
     <TypeScriptCompile Include="prices\services\items-service.ts" />
+    <TypeScriptCompile Include="prices\services\loading-service.ts" />
     <TypeScriptCompile Include="typings\globals\angular\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\jquery\index.d.ts" />
   </ItemGroup>

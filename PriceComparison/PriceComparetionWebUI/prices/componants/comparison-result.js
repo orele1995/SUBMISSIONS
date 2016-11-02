@@ -3,10 +3,11 @@ var PriceComparison;
     var Prices;
     (function (Prices) {
         var ComparisonResultCrtl = (function () {
-            function ComparisonResultCrtl(pricesService) {
+            function ComparisonResultCrtl(pricesService, loadingService) {
                 var _this = this;
                 this.pricesService = pricesService;
-                this.pricesService.getPricesResult()
+                this.loadingService = loadingService;
+                this.loadingService.loading(this.pricesService.getPricesResult())
                     .then(function (data) {
                     _this.results = data;
                     _this.minSum = _this.results[0].sum;
@@ -18,6 +19,9 @@ var PriceComparison;
                 });
             }
             ComparisonResultCrtl.prototype.classOfPrice = function (item) {
+                if (item.itemPrice === null) {
+                    return "no-price";
+                }
                 var minPrice;
                 var maxPrice;
                 // initialize min and max prices
@@ -58,3 +62,4 @@ var PriceComparison;
         });
     })(Prices = PriceComparison.Prices || (PriceComparison.Prices = {}));
 })(PriceComparison || (PriceComparison = {}));
+//# sourceMappingURL=comparison-result.js.map

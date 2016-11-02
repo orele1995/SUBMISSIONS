@@ -9,7 +9,9 @@
         shoppingCart: IItem[] = [];
         selectedItem: IItem;
         items: IItem[] = [];
-        constructor(private pricesService: IPricesService, $scope:ng.IScope) {
+        chains: IChain[];
+
+        constructor(private pricesService: IPricesService, $scope: ng.IScope, private loadingService:ILoadingService) {
             this.stores.push({
                 id: this.numOfStores++,
                 store: {
@@ -32,18 +34,19 @@
                     storeCode: 1
                 }
             });
-
-
-            $scope.$watch(() => { return this.stores[0] },
-                (newValue: IStoreModel, oldValue) => {
-                    if (newValue.store !== null) {
-                        if (newValue.store.prices.length !== 0) {
-                            pricesService.getItemsOfStore(newValue.store).then((data) => this.items = data);
-                        }
-                    }
-                },
-                true);
-
+            this.loadingService.loading(pricesService.getChanis())
+                .then(data => {
+                    this.chains = data;
+                });
+        }
+        public onFirstStoreChanged(newValue: IStoreModel) {
+            if (newValue !== null && newValue!== undefined && newValue.id===1) {
+                if (newValue.store.chainID !== 1) {
+                    this.loadingService.loading(this.pricesService.getItemsOfStore(newValue.store)).then((data) => {
+                        this.items = data;
+                    });
+                }
+            }
         }
 
         public addStore() {
@@ -91,12 +94,13 @@
 
         public storesSelected() {
             for (var i = 0; i < this.stores.length; i++) {
-                if (this.stores[i].store.prices === []) return false;
+                if (this.stores[i].store.chainID===1) return false;
             }
             return true;
         }
     }
-        pricesModule.component("selection", {
+
+    pricesModule.component("selection", {
     templateUrl: "prices/templates/selection-tmplate.html",
     controller: SelectionCrtl
     });
